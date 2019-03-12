@@ -71,14 +71,23 @@ void initDisplay()
 	GLCD_DrawBargraph(40,40,70,70,0);
 }
 
+
 int main(void)
 {
+	unsigned int count;
 	GPIO_InitTypeDef gpio;
+	bool doorOpen = 1;
+	TOUCH_STATE openDoorBtn;
+	openDoorBtn.x = 20;
+	openDoorBtn.y = 20;
+	openDoorBtn.padding = 10;
+	openDoorBtn.pressed = 0;
 
 	HAL_Init (); /* Init Hardware Abstraction Layer */
 	SystemClock_Config (); /* Config Clocks */
 	
 	initDisplay();
+	Touch_Initialize();
 	
 	// enable clock for B base
 	__HAL_RCC_GPIOC_CLK_ENABLE();
@@ -94,5 +103,23 @@ int main(void)
 	
 	// enable the segment
 	HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_SET);
+	
+	
+	while(1){
+		Touch_GetState(&openDoorBtn);
+		if (openDoorBtn.pressed && !doorOpen) {
+			GLCD_SetBackgroundColor (GLCD_COLOR_GREEN);
+			GLCD_DrawBargraph(40,40,70,70,0);
+			doorOpen = 1;
+			HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_SET);
+		} else if (openDoorBtn.pressed && doorOpen) {
+			GLCD_SetBackgroundColor (GLCD_COLOR_RED);
+			GLCD_DrawBargraph(40,40,70,70,0);
+			doorOpen = 0;
+			HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_RESET);
+		} else {
+			
+		}
+	}
 	
 }

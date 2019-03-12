@@ -28,14 +28,18 @@ Project File Date:  03/05/2019
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-main.c(98): warning:  #1-D: last line of file ends without a newline
+main.c(125): warning:  #1-D: last line of file ends without a newline
   }
+main.c(77): warning:  #177-D: variable "count" was declared but never referenced
+  	unsigned int count;
+main.c(22): warning:  #177-D: function "Error_Handler" was declared but never referenced
+  static void Error_Handler(void);
 main.c(23): warning:  #177-D: function "CPU_CACHE_Enable" was declared but never referenced
   static void CPU_CACHE_Enable(void);
-main.c: 3 warnings, 0 errors
+main.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=14460 RO-data=624 RW-data=88 ZI-data=266328  
-".\Objects\SmartPets.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=18952 RO-data=624 RW-data=144 ZI-data=266520  
+".\Objects\SmartPets.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
