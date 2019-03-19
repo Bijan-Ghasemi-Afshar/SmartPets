@@ -1,1 +1,3 @@
-void drawHomeScreen(void);
+void drawHomePage(void);
+
+void drawManualPage(void);

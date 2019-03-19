@@ -9,8 +9,9 @@ extern GLCD_FONT GLCD_Font_16x24;
 // Draws a button with a label on top of it
 void app_drawButton(Button *btn)
 {
+		GLCD_SetBackgroundColor (btn->backgroundColor);
 		GLCD_DrawBargraph(btn->posX,btn->posY,btn->width,btn->height,(uint32_t)btn->bitmap);
-		GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
+		GLCD_SetForegroundColor (btn->color);
 		GLCD_SetFont (&GLCD_Font_16x24);
 		GLCD_DrawString ((btn->posX + 10), (btn->posY + (btn->height/4)), btn->label);
 }

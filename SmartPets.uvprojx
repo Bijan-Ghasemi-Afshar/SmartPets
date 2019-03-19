@@ -381,9 +381,14 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
-              <FileName>guiUtility.c</FileName>
+              <FileName>GUI_Utility.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\guiUtility.c</FilePath>
+              <FilePath>.\GUI_Utility.c</FilePath>
+            </File>
+            <File>
+              <FileName>App_GUI_Content.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App_GUI_Content.c</FilePath>
             </File>
           </Files>
         </Group>

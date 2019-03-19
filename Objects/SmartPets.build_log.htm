@@ -27,15 +27,33 @@ Project File Date:  03/19/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5-18\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling GUI_Utility.c...
-GUI_Utility.h(80): warning:  #1-D: last line of file ends without a newline
+compiling App_GUI_Content.c...
+GUI_Utility.h(84): warning:  #1-D: last line of file ends without a newline
   void app_drawBargraph(Bargraph *bargraph);
-GUI_Utility.c(50): warning:  #1-D: last line of file ends without a newline
+App_GUI_Content.c(162): warning:  #1-D: last line of file ends without a newline
   }
-GUI_Utility.c: 2 warnings, 0 errors
+App_GUI_Content.c: 2 warnings, 0 errors
+compiling main.c...
+GUI_Utility.h(84): warning:  #1-D: last line of file ends without a newline
+  void app_drawBargraph(Bargraph *bargraph);
+App_GUI_Content.h(3): warning:  #1-D: last line of file ends without a newline
+  void drawManualPage(void);
+main.c(135): warning:  #1-D: last line of file ends without a newline
+  }
+main.c(87): warning:  #177-D: variable "count" was declared but never referenced
+  	unsigned int count;
+main.c(89): warning:  #177-D: variable "doorOpen" was declared but never referenced
+  	bool doorOpen = 1;
+main.c(90): warning:  #550-D: variable "openDoorBtn" was set but never used
+  	TOUCH_STATE openDoorBtn;
+main.c(23): warning:  #177-D: function "Error_Handler" was declared but never referenced
+  static void Error_Handler(void);
+main.c(24): warning:  #177-D: function "CPU_CACHE_Enable" was declared but never referenced
+  static void CPU_CACHE_Enable(void);
+main.c: 8 warnings, 0 errors
 linking...
-Program Size: Code=20368 RO-data=6928 RW-data=144 ZI-data=266520  
-".\Objects\SmartPets.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=19304 RO-data=6928 RW-data=144 ZI-data=266480  
+".\Objects\SmartPets.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -192,7 +210,7 @@ Package Vendor: Keil
       Source file:   MDK\Boards\ST\STM32F746G_Discovery\Common\Touch_746G_Discovery.c
 
    * Component: ::Device:STM32Cube Framework:1.0.0 (API)
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

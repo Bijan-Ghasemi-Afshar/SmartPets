@@ -13,6 +13,10 @@ typedef struct
 	
 	const short *bitmap;
 	
+	unsigned int backgroundColor;
+	
+	unsigned int color;
+	
 	char *label;
 	
 }Button;

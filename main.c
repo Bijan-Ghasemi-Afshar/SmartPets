@@ -72,8 +72,9 @@ void initDisplay()
 	GLCD_ClearScreen ();
 	GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
 	
-	drawHomeScreen();
+	drawHomePage();
 	
+	//drawManualPage();
 	
 }
 
@@ -114,21 +115,21 @@ int main(void)
 	HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_SET);
 	
 	
-	while(1){
-		Touch_GetState(&openDoorBtn);
-		if (openDoorBtn.pressed && !doorOpen) {
-			GLCD_SetBackgroundColor (GLCD_COLOR_GREEN);
-			GLCD_DrawBargraph(40,40,70,70,0);
-			doorOpen = 1;
-			HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_SET);
-		} else if (openDoorBtn.pressed && doorOpen) {
-			GLCD_SetBackgroundColor (GLCD_COLOR_RED);
-			GLCD_DrawBargraph(40,40,70,70,0);
-			doorOpen = 0;
-			HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_RESET);
-		} else {
-			
-		}
-	}
+//	while(1){
+//		Touch_GetState(&openDoorBtn);
+//		if (openDoorBtn.pressed && !doorOpen) {
+//			GLCD_SetBackgroundColor (GLCD_COLOR_GREEN);
+//			GLCD_DrawBargraph(40,40,70,70,0);
+//			doorOpen = 1;
+//			HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_SET);
+//		} else if (openDoorBtn.pressed && doorOpen) {
+//			GLCD_SetBackgroundColor (GLCD_COLOR_RED);
+//			GLCD_DrawBargraph(40,40,70,70,0);
+//			doorOpen = 0;
+//			HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_RESET);
+//		} else {
+//			
+//		}
+//	}
 	
 }
