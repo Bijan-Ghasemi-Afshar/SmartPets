@@ -2,9 +2,10 @@
 #include "GLCD_Config.h"
 #include "Board_GLCD.h"
 #include "Board_Touch.h"
-#include "Board_Touch.h"
 #include "stm32f7xx_hal.h"
 #include "stm32f7xx_hal_gpio.h"
+#include "GUI_Utility.h"
+#include "App_GUI_Content.h"
 
 #define wait_delay HAL_Delay
 extern GLCD_FONT GLCD_Font_6x8;
@@ -60,18 +61,26 @@ void SystemClock_Config(void) {
 	FLASH_LATENCY_5);
 }
 
+/**
+* Initialize Display
+*/
 void initDisplay()
 {
+	
 	GLCD_Initialize();
-	GLCD_SetBackgroundColor (GLCD_COLOR_WHITE);
+	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 	GLCD_ClearScreen ();
-	GLCD_SetBackgroundColor (GLCD_COLOR_WHITE);
-	GLCD_ClearScreen ();
-	GLCD_SetBackgroundColor (GLCD_COLOR_RED);
-	GLCD_DrawBargraph(40,40,70,70,0);
+	GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
+	
+	drawHomeScreen();
+	
+	
 }
 
 
+/**
+* Main Function
+*/
 int main(void)
 {
 	unsigned int count;

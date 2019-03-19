@@ -5,11 +5,11 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.18.0.0
 Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Bijan Ghasemi Afshar, University of East Anglia, LIC=----
+License Information: Authorised User, UEA, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.18
-Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+Toolchain Path:  C:\Keil_v5-18\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 1 (build 61)
 Assembler:       Armasm.exe V5.06 update 1 (build 61)
 Linker/Locator:  ArmLink.exe V5.06 update 1 (build 61)
@@ -21,25 +21,21 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
 Dialog DLL:      TCM.DLL V1.14.8.0
  
 <h2>Project:</h2>
-C:\Users\bijan\Desktop\Embedded Systems\SmartPets\SmartPets.uvprojx
-Project File Date:  03/05/2019
+C:\temp\SmartPets\SmartPets\SmartPets.uvprojx
+Project File Date:  03/19/2019
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5-18\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling main.c...
-main.c(125): warning:  #1-D: last line of file ends without a newline
+compiling GUI_Utility.c...
+GUI_Utility.h(80): warning:  #1-D: last line of file ends without a newline
+  void app_drawBargraph(Bargraph *bargraph);
+GUI_Utility.c(50): warning:  #1-D: last line of file ends without a newline
   }
-main.c(77): warning:  #177-D: variable "count" was declared but never referenced
-  	unsigned int count;
-main.c(22): warning:  #177-D: function "Error_Handler" was declared but never referenced
-  static void Error_Handler(void);
-main.c(23): warning:  #177-D: function "CPU_CACHE_Enable" was declared but never referenced
-  static void CPU_CACHE_Enable(void);
-main.c: 4 warnings, 0 errors
+GUI_Utility.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=18952 RO-data=624 RW-data=144 ZI-data=266520  
-".\Objects\SmartPets.axf" - 0 Error(s), 4 Warning(s).
+Program Size: Code=20368 RO-data=6928 RW-data=144 ZI-data=266520  
+".\Objects\SmartPets.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -48,8 +44,8 @@ Package Vendor: ARM
                 ::CMSIS:RTOS:1.0.0 (API)
                 CMSIS (Cortex Microcontroller Software Interface Standard)
    * Component: RTOS Version: 1.0.0
-   * Component: CORE Version: 5.1.2
    * Component: Keil RTX Version: 4.81.1
+   * Component: CORE Version: 5.1.2
 
 Package Vendor: Keil
                 http://www.keil.com/pack/Keil.MDK-Middleware.7.8.0.pack
@@ -59,60 +55,59 @@ Package Vendor: Keil
    * Component: Touchscreen Version: 1.0.1
 
 Package Vendor: Keil
-                http://www.keil.com/pack/Keil.STM32F7xx_DFP.2.11.0.pack
+                http://www.keil.com/pack/Keil.STM32F7xx_DFP.2.10.0.pack
                 Keil::Device:Startup:1.2.2
                 STMicroelectronics STM32F7 Series Device Support, Drivers and Examples
    * Component: Startup Version: 1.2.2
-   * Component: STM32Cube Framework Version: 1.0.0
-   * Component: Classic Version: 1.2.6
-   * Component: Common Version: 1.2.6
-   * Component: ADC Version: 1.2.6
-   * Component: DMA Version: 1.2.6
-   * Component: Cortex Version: 1.2.6
-   * Component: I2C Version: 1.2.6
-   * Component: LTDC Version: 1.2.6
-   * Component: GPIO Version: 1.2.6
-   * Component: RCC Version: 1.2.6
-   * Component: PWR Version: 1.2.6
-   * Component: SDRAM Version: 1.2.6
-   * Component: UART Version: 1.2.6
+   * Component: Classic Version: 1.2.5
+   * Component: Cortex Version: 1.2.5
+   * Component: Common Version: 1.2.5
+   * Component: DMA Version: 1.2.5
+   * Component: GPIO Version: 1.2.5
+   * Component: LTDC Version: 1.2.5
+   * Component: I2C Version: 1.2.5
+   * Component: RCC Version: 1.2.5
+   * Component: PWR Version: 1.2.5
+   * Component: SDRAM Version: 1.2.5
+   * Component: UART Version: 1.2.5
    * Component: Basic I/O Version: 1.1.1
+   * Component: Touch Screen Version: 1.1.1
    * Component: SDRAM Version: 1.1.1
    * Component: Graphic LCD Version: 1.1.1
    * Component: Touchscreen Version: 1.1.1
-   * Component: Touch Screen Version: 1.1.1
+   * Component: STM32Cube Framework Version: 1.0.0
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE
-  C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC
-  C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board
-  C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery
-  C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include
-  C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc
-  C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common
+  C:\temp\SmartPets\SmartPets\RTE
+  C:\temp\SmartPets\SmartPets\RTE\Device\STM32F746NGHx
+  C:\Keil_v5-18\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include
+  C:\Keil_v5-18\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC
+  C:\Keil_v5-18\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board
+  C:\Keil_v5-18\ARM\PACK\Keil\STM32F7xx_DFP\2.10.0\Drivers\BSP\STM32746G-Discovery
+  C:\Keil_v5-18\ARM\PACK\Keil\STM32F7xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include
+  C:\Keil_v5-18\ARM\PACK\Keil\STM32F7xx_DFP\2.10.0\Drivers\STM32F7xx_HAL_Driver\Inc
+  C:\Keil_v5-18\ARM\PACK\Keil\STM32F7xx_DFP\2.10.0\MDK\Boards\ST\STM32F746G_Discovery\Common
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ::CMSIS:RTOS:1.0.0 (API)
 
-   * Component: ARM::CMSIS:CORE:5.1.2
-
    * Component: ARM::CMSIS:RTOS:Keil RTX:4.81.1
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Timer.c
+      Include file:  CMSIS\RTOS\RTX\INC\cmsis_os.h
       Source file:   CMSIS\RTOS\RTX\Templates\RTX_Conf_CM.c
       Include file:  CMSIS\RTOS\RTX\UserCodeTemplates\osObjects.h
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MemPool.c
-      Source file:   CMSIS\RTOS\RTX\SRC\ARM\SVC_Table.s
-      Include file:  CMSIS\RTOS\RTX\INC\cmsis_os.h
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Thread.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MailQueue.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MsgQueue.c
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\main.c
-      Library file:  CMSIS\RTOS\RTX\LIB\ARM\RTX_CM4.lib
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MailQueue.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MemPool.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MsgQueue.c
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Mutex.c
+      Source file:   CMSIS\RTOS\RTX\SRC\ARM\SVC_Table.s
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Semaphore.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Thread.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Timer.c
+      Library file:  CMSIS\RTOS\RTX\LIB\ARM\RTX_CM4.lib
+
+   * Component: ARM::CMSIS:CORE:5.1.2
 
    * Component: ::Board Support:Graphic LCD:1.0.0 (API)
       Include file:  Board\Board_GLCD.h
@@ -121,87 +116,83 @@ Package Vendor: Keil
       Include file:  Board\Board_Touch.h
 
    * Component: Keil::Device:Startup:1.2.2
-      Source file:   MDK\Device\Source\ARM\STM32F74x_75x_OTP.s
       Source file:   MDK\Device\Source\ARM\STM32F74x_75x_OPT.s
-      Include file:  Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h
       Source file:   Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\arm\startup_stm32f746xx.s
+      Include file:  Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h
+      Source file:   MDK\Device\Source\ARM\STM32F74x_75x_OTP.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\system_stm32f7xx.c
 
-   * Component: ::Device:STM32Cube Framework:1.0.0 (API)
-
-   * Component: Keil::Device:STM32Cube Framework:Classic:1.2.6
+   * Component: Keil::Device:STM32Cube Framework:Classic:1.2.5
+      Include file:  CMSIS\Driver\Config\RTE_Device.h
+      Include file:  MDK\Templates\Inc\stm32f7xx_hal_conf.h
+      Source file:   MDK\Templates\Src\stm32f7xx_hal_msp.c
+      Include file:  MDK\Templates\Inc\stm32f7xx_it.h
+      Source file:   MDK\Templates\Src\stm32f7xx_it.c
       Include file:  MDK\Templates\Inc\main.h
       Include file:  MDK\Templates_LL\Inc\main.h
-      Source file:   MDK\Templates\Src\stm32f7xx_hal_msp.c
-      Include file:  MDK\Templates\Inc\stm32f7xx_hal_conf.h
       Source file:   MDK\Templates_LL\Src\main.c
-      Include file:  MDK\Templates\Inc\stm32f7xx_it.h
       Source file:   MDK\Templates\Src\main.c
-      Include file:  CMSIS\Driver\Config\RTE_Device.h
-      Source file:   MDK\Templates\Src\stm32f7xx_it.c
 
-   * Component: Keil::Device:STM32Cube HAL:Common:1.2.6
-      Include file:  Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal.c
-
-   * Component: Keil::Device:STM32Cube HAL:ADC:1.2.6
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_adc_ex.c
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_adc.c
-
-   * Component: Keil::Device:STM32Cube HAL:DMA:1.2.6
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma.c
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma_ex.c
-
-   * Component: Keil::Device:STM32Cube HAL:Cortex:1.2.6
+   * Component: Keil::Device:STM32Cube HAL:Cortex:1.2.5
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_cortex.c
 
-   * Component: Keil::Device:STM32Cube HAL:I2C:1.2.6
+   * Component: Keil::Device:STM32Cube HAL:Common:1.2.5
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal.c
+      Include file:  Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
+
+   * Component: Keil::Device:STM32Cube HAL:DMA:1.2.5
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma_ex.c
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma.c
+
+   * Component: Keil::Device:STM32Cube HAL:GPIO:1.2.5
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_gpio.c
+
+   * Component: Keil::Device:STM32Cube HAL:LTDC:1.2.5
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_ltdc.c
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_ltdc_ex.c
+
+   * Component: Keil::Device:STM32Cube HAL:I2C:1.2.5
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_i2c_ex.c
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_i2c.c
 
-   * Component: Keil::Device:STM32Cube HAL:LTDC:1.2.6
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_ltdc_ex.c
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_ltdc.c
-
-   * Component: Keil::Device:STM32Cube HAL:GPIO:1.2.6
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_gpio.c
-
-   * Component: Keil::Device:STM32Cube HAL:RCC:1.2.6
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc_ex.c
+   * Component: Keil::Device:STM32Cube HAL:RCC:1.2.5
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc.c
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc_ex.c
 
-   * Component: Keil::Device:STM32Cube HAL:PWR:1.2.6
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pwr.c
+   * Component: Keil::Device:STM32Cube HAL:PWR:1.2.5
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pwr_ex.c
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pwr.c
 
-   * Component: Keil::Device:STM32Cube HAL:SDRAM:1.2.6
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_sdram.c
+   * Component: Keil::Device:STM32Cube HAL:SDRAM:1.2.5
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_ll_fmc.c
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_sdram.c
 
-   * Component: Keil::Device:STM32Cube HAL:UART:1.2.6
+   * Component: Keil::Device:STM32Cube HAL:UART:1.2.5
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_uart.c
 
    * Component: Keil.STM32F746G-Discovery::Board Support:Drivers:Basic I/O:1.1.1
       Include file:  Drivers\BSP\STM32746G-Discovery\stm32746g_discovery.h
       Source file:   Drivers\BSP\STM32746G-Discovery\stm32746g_discovery.c
 
-   * Component: Keil.STM32F746G-Discovery::Board Support:Drivers:SDRAM:1.1.1
-      Source file:   Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_sdram.c
-      Include file:  Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_sdram.h
-
-   * Component: Keil.STM32F746G-Discovery::Board Support:Graphic LCD:1.1.1
-      Source file:   MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_746G_Discovery.c
-      Source file:   MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Fonts.c
-      Include file:  MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Config.h
-
-   * Component: Keil.STM32F746G-Discovery::Board Support:Touchscreen:1.1.1
-      Source file:   MDK\Boards\ST\STM32F746G_Discovery\Common\Touch_746G_Discovery.c
-
    * Component: Keil.STM32F746G-Discovery::Board Support:Drivers:Touch Screen:1.1.1
       Include file:  Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_ts.h
       Source file:   Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_ts.c
       Source file:   Drivers\BSP\Components\ft5336\ft5336.c
-Build Time Elapsed:  00:00:03
+
+   * Component: Keil.STM32F746G-Discovery::Board Support:Drivers:SDRAM:1.1.1
+      Include file:  Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_sdram.h
+      Source file:   Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_sdram.c
+
+   * Component: Keil.STM32F746G-Discovery::Board Support:Graphic LCD:1.1.1
+      Include file:  MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Config.h
+      Source file:   MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Fonts.c
+      Source file:   MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_746G_Discovery.c
+
+   * Component: Keil.STM32F746G-Discovery::Board Support:Touchscreen:1.1.1
+      Source file:   MDK\Boards\ST\STM32F746G_Discovery\Common\Touch_746G_Discovery.c
+
+   * Component: ::Device:STM32Cube Framework:1.0.0 (API)
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
