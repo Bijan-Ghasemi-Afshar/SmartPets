@@ -1,4 +1,13 @@
 /**
+* This struct contains properties related to a functionality ( concept level functionality )
+*/
+typedef struct
+{
+	unsigned char pin;
+	
+	unsigned char state;
+}Functionality;
+/**
 * This struct contains properties related to a button ( concept level button )
 */
 typedef struct
@@ -18,6 +27,10 @@ typedef struct
 	unsigned int color;
 	
 	char *label;
+	
+	char navigation;
+	
+	Functionality funtionality;
 	
 }Button;
 

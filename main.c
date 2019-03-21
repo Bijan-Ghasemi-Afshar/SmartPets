@@ -6,6 +6,7 @@
 #include "stm32f7xx_hal_gpio.h"
 #include "GUI_Utility.h"
 #include "App_GUI_Content.h"
+#include <string.h>
 
 #define wait_delay HAL_Delay
 extern GLCD_FONT GLCD_Font_6x8;
@@ -62,20 +63,83 @@ void SystemClock_Config(void) {
 }
 
 /**
-* Initialize Display
+* Initialize Pin
 */
-void initDisplay()
+void initializePins(void)
 {
+	int i = 0;
 	
-	GLCD_Initialize();
-	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-	GLCD_ClearScreen ();
-	GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
+	GPIO_InitTypeDef gpio[8];	
+	gpio[0].Pin = GPIO_PIN_7;
+	gpio[1].Pin = GPIO_PIN_6;
+	gpio[2].Pin = GPIO_PIN_6;
+	gpio[3].Pin = GPIO_PIN_4;
+	gpio[4].Pin = GPIO_PIN_7;
+	gpio[5].Pin = GPIO_PIN_0;
+	gpio[6].Pin = GPIO_PIN_6;
+	gpio[7].Pin = GPIO_PIN_3;
 	
-	drawHomePage();
+	// enable clock for B base
+	// two "_" infront of HAL
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	__HAL_RCC_GPIOG_CLK_ENABLE();
+	__HAL_RCC_GPIOH_CLK_ENABLE();
+	__HAL_RCC_GPIOI_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+		
 	
-	//drawManualPage();
-	
+	for (i = 0; i < 8; i++)
+	{
+
+			// set mode as output, nopull D0
+			gpio[i].Mode 		= GPIO_MODE_OUTPUT_PP;
+			gpio[i].Pull 		= GPIO_NOPULL;
+			gpio[i].Speed 	= GPIO_SPEED_HIGH;			
+			
+			if(i == 0 || i == 1)
+			{
+				
+				// initialise the pin
+				HAL_GPIO_Init(GPIOC, &gpio[i]);
+		
+				// enable the segment
+				HAL_GPIO_WritePin(GPIOC, gpio[i].Pin, GPIO_PIN_RESET);
+				
+			} else if (i == 2 || i == 4)
+			{
+				
+				// initialise the pin
+				HAL_GPIO_Init(GPIOG, &gpio[i]);
+		
+				// enable the segment
+				HAL_GPIO_WritePin(GPIOG, gpio[i].Pin, GPIO_PIN_RESET);
+				
+			} else if (i == 5 || i == 7)
+			{
+				
+				// initialise the pin
+				HAL_GPIO_Init(GPIOI, &gpio[i]);
+		
+				// enable the segment
+				HAL_GPIO_WritePin(GPIOI, gpio[i].Pin, GPIO_PIN_RESET);
+				
+			} else if (i == 3)
+			{
+				// initialise the pin
+				HAL_GPIO_Init(GPIOB, &gpio[i]);
+		
+				// enable the segment
+				HAL_GPIO_WritePin(GPIOB, gpio[i].Pin, GPIO_PIN_RESET);
+				
+			} else
+			{
+				// initialise the pin
+				HAL_GPIO_Init(GPIOH, &gpio[i]);
+		
+				// enable the segment
+				HAL_GPIO_WritePin(GPIOH, gpio[i].Pin, GPIO_PIN_RESET);
+			}
+	}
 }
 
 
@@ -86,50 +150,31 @@ int main(void)
 {
 	unsigned int count;
 	GPIO_InitTypeDef gpio;
-	bool doorOpen = 1;
-	TOUCH_STATE openDoorBtn;
-	openDoorBtn.x = 20;
-	openDoorBtn.y = 20;
-	openDoorBtn.padding = 10;
-	openDoorBtn.pressed = 0;
+	char *page = "Home";
 
 	HAL_Init (); /* Init Hardware Abstraction Layer */
 	SystemClock_Config (); /* Config Clocks */
 	
-	initDisplay();
+	initializePins();
+	GLCD_Initialize();
 	Touch_Initialize();
 	
-	// enable clock for B base
-	__HAL_RCC_GPIOC_CLK_ENABLE();
-	
-	// set mode as output, nonpull
-	gpio.Mode 	= GPIO_MODE_OUTPUT_PP;
-	gpio.Pull 	= GPIO_NOPULL;
-	gpio.Speed 	= GPIO_SPEED_HIGH;
-	gpio.Pin 		= GPIO_PIN_7;
-	
-	// initialize the pin
-	HAL_GPIO_Init(GPIOC, &gpio);
-	
-	// enable the segment
-	HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_SET);
-	
-	
-//	while(1){
-//		Touch_GetState(&openDoorBtn);
-//		if (openDoorBtn.pressed && !doorOpen) {
-//			GLCD_SetBackgroundColor (GLCD_COLOR_GREEN);
-//			GLCD_DrawBargraph(40,40,70,70,0);
-//			doorOpen = 1;
-//			HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_SET);
-//		} else if (openDoorBtn.pressed && doorOpen) {
-//			GLCD_SetBackgroundColor (GLCD_COLOR_RED);
-//			GLCD_DrawBargraph(40,40,70,70,0);
-//			doorOpen = 0;
-//			HAL_GPIO_WritePin(GPIOC, gpio.Pin, GPIO_PIN_RESET);
-//		} else {
-//			
-//		}
-//	}
-	
+	// SUPER LOOP
+	while(1)
+	{
+		if (strcmp(page,"Home") == 0)
+		{
+			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
+			GLCD_ClearScreen ();
+			drawHomePage();
+			wait(50000000);
+			homePageNavigation(&page);
+		} else if (strcmp(page,"Manual") == 0){
+			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
+			GLCD_ClearScreen ();
+			drawManualPage();
+			wait(50000000);
+			manualPageNavigation(&page);
+		}
+	}
 }
