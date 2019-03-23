@@ -1,3 +1,6 @@
+#define DAY 8640000; /* 10 ms ticks in a day */
+
+
 /**
 * This struct contains properties related to a functionality ( concept level functionality )
 */
@@ -95,3 +98,6 @@ void app_drawScreenLabel(ScreenLabel *scrLbl);
 
 // Draws the bargraph
 void app_drawBargraph(Bargraph *bargraph);
+
+// Clock functionality
+void app_clockTicToc(unsigned int *tic, unsigned int *toc, unsigned int *elapsed_t, Clock *clock);

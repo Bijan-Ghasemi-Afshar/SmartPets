@@ -3,6 +3,13 @@
 #include "GLCD_Config.h"
 #include <stdio.h>
 
+#ifdef __RTX
+	extern uint32_t os_time;
+	uint32_t HAL_GetTick(void) {
+		return os_time;
+	}
+#endif
+
 extern GLCD_FONT GLCD_Font_6x8;
 extern GLCD_FONT GLCD_Font_16x24;
 
@@ -19,13 +26,11 @@ void app_drawButton(Button *btn)
 // Draws a clock
 void app_drawClock(Clock *clk)
 {
-	
 		char buffer[128];
-	
 		GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
 		GLCD_SetFont (&GLCD_Font_16x24);
 		sprintf(buffer, "%d : %d : %d", clk->hour,clk->minute, clk->second);
-		GLCD_DrawString (clk->posX, clk->posY, " ");
+		GLCD_DrawString (clk->posX, clk->posY, "              ");
 		GLCD_DrawString (clk->posX, clk->posY, buffer);
 }
 
@@ -48,4 +53,20 @@ void app_drawBargraph(Bargraph *bargraph)
 		GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 		GLCD_DrawString (bargraph->posX - 50, bargraph->posY, bargraph->label);
 		GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
+}
+
+// Clock functionality
+void app_clockTicToc(uint32_t *tic, uint32_t *toc, uint32_t *elapsed_t, Clock *clock)
+{
+	char buffer[128];
+	*tic = HAL_GetTick()/10;
+		if (*tic != *toc) { /* 10 ms update */
+			*toc = *tic;
+			clock->second = (*elapsed_t/100)%60; /* update time */
+			clock->minute = (*elapsed_t/6000)%60;
+			clock->hour = (*elapsed_t/360000)%24;
+			/* Update Display */
+			app_drawClock(clock);
+			*elapsed_t = (*elapsed_t+1) % DAY;
+		}
 }

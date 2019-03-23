@@ -79,6 +79,14 @@
 #define BUTTON_HOME_LABEL "Home"
 #define BUTTON_HOME_NAVIGATION 1
 
+// CLOCK Properties
+#define CLOCK_POS_X GLCD_SIZE_X/4 + 20
+#define CLOCK_POS_Y 20
+#define CLOCK_SEC 30
+#define CLOCK_MIN 20
+#define CLOCK_HOUR 11
+
+
 void wait(int delay);
 
 void drawHomePage(void);

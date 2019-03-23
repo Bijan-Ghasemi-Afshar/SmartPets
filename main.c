@@ -12,12 +12,6 @@
 extern GLCD_FONT GLCD_Font_6x8;
 extern GLCD_FONT GLCD_Font_16x24;
 
-#ifdef __RTX
-extern uint32_t os_time;
-uint32_t HAL_GetTick(void) {
-return os_time;
-}
-#endif
 
 extern GLCD_FONT GLCD_Font_6x8;
 static void SystemClock_Config(void);

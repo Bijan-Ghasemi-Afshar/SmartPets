@@ -34,11 +34,11 @@ void drawHomePage(void)
 	scrLabel.name = "Home";
 	
 	// ====================== Clock ======================
-	clock.hour = 11;
-	clock.minute = 20;
-	clock.second = 30;
-	clock.posX = GLCD_SIZE_X/4 + 20;
-	clock.posY = 20;
+	clock.hour = CLOCK_HOUR;
+	clock.minute = CLOCK_MIN;
+	clock.second = CLOCK_SEC;
+	clock.posX = CLOCK_POS_X;
+	clock.posY = CLOCK_POS_Y;
 	
 	// ====================== Buttons ======================
 	dayButton.posX = BUTTON_DAY_POS_X;
@@ -197,10 +197,24 @@ void drawManualPage()
 void homePageNavigation(char **page)
 {
 	unsigned short i = 0;
+	uint32_t tic, toc = 0;
+	uint32_t elapsed_t;
+	Clock clock;
 	TOUCH_STATE tscState;
 	// Initialize array of buttons
 	Button buttons[4];
 	
+	// ====================== Clock ======================
+	clock.hour = CLOCK_HOUR;
+	clock.minute = CLOCK_MIN;
+	clock.second = CLOCK_SEC;
+	clock.posX = CLOCK_POS_X;
+	clock.posY = CLOCK_POS_Y;
+	/* elapsed_t is elapsed (10 * msec) since midnight */
+	elapsed_t = clock.second*100+clock.minute*60*100+clock.hour*60*60*100;
+	
+	
+	// ====================== BUTTONS ======================
 	buttons[0].posX = BUTTON_DAY_POS_X;
 	buttons[0].posY = BUTTON_DAY_POS_Y;
 	buttons[0].width = BUTTON_DAY_WIDTH;
@@ -245,6 +259,7 @@ void homePageNavigation(char **page)
 	{
 		if (strcmp(*page, "Home") == 0)
 		{
+			app_clockTicToc(&tic, &toc, &elapsed_t, &clock);
 			Touch_GetState(&tscState);
 			if (tscState.pressed)
 			{
@@ -266,7 +281,6 @@ void homePageNavigation(char **page)
 				GLCD_SetFont (&GLCD_Font_16x24);
 				GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 				GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
-				GLCD_DrawString (20, 40, "            ");
 			}
 		} else {
 			break;
@@ -283,6 +297,7 @@ void manualPageNavigation(char **page)
 	Functionality lightsButtonFunc, doorButtonFunc;
 	// Initialize array of buttons
 	Button buttons[3];
+	
 	
 	// ====================== GPIO ======================	
 	gpio[0].Pin = GPIO_PIN_7;
@@ -302,6 +317,7 @@ void manualPageNavigation(char **page)
 	doorButtonFunc.pin = BUTTON_DOOR_PIN;
 	doorButtonFunc.state = BUTTON_DOOR_STATE;
 	
+	// ====================== Buttons ======================
 	buttons[0].posX = BUTTON_DOOR_POS_X;
 	buttons[0].posY = BUTTON_DOOR_POS_Y;
 	buttons[0].width = BUTTON_DOOR_WIDTH;
