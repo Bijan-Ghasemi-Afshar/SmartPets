@@ -15,8 +15,6 @@ extern GLCD_FONT GLCD_Font_16x24;
 
 extern GLCD_FONT GLCD_Font_6x8;
 static void SystemClock_Config(void);
-static void Error_Handler(void);
-static void CPU_CACHE_Enable(void);
 static void initDisplay(void);
 
 /**
@@ -55,87 +53,6 @@ void SystemClock_Config(void) {
 	HAL_RCC_ClockConfig(&RCC_ClkInitStruct,
 	FLASH_LATENCY_5);
 }
-
-/**
-* Initialize Pin
-*/
-void initializePins(void)
-{
-	int i = 0;
-	
-	GPIO_InitTypeDef gpio[8];	
-	gpio[0].Pin = GPIO_PIN_7;
-	gpio[1].Pin = GPIO_PIN_6;
-	gpio[2].Pin = GPIO_PIN_6;
-	gpio[3].Pin = GPIO_PIN_4;
-	gpio[4].Pin = GPIO_PIN_7;
-	gpio[5].Pin = GPIO_PIN_0;
-	gpio[6].Pin = GPIO_PIN_6;
-	gpio[7].Pin = GPIO_PIN_3;
-	
-	// enable clock for B base
-	// two "_" infront of HAL
-	__HAL_RCC_GPIOC_CLK_ENABLE();
-	__HAL_RCC_GPIOG_CLK_ENABLE();
-	__HAL_RCC_GPIOH_CLK_ENABLE();
-	__HAL_RCC_GPIOI_CLK_ENABLE();
-	__HAL_RCC_GPIOB_CLK_ENABLE();
-		
-	
-	for (i = 0; i < 8; i++)
-	{
-
-			// set mode as output, nopull D0
-			gpio[i].Mode 		= GPIO_MODE_OUTPUT_PP;
-			gpio[i].Pull 		= GPIO_NOPULL;
-			gpio[i].Speed 	= GPIO_SPEED_HIGH;			
-			
-			if(i == 0 || i == 1)
-			{
-				
-				// initialise the pin
-				HAL_GPIO_Init(GPIOC, &gpio[i]);
-		
-				// enable the segment
-				HAL_GPIO_WritePin(GPIOC, gpio[i].Pin, GPIO_PIN_RESET);
-				
-			} else if (i == 2 || i == 4)
-			{
-				
-				// initialise the pin
-				HAL_GPIO_Init(GPIOG, &gpio[i]);
-		
-				// enable the segment
-				HAL_GPIO_WritePin(GPIOG, gpio[i].Pin, GPIO_PIN_RESET);
-				
-			} else if (i == 5 || i == 7)
-			{
-				
-				// initialise the pin
-				HAL_GPIO_Init(GPIOI, &gpio[i]);
-		
-				// enable the segment
-				HAL_GPIO_WritePin(GPIOI, gpio[i].Pin, GPIO_PIN_RESET);
-				
-			} else if (i == 3)
-			{
-				// initialise the pin
-				HAL_GPIO_Init(GPIOB, &gpio[i]);
-		
-				// enable the segment
-				HAL_GPIO_WritePin(GPIOB, gpio[i].Pin, GPIO_PIN_RESET);
-				
-			} else
-			{
-				// initialise the pin
-				HAL_GPIO_Init(GPIOH, &gpio[i]);
-		
-				// enable the segment
-				HAL_GPIO_WritePin(GPIOH, gpio[i].Pin, GPIO_PIN_RESET);
-			}
-	}
-}
-
 
 /**
 * Main Function

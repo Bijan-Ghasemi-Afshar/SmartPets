@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\SmartPets.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SmartPets.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Mar 25 11:28:02 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Mar 25 22:14:17 2019
 <BR><P>
-<H3>Maximum Stack Usage =        560 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        408 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; manualPageNavigation &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
+main &rArr; homePageNavigation &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 <P>
 <H3>
 Functions with no stack information
@@ -302,8 +302,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9d]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 560 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; manualPageNavigation &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
+<BR><BR>[Stack]<UL><LI>Max Depth = 408 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; homePageNavigation &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -1010,14 +1010,14 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SDRAM_MspInit
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_MspInit
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_Initialize
 <LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializePins
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_Initialize
 </UL>
 
 <P><STRONG><a name="[c8]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f7xx_hal_gpio.o(i.HAL_GPIO_WritePin))
 <BR><BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;manualPageNavigation
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_Initialize
 <LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializePins
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_Initialize
 </UL>
 
 <P><STRONG><a name="[ca]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gui_utility.o(i.HAL_GetTick))
@@ -1482,8 +1482,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[10b]"></a>initializePins</STRONG> (Thumb, 436 bytes, Stack size 176 bytes, main.o(i.initializePins))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = initializePins &rArr; HAL_GPIO_Init
+<P><STRONG><a name="[10b]"></a>initializePins</STRONG> (Thumb, 620 bytes, Stack size 8 bytes, app_gui_content.o(i.initializePins))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = initializePins &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
@@ -1502,8 +1502,8 @@ Global Symbols
 <P><STRONG><a name="[10e]"></a>isrMessagePut</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, rt_cmsis.o(i.isrMessagePut))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = isrMessagePut &rArr; isr_mbx_send &rArr; rt_psq_enq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isr_mbx_send
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_check
+<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_check
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isr_mbx_send
 </UL>
 <BR>[Called By]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sysTimerTick
 </UL>
@@ -1527,11 +1527,12 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8a]"></a>main</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 560 + Unknown Stack Size
-<LI>Call Chain = main &rArr; manualPageNavigation &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
+<BR><BR>[Stack]<UL><LI>Max Depth = 408 + Unknown Stack Size
+<LI>Call Chain = main &rArr; homePageNavigation &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;manualPageNavigation
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializePins
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;homePageNavigation
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawManualPage
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawHomePage
@@ -1540,7 +1541,6 @@ Global Symbols
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_SetBackgroundColor
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_Initialize
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_ClearScreen
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializePins
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
 </UL>
@@ -1548,16 +1548,16 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_conf_cm.o(.constdata)
 </UL>
-<P><STRONG><a name="[115]"></a>manualPageNavigation</STRONG> (Thumb, 426 bytes, Stack size 184 bytes, app_gui_content.o(i.manualPageNavigation))
-<BR><BR>[Stack]<UL><LI>Max Depth = 552<LI>Call Chain = manualPageNavigation &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
+<P><STRONG><a name="[115]"></a>manualPageNavigation</STRONG> (Thumb, 388 bytes, Stack size 24 bytes, app_gui_content.o(i.manualPageNavigation))
+<BR><BR>[Stack]<UL><LI>Max Depth = 392<LI>Call Chain = manualPageNavigation &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Touch_GetState
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_SetForegroundColor
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_SetFont
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_DrawString
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_drawButton
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_SetBackgroundColor
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
 </UL>
@@ -1610,10 +1610,10 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> rtx_conf_cm.o(.constdata)
 </UL>
 <P><STRONG><a name="[128]"></a>os_error</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, rtx_conf_cm.o(i.os_error))
-<BR><BR>[Called By]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sysTimerTick
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_psh
+<BR><BR>[Called By]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_psh
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_stk_check
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_psq_enq
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sysTimerTick
 </UL>
 
 <P><STRONG><a name="[87]"></a>os_idle_demon</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, rtx_conf_cm.o(i.os_idle_demon))
@@ -1630,10 +1630,10 @@ Global Symbols
 <P><STRONG><a name="[78]"></a>rt_alloc_box</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, rt_membox.o(i.rt_alloc_box))
 <BR><BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_box
 </UL>
-<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_box
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_psh
+<BR>[Called By]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_psh
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_init_context
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_create
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_box
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> hal_cm4.o(.emb_text)
 </UL>
@@ -1707,9 +1707,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[11a]"></a>rt_get_first</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, rt_list.o(i.rt_get_first))
-<BR><BR>[Called By]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_block
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mut_release
+<BR><BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mut_release
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_psh
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_psh
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_chk_robin
@@ -1718,6 +1716,8 @@ Global Symbols
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_prio
 <LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_delete
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_wait
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_block
 </UL>
 
 <P><STRONG><a name="[13b]"></a>rt_init_mem</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, rt_memory.o(i.rt_init_mem))
@@ -1745,13 +1745,13 @@ Global Symbols
 <P><STRONG><a name="[126]"></a>rt_mbx_psh</STRONG> (Thumb, 236 bytes, Stack size 24 bytes, rt_mailbox.o(i.rt_mbx_psh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = rt_mbx_psh &rArr; rt_ret_val2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_box
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_error
+<BR>[Calls]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_error
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_ret_val2
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_rmv_dly
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_ret_val
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_put_prio
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_get_first
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_box
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_pop_req
 </UL>
@@ -1759,12 +1759,12 @@ Global Symbols
 <P><STRONG><a name="[129]"></a>rt_mbx_wait</STRONG> (Thumb, 174 bytes, Stack size 16 bytes, rt_mailbox.o(i.rt_mbx_wait))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = rt_mbx_wait &rArr; rt_dispatch &rArr; rt_put_prio
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_block
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_rmv_dly
+<BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_rmv_dly
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_ret_val
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_put_prio
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_get_first
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_block
 </UL>
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcMessageGet
 </UL>
@@ -1772,20 +1772,20 @@ Global Symbols
 <P><STRONG><a name="[7f]"></a>rt_mut_release</STRONG> (Thumb, 208 bytes, Stack size 24 bytes, rt_mutex.o(i.rt_mut_release))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = rt_mut_release &rArr; rt_dispatch &rArr; rt_put_prio
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_rmv_dly
+<BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_rmv_dly
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_ret_val
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_put_prio
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_get_first
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_conf_cm.o(i._mutex_release)
 </UL>
 <P><STRONG><a name="[7e]"></a>rt_mut_wait</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, rt_mutex.o(i.rt_mut_wait))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = rt_mut_wait &rArr; rt_block &rArr; rt_put_dly
 </UL>
-<BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_block
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_resort_prio
+<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_resort_prio
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_put_prio
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_block
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_conf_cm.o(i._mutex_acquire)
 </UL>
@@ -1825,8 +1825,7 @@ Global Symbols
 <P><STRONG><a name="[11d]"></a>rt_put_prio</STRONG> (Thumb, 54 bytes, Stack size 12 bytes, rt_list.o(i.rt_put_prio))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = rt_put_prio
 </UL>
-<BR>[Called By]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mut_wait
+<BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mut_wait
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mut_release
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_psh
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_psh
@@ -1837,12 +1836,13 @@ Global Symbols
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_prio
 <LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_delete
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_wait
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
 </UL>
 
 <P><STRONG><a name="[120]"></a>rt_put_rdy_first</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, rt_list.o(i.rt_put_rdy_first))
-<BR><BR>[Called By]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
+<BR><BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_pop_req
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
 </UL>
 
 <P><STRONG><a name="[12a]"></a>rt_resort_prio</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, rt_list.o(i.rt_resort_prio))
@@ -1914,19 +1914,19 @@ Global Symbols
 <P><STRONG><a name="[11b]"></a>rt_switch_req</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, rt_task.o(i.rt_switch_req))
 <BR><BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dbg_task_switch
 </UL>
-<BR>[Called By]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_block
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
+<BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_pop_req
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_block
 </UL>
 
 <P><STRONG><a name="[12f]"></a>rt_sys_init</STRONG> (Thumb, 138 bytes, Stack size 16 bytes, rt_task.o(i.rt_sys_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = rt_sys_init &rArr; rt_init_context &rArr; rt_init_stack
 </UL>
-<BR>[Calls]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_init_box
-<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_init_robin
+<BR>[Calls]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_init_robin
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dbg_init
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_init_context
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_init_box
 </UL>
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcKernelInitialize
 </UL>
@@ -1942,12 +1942,12 @@ Global Symbols
 <P><STRONG><a name="[a8]"></a>rt_systick</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, rt_system.o(i.rt_systick))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = rt_systick &rArr; sysTimerTick &rArr; isrMessagePut &rArr; isr_mbx_send &rArr; rt_psq_enq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sysTimerTick
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dec_dly
+<BR>[Calls]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dec_dly
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_chk_robin
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_put_rdy_first
 <LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_switch_req
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_get_first
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sysTimerTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Tick_Handler
 <LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
@@ -1956,10 +1956,10 @@ Global Symbols
 <P><STRONG><a name="[136]"></a>rt_tsk_create</STRONG> (Thumb, 118 bytes, Stack size 24 bytes, rt_task.o(i.rt_tsk_create))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = rt_tsk_create &rArr; rt_init_context &rArr; rt_init_stack
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_box
-<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dbg_task_notify
+<BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dbg_task_notify
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_init_context
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_box
 </UL>
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcThreadCreate
 </UL>
@@ -1967,8 +1967,7 @@ Global Symbols
 <P><STRONG><a name="[138]"></a>rt_tsk_delete</STRONG> (Thumb, 352 bytes, Stack size 40 bytes, rt_task.o(i.rt_tsk_delete))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = rt_tsk_delete &rArr; rt_dispatch &rArr; rt_put_prio
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_stk_check
+<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_stk_check
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_rmv_list
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_get_PSP
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dbg_task_notify
@@ -1977,6 +1976,7 @@ Global Symbols
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_put_prio
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_get_first
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_free_box
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcThreadTerminate
 </UL>
@@ -1984,10 +1984,10 @@ Global Symbols
 <P><STRONG><a name="[13a]"></a>rt_tsk_prio</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, rt_task.o(i.rt_tsk_prio))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = rt_tsk_prio &rArr; rt_dispatch &rArr; rt_put_prio
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_resort_prio
+<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_resort_prio
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_put_prio
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_get_first
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
 </UL>
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcKernelStart
 </UL>
@@ -2035,12 +2035,12 @@ Global Symbols
 <P><STRONG><a name="[83]"></a>svcThreadCreate</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, rt_cmsis.o(i.svcThreadCreate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = svcThreadCreate &rArr; rt_tsk_create &rArr; rt_init_context &rArr; rt_init_stack
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_mem
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_create
+<BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_create
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_free_mem
+<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcKernelInitialize
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadCreate
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadCreate
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcKernelInitialize
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rt_cmsis.o(i.osThreadCreate)
 </UL>
@@ -2070,9 +2070,9 @@ Global Symbols
 <P><STRONG><a name="[135]"></a>sysTimerTick</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, rt_cmsis.o(i.sysTimerTick))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = sysTimerTick &rArr; isrMessagePut &rArr; isr_mbx_send &rArr; rt_psq_enq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isrMessagePut
+<BR>[Calls]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_error
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isrMessagePut
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_timer_insert
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_error
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
 </UL>
@@ -2291,8 +2291,8 @@ Local Symbols
 <P><STRONG><a name="[124]"></a>rt_init_context</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, rt_task.o(i.rt_init_context))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = rt_init_context &rArr; rt_init_stack
 </UL>
-<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_box
-<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_init_stack
+<BR>[Calls]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_init_stack
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_alloc_box
 </UL>
 <BR>[Called By]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_create
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sys_init

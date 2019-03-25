@@ -10,6 +10,38 @@
 
 extern GLCD_FONT GLCD_Font_16x24;
 
+
+// ====================== CN4 GPIO PINS ======================
+GPIO_InitTypeDef pinD0 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD1 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD2 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD3 = {GPIO_PIN_4, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD4 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD5 = {GPIO_PIN_0, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD6 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD7 = {GPIO_PIN_3, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef *CN4Pins[8] = {&pinD0, &pinD1, &pinD2, &pinD3, &pinD4, &pinD5, &pinD6, &pinD7};
+
+// ====================== CN7 GPIO PINS ======================
+GPIO_InitTypeDef pinD8 = {GPIO_PIN_2, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD9 = {GPIO_PIN_15, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD10 = {GPIO_PIN_8, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD11 = {GPIO_PIN_15, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD12 = {GPIO_PIN_14, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD13 = {GPIO_PIN_1, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD14 = {GPIO_PIN_9, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD15 = {GPIO_PIN_8, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef *CN7Pins[8] = {&pinD8, &pinD9, &pinD10, &pinD11, &pinD12, &pinD13, &pinD14, &pinD15};
+
+// ====================== CN5 GPIO PINS ======================
+GPIO_InitTypeDef pinA0 = {GPIO_PIN_0, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinA1 = {GPIO_PIN_10, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinA2 = {GPIO_PIN_9, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinA3 = {GPIO_PIN_8, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinA4 = {GPIO_PIN_7, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinA5 = {GPIO_PIN_6, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef *CN5Pins[6] = {&pinA0, &pinA1, &pinA2, &pinA3, &pinA4, &pinA5};
+
 // ====================== Screen Label ======================
 ScreenLabel homeLabel = {20, 20, "Home"};
 ScreenLabel manualLabel = {20, 20, "Manual"};
@@ -36,6 +68,105 @@ Button *manualButtons[3] = {&doorButton, &lightsButton, &homeButton};
 // ====================== Bargraph ======================
 Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, WATER_BARGRAPH_BITMAP, WATER_BARGRAPH_LABEL };
 Bargraph foodBargraph = { FOOD_BARGRAPH_POS_X, FOOD_BARGRAPH_POS_Y, FOOD_BARGRAPH_WIDTH, FOOD_BARGRAPH_HEIGHT, FOOD_BARGRAPH_BITMAP, FOOD_BARGRAPH_LABEL };
+
+// Initialize Pins
+void initializePins()
+{
+	// Enable all bases
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	__HAL_RCC_GPIOG_CLK_ENABLE();
+	__HAL_RCC_GPIOH_CLK_ENABLE();
+	__HAL_RCC_GPIOI_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	
+	// Initialize Pin D0
+	HAL_GPIO_Init(GPIOC, &pinD0);
+	HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D1
+	HAL_GPIO_Init(GPIOC, &pinD1);
+	HAL_GPIO_WritePin(GPIOC, pinD1.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D2
+	HAL_GPIO_Init(GPIOG, &pinD2);
+	HAL_GPIO_WritePin(GPIOG, pinD2.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D3
+	HAL_GPIO_Init(GPIOB, &pinD3);
+	HAL_GPIO_WritePin(GPIOB, pinD3.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D4
+	HAL_GPIO_Init(GPIOG, &pinD4);
+	HAL_GPIO_WritePin(GPIOG, pinD4.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D5
+	HAL_GPIO_Init(GPIOI, &pinD5);
+	HAL_GPIO_WritePin(GPIOI, pinD5.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D6
+	HAL_GPIO_Init(GPIOH, &pinD6);
+	HAL_GPIO_WritePin(GPIOH, pinD6.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D7
+	HAL_GPIO_Init(GPIOI, &pinD7);
+	HAL_GPIO_WritePin(GPIOI, pinD7.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D8
+	HAL_GPIO_Init(GPIOI, &pinD8);
+	HAL_GPIO_WritePin(GPIOI, pinD8.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D9
+	HAL_GPIO_Init(GPIOA, &pinD9);
+	HAL_GPIO_WritePin(GPIOA, pinD9.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D10
+	HAL_GPIO_Init(GPIOA, &pinD10);
+	HAL_GPIO_WritePin(GPIOA, pinD10.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D11
+	HAL_GPIO_Init(GPIOB, &pinD11);
+	HAL_GPIO_WritePin(GPIOB, pinD11.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D12
+	HAL_GPIO_Init(GPIOB, &pinD12);
+	HAL_GPIO_WritePin(GPIOB, pinD12.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D13
+	HAL_GPIO_Init(GPIOI, &pinD13);
+	HAL_GPIO_WritePin(GPIOI, pinD13.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D14
+	HAL_GPIO_Init(GPIOB, &pinD14);
+	HAL_GPIO_WritePin(GPIOB, pinD14.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D15
+	HAL_GPIO_Init(GPIOB, &pinD15);
+	HAL_GPIO_WritePin(GPIOB, pinD15.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin A0
+	HAL_GPIO_Init(GPIOA, &pinA0);
+	HAL_GPIO_WritePin(GPIOA, pinA0.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin A1
+	HAL_GPIO_Init(GPIOF, &pinA1);
+	HAL_GPIO_WritePin(GPIOF, pinA1.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin A2
+	HAL_GPIO_Init(GPIOF, &pinA2);
+	HAL_GPIO_WritePin(GPIOF, pinA2.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin A3
+	HAL_GPIO_Init(GPIOF, &pinA3);
+	HAL_GPIO_WritePin(GPIOF, pinA3.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin A4
+	HAL_GPIO_Init(GPIOF, &pinA4);
+	HAL_GPIO_WritePin(GPIOF, pinA4.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin A5
+	HAL_GPIO_Init(GPIOF, &pinA5);
+	HAL_GPIO_WritePin(GPIOF, pinA5.Pin, GPIO_PIN_RESET);
+}
 
 // Delay Function
 void wait(int delay)
@@ -146,18 +277,6 @@ void manualPageNavigation(char **page)
 {
 	unsigned short i = 0;
 	TOUCH_STATE tscState;
-	GPIO_InitTypeDef gpio[8];
-	
-	// ====================== GPIO ======================	
-	gpio[0].Pin = GPIO_PIN_7;
-	gpio[1].Pin = GPIO_PIN_6;
-	gpio[2].Pin = GPIO_PIN_6;
-	gpio[3].Pin = GPIO_PIN_4;
-	gpio[4].Pin = GPIO_PIN_7;
-	gpio[5].Pin = GPIO_PIN_0;
-	gpio[6].Pin = GPIO_PIN_6;
-	gpio[7].Pin = GPIO_PIN_3;
-	
 	
 	while(1)
 	{
@@ -182,13 +301,13 @@ void manualPageNavigation(char **page)
 						} else {
 							if (manualButtons[i]->funtionality->state == 0)
 							{
-								HAL_GPIO_WritePin(GPIOC, gpio[manualButtons[i]->funtionality->pin].Pin, GPIO_PIN_SET);
+								HAL_GPIO_WritePin(GPIOC, CN4Pins[manualButtons[i]->funtionality->pin]->Pin, GPIO_PIN_SET);
 								manualButtons[i]->backgroundColor = GLCD_COLOR_GREEN;
 								app_drawButton(&*manualButtons[i]);
 								manualButtons[i]->funtionality->state = 1;
 								wait(50000000);
 							} else {
-								HAL_GPIO_WritePin(GPIOC, gpio[manualButtons[i]->funtionality->pin].Pin, GPIO_PIN_RESET);
+								HAL_GPIO_WritePin(GPIOC, CN4Pins[manualButtons[i]->funtionality->pin]->Pin, GPIO_PIN_RESET);
 								manualButtons[i]->backgroundColor = GLCD_COLOR_RED;
 								app_drawButton(&*manualButtons[i]);
 								manualButtons[i]->funtionality->state = 0;
