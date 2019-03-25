@@ -10,6 +10,33 @@
 
 extern GLCD_FONT GLCD_Font_16x24;
 
+// ====================== Screen Label ======================
+ScreenLabel homeLabel = {20, 20, "Home"};
+ScreenLabel manualLabel = {20, 20, "Manual"};
+
+// ====================== Clock ======================
+Clock clock = {CLOCK_POS_X, CLOCK_POS_Y, CLOCK_HOUR, CLOCK_MIN, CLOCK_SEC};
+
+// ====================== Home Buttons ======================
+Button dayButton = {BUTTON_DAY_POS_X, BUTTON_DAY_POS_Y, BUTTON_DAY_WIDTH, BUTTON_DAY_HEIGHT, BUTTON_DAY_BITMAP, BUTTON_DAY_BACKGROUND_COLOR, BUTTON_DAY_TEXT_COLOR, BUTTON_DAY_LABEL, BUTTON_DAY_NAVIGATION};
+Button nightButton = {BUTTON_NIGHT_POS_X, BUTTON_NIGHT_POS_Y, BUTTON_NIGHT_WIDTH, BUTTON_NIGHT_HEIGHT, BUTTON_NIGHT_BITMAP, BUTTON_NIGHT_BACKGROUND_COLOR, BUTTON_NIGHT_TEXT_COLOR, BUTTON_NIGHT_LABEL, BUTTON_NIGHT_NAVIGATION};
+Button playButton = {BUTTON_PLAY_POS_X, BUTTON_PLAY_POS_Y, BUTTON_PLAY_WIDTH, BUTTON_PLAY_HEIGHT, BUTTON_PLAY_BITMAP, BUTTON_PLAY_BACKGROUND_COLOR, BUTTON_PLAY_TEXT_COLOR, BUTTON_PLAY_LABEL, BUTTON_PLAY_NAVIGATION};
+Button manButton = {BUTTON_MANUAL_POS_X, BUTTON_MANUAL_POS_Y, BUTTON_MANUAL_WIDTH, BUTTON_MANUAL_HEIGHT, BUTTON_MANUAL_BITMAP, BUTTON_MANUAL_BACKGROUND_COLOR, BUTTON_MANUAL_TEXT_COLOR, BUTTON_MANUAL_LABEL, BUTTON_MANUAL_NAVIGATION};
+Button *homeButtons[4] = {&dayButton, &nightButton, &playButton, &manButton};
+
+// ====================== Manual Buttons ======================
+Functionality doorButtonFunc = {BUTTON_DOOR_PIN, BUTTON_DOOR_STATE};
+Button doorButton = {BUTTON_DOOR_POS_X, BUTTON_DOOR_POS_Y, BUTTON_DOOR_WIDTH, BUTTON_DOOR_HEIGHT, BUTTON_DOOR_BITMAP, BUTTON_DOOR_BACKGROUND_COLOR, BUTTON_DOOR_TEXT_COLOR, BUTTON_DOOR_LABEL, BUTTON_DOOR_NAVIGATION, &doorButtonFunc};
+Functionality lightsButtonFunc = {BUTTON_LIGHTS_PIN, BUTTON_LIGHTS_STATE};
+Button lightsButton = {BUTTON_LIGHTS_POS_X, BUTTON_LIGHTS_POS_Y, BUTTON_LIGHTS_WIDTH, BUTTON_LIGHTS_HEIGHT, BUTTON_LIGHTS_BITMAP, BUTTON_LIGHTS_BACKGROUND_COLOR, BUTTON_LIGHTS_TEXT_COLOR, BUTTON_LIGHTS_LABEL, BUTTON_LIGHTS_NAVIGATION, &lightsButtonFunc};
+Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_BITMAP, BUTTON_HOME_BACKGROUND_COLOR, BUTTON_HOME_TEXT_COLOR, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
+Button *manualButtons[3] = {&doorButton, &lightsButton, &homeButton};
+
+
+// ====================== Bargraph ======================
+Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, WATER_BARGRAPH_BITMAP, WATER_BARGRAPH_LABEL };
+Bargraph foodBargraph = { FOOD_BARGRAPH_POS_X, FOOD_BARGRAPH_POS_Y, FOOD_BARGRAPH_WIDTH, FOOD_BARGRAPH_HEIGHT, FOOD_BARGRAPH_BITMAP, FOOD_BARGRAPH_LABEL };
+
 // Delay Function
 void wait(int delay)
 {
@@ -23,81 +50,8 @@ void wait(int delay)
 void drawHomePage(void)
 {
 	
-	ScreenLabel scrLabel;
-	Clock clock;
-	Button dayButton, nightButton, playButton, manButton;
-	Bargraph waterBargraph, foodBargraph;
-	
-	// ====================== Screen Label ======================
-	scrLabel.posX = 20;
-	scrLabel.posY = 20;
-	scrLabel.name = "Home";
-	
-	// ====================== Clock ======================
-	clock.hour = CLOCK_HOUR;
-	clock.minute = CLOCK_MIN;
-	clock.second = CLOCK_SEC;
-	clock.posX = CLOCK_POS_X;
-	clock.posY = CLOCK_POS_Y;
-	
-	// ====================== Buttons ======================
-	dayButton.posX = BUTTON_DAY_POS_X;
-	dayButton.posY = BUTTON_DAY_POS_Y;
-	dayButton.width = BUTTON_DAY_WIDTH;
-	dayButton.height = BUTTON_DAY_HEIGHT;
-	dayButton.bitmap = BUTTON_DAY_BITMAP;
-	dayButton.backgroundColor = GLCD_COLOR_PURPLE;
-	dayButton.color = BUTTON_DAY_TEXT_COLOR;
-	dayButton.label = BUTTON_DAY_LABEL;
-	dayButton.navigation = BUTTON_DAY_NAVIGATION;
-	
-	nightButton.posX = BUTTON_NIGHT_POS_X;
-	nightButton.posY = BUTTON_NIGHT_POS_Y;
-	nightButton.width = BUTTON_NIGHT_WIDTH;
-	nightButton.height = BUTTON_NIGHT_HEIGHT;
-	nightButton.bitmap = BUTTON_NIGHT_BITMAP;
-	nightButton.backgroundColor = BUTTON_NIGHT_BACKGROUND_COLOR;
-	nightButton.color = BUTTON_NIGHT_TEXT_COLOR;
-	nightButton.label = BUTTON_NIGHT_LABEL;
-	nightButton.navigation = BUTTON_NIGHT_NAVIGATION;
-	
-	playButton.posX = BUTTON_PLAY_POS_X;
-	playButton.posY = BUTTON_PLAY_POS_Y;
-	playButton.width = BUTTON_PLAY_WIDTH;
-	playButton.height = BUTTON_PLAY_HEIGHT;
-	playButton.bitmap = BUTTON_PLAY_BITMAP;
-	playButton.backgroundColor = BUTTON_PLAY_BACKGROUND_COLOR;
-	playButton.color = BUTTON_PLAY_TEXT_COLOR;
-	playButton.label = BUTTON_PLAY_LABEL;
-	playButton.navigation = BUTTON_PLAY_NAVIGATION;
-	
-	manButton.posX = BUTTON_MANUAL_POS_X;
-	manButton.posY = BUTTON_MANUAL_POS_Y;
-	manButton.width = BUTTON_MANUAL_WIDTH;
-	manButton.height = BUTTON_MANUAL_HEIGHT;
-	manButton.bitmap = BUTTON_MANUAL_BITMAP;
-	manButton.backgroundColor = BUTTON_MANUAL_BACKGROUND_COLOR;
-	manButton.color = BUTTON_MANUAL_TEXT_COLOR;
-	manButton.label = BUTTON_MANUAL_LABEL;
-	manButton.navigation = BUTTON_MANUAL_NAVIGATION;
-	
-	// ====================== Bargraph ======================
-	waterBargraph.posX = GLCD_SIZE_X/4 - 20;
-	waterBargraph.posY = GLCD_SIZE_Y/5 * 4 - 10;
-	waterBargraph.width = GLCD_SIZE_X/2 + 40;
-	waterBargraph.height = 10;
-	waterBargraph.label = "Water";
-	waterBargraph.bitmap = 0;
-	
-	foodBargraph.posX = GLCD_SIZE_X/4 - 20;
-	foodBargraph.posY = GLCD_SIZE_Y/5 * 4 + 10;
-	foodBargraph.width = GLCD_SIZE_X/2 + 40;
-	foodBargraph.height = 10;
-	foodBargraph.label = "Food";
-	foodBargraph.bitmap = 0;
-	
 	// Draw Screen Label
-	app_drawScreenLabel(&scrLabel);
+	app_drawScreenLabel(&homeLabel);
 	
 	// Draw Clock
 	app_drawClock(&clock);
@@ -129,58 +83,8 @@ void drawHomePage(void)
 void drawManualPage()
 {
 	
-	ScreenLabel scrLabel;
-	Button doorButton, lightsButton, homeButton;
-	Functionality lightsButtonFunc, doorButtonFunc;
-	
-	// ====================== Screen Label ======================
-	scrLabel.posX = 20;
-	scrLabel.posY = 20;
-	scrLabel.name = "Manual";
-	
-	// ====================== Functionality ======================
-	lightsButtonFunc.pin = BUTTON_LIGHTS_PIN;
-	lightsButtonFunc.state = BUTTON_LIGHTS_STATE;
-	
-	doorButtonFunc.pin = BUTTON_DOOR_PIN;
-	doorButtonFunc.state = BUTTON_DOOR_STATE;
-	
-	// ====================== Buttons ======================
-	doorButton.posX = BUTTON_DOOR_POS_X;
-	doorButton.posY = BUTTON_DOOR_POS_Y;
-	doorButton.width = BUTTON_DOOR_WIDTH;
-	doorButton.height = BUTTON_DOOR_HEIGHT;
-	doorButton.bitmap = BUTTON_DOOR_BITMAP;
-	doorButton.backgroundColor = BUTTON_DOOR_BACKGROUND_COLOR;
-	doorButton.color = BUTTON_DOOR_TEXT_COLOR;
-	doorButton.label = BUTTON_DOOR_LABEL;
-	doorButton.navigation = BUTTON_DOOR_NAVIGATION;
-	doorButton.funtionality = doorButtonFunc;
-	
-	lightsButton.posX = BUTTON_LIGHTS_POS_X;
-	lightsButton.posY = BUTTON_LIGHTS_POS_Y;
-	lightsButton.width = BUTTON_LIGHTS_WIDTH;
-	lightsButton.height = BUTTON_LIGHTS_HEIGHT;
-	lightsButton.bitmap = BUTTON_LIGHTS_BITMAP;
-	lightsButton.backgroundColor = BUTTON_LIGHTS_BACKGROUND_COLOR;
-	lightsButton.color = BUTTON_LIGHTS_TEXT_COLOR;
-	lightsButton.label = BUTTON_LIGHTS_LABEL;
-	lightsButton.navigation = BUTTON_LIGHTS_NAVIGATION;
-	lightsButton.funtionality = lightsButtonFunc;
-	
-	homeButton.posX = BUTTON_HOME_POS_X;
-	homeButton.posY = BUTTON_HOME_POS_Y;
-	homeButton.width = BUTTON_HOME_WIDTH;
-	homeButton.height = BUTTON_HOME_HEIGHT;
-	homeButton.bitmap = BUTTON_HOME_BITMAP;
-	homeButton.backgroundColor = BUTTON_HOME_BACKGROUND_COLOR;
-	homeButton.color = BUTTON_HOME_TEXT_COLOR;
-	homeButton.label = BUTTON_HOME_LABEL;
-	homeButton.navigation = BUTTON_HOME_NAVIGATION;
-	
-	
 	// Draw Screen Label
-	app_drawScreenLabel(&scrLabel);
+	app_drawScreenLabel(&manualLabel);
 	
 	// Draw Door Button
 	app_drawButton(&doorButton);
@@ -199,61 +103,10 @@ void homePageNavigation(char **page)
 	unsigned short i = 0;
 	uint32_t tic, toc = 0;
 	uint32_t elapsed_t;
-	Clock clock;
 	TOUCH_STATE tscState;
-	// Initialize array of buttons
-	Button buttons[4];
 	
-	// ====================== Clock ======================
-	clock.hour = CLOCK_HOUR;
-	clock.minute = CLOCK_MIN;
-	clock.second = CLOCK_SEC;
-	clock.posX = CLOCK_POS_X;
-	clock.posY = CLOCK_POS_Y;
 	/* elapsed_t is elapsed (10 * msec) since midnight */
 	elapsed_t = clock.second*100+clock.minute*60*100+clock.hour*60*60*100;
-	
-	
-	// ====================== BUTTONS ======================
-	buttons[0].posX = BUTTON_DAY_POS_X;
-	buttons[0].posY = BUTTON_DAY_POS_Y;
-	buttons[0].width = BUTTON_DAY_WIDTH;
-	buttons[0].height = BUTTON_DAY_HEIGHT;
-	buttons[0].bitmap = BUTTON_DAY_BITMAP;
-	buttons[0].backgroundColor = GLCD_COLOR_PURPLE;
-	buttons[0].color = BUTTON_DAY_TEXT_COLOR;
-	buttons[0].label = BUTTON_DAY_LABEL;
-	buttons[0].navigation = BUTTON_DAY_NAVIGATION;
-	
-	buttons[1].posX = BUTTON_NIGHT_POS_X;
-	buttons[1].posY = BUTTON_NIGHT_POS_Y;
-	buttons[1].width = BUTTON_NIGHT_WIDTH;
-	buttons[1].height = BUTTON_NIGHT_HEIGHT;
-	buttons[1].bitmap = BUTTON_NIGHT_BITMAP;
-	buttons[1].backgroundColor = BUTTON_NIGHT_BACKGROUND_COLOR;
-	buttons[1].color = BUTTON_NIGHT_TEXT_COLOR;
-	buttons[1].label = BUTTON_NIGHT_LABEL;
-	buttons[1].navigation = BUTTON_NIGHT_NAVIGATION;
-	
-	buttons[2].posX = BUTTON_PLAY_POS_X;
-	buttons[2].posY = BUTTON_PLAY_POS_Y;
-	buttons[2].width = BUTTON_PLAY_WIDTH;
-	buttons[2].height = BUTTON_PLAY_HEIGHT;
-	buttons[2].bitmap = BUTTON_PLAY_BITMAP;
-	buttons[2].backgroundColor = BUTTON_PLAY_BACKGROUND_COLOR;
-	buttons[2].color = BUTTON_PLAY_TEXT_COLOR;
-	buttons[2].label = BUTTON_PLAY_LABEL;
-	buttons[2].navigation = BUTTON_PLAY_NAVIGATION;
-	
-	buttons[3].posX = BUTTON_MANUAL_POS_X;
-	buttons[3].posY = BUTTON_MANUAL_POS_Y;
-	buttons[3].width = BUTTON_MANUAL_WIDTH;
-	buttons[3].height = BUTTON_MANUAL_HEIGHT;
-	buttons[3].bitmap = BUTTON_MANUAL_BITMAP;
-	buttons[3].backgroundColor = BUTTON_MANUAL_BACKGROUND_COLOR;
-	buttons[3].color = BUTTON_MANUAL_TEXT_COLOR;
-	buttons[3].label = BUTTON_MANUAL_LABEL;
-	buttons[3].navigation = BUTTON_MANUAL_NAVIGATION;
 	
 	while(1)
 	{
@@ -265,15 +118,15 @@ void homePageNavigation(char **page)
 			{
 				for (i = 0; i < 4; i++)
 				{
-					if (tscState.x > buttons[i].posX && tscState.x < (buttons[i].width + buttons[i].posX)
-					 && tscState.y > buttons[i].posY && tscState.y < (buttons[i].height + buttons[i].posY))
+					if (tscState.x > homeButtons[i]->posX && tscState.x < (homeButtons[i]->width + homeButtons[i]->posX)
+					 && tscState.y > homeButtons[i]->posY && tscState.y < (homeButtons[i]->height + homeButtons[i]->posY))
 					{
 						GLCD_SetFont (&GLCD_Font_16x24);
 						GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 						GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
-						GLCD_DrawString (20, 40, buttons[i].label);
+						GLCD_DrawString (20, 40, homeButtons[i]->label);
 						
-						*page = buttons[i].label;
+						*page = homeButtons[i]->label;
 						
 					}
 				}
@@ -293,11 +146,7 @@ void manualPageNavigation(char **page)
 {
 	unsigned short i = 0;
 	TOUCH_STATE tscState;
-	GPIO_InitTypeDef gpio[8];	
-	Functionality lightsButtonFunc, doorButtonFunc;
-	// Initialize array of buttons
-	Button buttons[3];
-	
+	GPIO_InitTypeDef gpio[8];
 	
 	// ====================== GPIO ======================	
 	gpio[0].Pin = GPIO_PIN_7;
@@ -310,47 +159,6 @@ void manualPageNavigation(char **page)
 	gpio[7].Pin = GPIO_PIN_3;
 	
 	
-	// ====================== Functionality ======================
-	lightsButtonFunc.pin = BUTTON_LIGHTS_PIN;
-	lightsButtonFunc.state = BUTTON_LIGHTS_STATE;
-	
-	doorButtonFunc.pin = BUTTON_DOOR_PIN;
-	doorButtonFunc.state = BUTTON_DOOR_STATE;
-	
-	// ====================== Buttons ======================
-	buttons[0].posX = BUTTON_DOOR_POS_X;
-	buttons[0].posY = BUTTON_DOOR_POS_Y;
-	buttons[0].width = BUTTON_DOOR_WIDTH;
-	buttons[0].height = BUTTON_DOOR_HEIGHT;
-	buttons[0].bitmap = BUTTON_DOOR_BITMAP;
-	buttons[0].backgroundColor = BUTTON_DOOR_BACKGROUND_COLOR;
-	buttons[0].color = BUTTON_DOOR_TEXT_COLOR;
-	buttons[0].label = BUTTON_DOOR_LABEL;
-	buttons[0].navigation = BUTTON_DOOR_NAVIGATION;
-	buttons[0].funtionality = doorButtonFunc;
-	
-	buttons[1].posX = BUTTON_LIGHTS_POS_X;
-	buttons[1].posY = BUTTON_LIGHTS_POS_Y;
-	buttons[1].width = BUTTON_LIGHTS_WIDTH;
-	buttons[1].height = BUTTON_LIGHTS_HEIGHT;
-	buttons[1].bitmap = BUTTON_LIGHTS_BITMAP;
-	buttons[1].backgroundColor = BUTTON_LIGHTS_BACKGROUND_COLOR;
-	buttons[1].color = BUTTON_LIGHTS_TEXT_COLOR;
-	buttons[1].label = BUTTON_LIGHTS_LABEL;
-	buttons[1].navigation = BUTTON_LIGHTS_NAVIGATION;
-	buttons[1].funtionality = lightsButtonFunc;
-	
-	buttons[2].posX = BUTTON_HOME_POS_X;
-	buttons[2].posY = BUTTON_HOME_POS_Y;
-	buttons[2].width = BUTTON_HOME_WIDTH;
-	buttons[2].height = BUTTON_HOME_HEIGHT;
-	buttons[2].bitmap = BUTTON_HOME_BITMAP;
-	buttons[2].backgroundColor = BUTTON_HOME_BACKGROUND_COLOR;
-	buttons[2].color = BUTTON_HOME_TEXT_COLOR;
-	buttons[2].label = BUTTON_HOME_LABEL;
-	buttons[2].navigation = BUTTON_HOME_NAVIGATION;
-	
-	
 	while(1)
 	{
 		if (strcmp(*page, "Manual") == 0)
@@ -360,30 +168,30 @@ void manualPageNavigation(char **page)
 			{
 				for (i = 0; i < 3; i++)
 				{
-					if (tscState.x > buttons[i].posX && tscState.x < (buttons[i].width + buttons[i].posX)
-					 && tscState.y > buttons[i].posY && tscState.y < (buttons[i].height + buttons[i].posY))
+					if (tscState.x > manualButtons[i]->posX && tscState.x < (manualButtons[i]->width + manualButtons[i]->posX)
+					 && tscState.y > manualButtons[i]->posY && tscState.y < (manualButtons[i]->height + manualButtons[i]->posY))
 					{
 						GLCD_SetFont (&GLCD_Font_16x24);
 						GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 						GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
-						GLCD_DrawString (20, 40, buttons[i].label);
+						GLCD_DrawString (20, 40, manualButtons[i]->label);
 						
-						if (buttons[i].navigation)
+						if (manualButtons[i]->navigation)
 						{
-							*page = buttons[i].label;
+							*page = manualButtons[i]->label;
 						} else {
-							if (buttons[i].funtionality.state == 0)
+							if (manualButtons[i]->funtionality->state == 0)
 							{
-								HAL_GPIO_WritePin(GPIOC, gpio[buttons[i].funtionality.pin].Pin, GPIO_PIN_SET);
-								buttons[i].backgroundColor = GLCD_COLOR_GREEN;
-								app_drawButton(&buttons[i]);
-								buttons[i].funtionality.state = 1;
+								HAL_GPIO_WritePin(GPIOC, gpio[manualButtons[i]->funtionality->pin].Pin, GPIO_PIN_SET);
+								manualButtons[i]->backgroundColor = GLCD_COLOR_GREEN;
+								app_drawButton(&*manualButtons[i]);
+								manualButtons[i]->funtionality->state = 1;
 								wait(50000000);
 							} else {
-								HAL_GPIO_WritePin(GPIOC, gpio[buttons[i].funtionality.pin].Pin, GPIO_PIN_RESET);
-								buttons[i].backgroundColor = GLCD_COLOR_RED;
-								app_drawButton(&buttons[i]);
-								buttons[i].funtionality.state = 0;
+								HAL_GPIO_WritePin(GPIOC, gpio[manualButtons[i]->funtionality->pin].Pin, GPIO_PIN_RESET);
+								manualButtons[i]->backgroundColor = GLCD_COLOR_RED;
+								app_drawButton(&*manualButtons[i]);
+								manualButtons[i]->funtionality->state = 0;
 								wait(50000000);
 							}
 						}

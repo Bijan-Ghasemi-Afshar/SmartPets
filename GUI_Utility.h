@@ -33,7 +33,7 @@ typedef struct
 	
 	char navigation;
 	
-	Functionality funtionality;
+	Functionality *funtionality;
 	
 }Button;
 
