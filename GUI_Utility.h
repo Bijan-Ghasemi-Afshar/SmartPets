@@ -100,6 +100,12 @@ void app_drawButton(Button *btn);
 // Draws a clock
 void app_drawClock(Clock *clk);
 
+// Draw program time
+void app_drawProgramClock(Clock *clk);
+
+// Draw program time edit
+void app_drawProgramTimeEdit(short xPos, short yPos, Clock *clock);
+
 // Draws the screen label
 void app_drawScreenLabel(ScreenLabel *scrLbl);
 

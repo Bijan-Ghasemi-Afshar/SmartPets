@@ -48,9 +48,13 @@ ScreenLabel manualLabel = {20, 20, "Manual"};
 ScreenLabel dayLabel = {20, 20, "Day"};
 ScreenLabel nightLabel = {20, 20, "Night"};
 ScreenLabel playLabel = {20, 20, "Play"};
+ScreenLabel startLabel = {20, 70, "Start"};
+ScreenLabel editLabel = {20, 140, "Edit"};
 
 // ====================== Clock ======================
 Clock clock = {CLOCK_POS_X, CLOCK_POS_Y, CLOCK_HOUR, CLOCK_MIN, CLOCK_SEC};
+Clock dayProgramClock = {DAY_PROGRAM_CLOCK_POS_X, DAY_PROGRAM_CLOCK_POS_Y, DAY_PROGRAM_CLOCK_HOUR, DAY_PROGRAM_CLOCK_MIN};
+Clock nightProgramClock = {NIGHT_PROGRAM_CLOCK_POS_X, NIGHT_PROGRAM_CLOCK_POS_Y, NIGHT_PROGRAM_CLOCK_HOUR, NIGHT_PROGRAM_CLOCK_MIN};
 
 // ====================== Home Buttons ======================
 Button dayButton = {BUTTON_DAY_POS_X, BUTTON_DAY_POS_Y, BUTTON_DAY_WIDTH, BUTTON_DAY_HEIGHT, BUTTON_DAY_BITMAP, BUTTON_DAY_BACKGROUND_COLOR, BUTTON_DAY_TEXT_COLOR, BUTTON_DAY_LABEL, BUTTON_DAY_NAVIGATION};
@@ -248,8 +252,20 @@ void drawDayProgramPage(void)
 	// Draw Screen Label
 	app_drawScreenLabel(&dayLabel);
 	
+	// Draw Program time Label
+	app_drawScreenLabel(&startLabel);
+	
+	// Draw Edit Label
+	app_drawScreenLabel(&editLabel);
+	
 	// Draw Clock
 	app_drawClock(&clock);
+	
+	// Draw Program Clock
+	app_drawProgramClock(&dayProgramClock);
+	
+	// Draw Edit Buttons
+	app_drawProgramTimeEdit((GLCD_SIZE_X/4 + 20), 140, &dayProgramClock);
 	
 	// Draw Home Button
 	app_drawButton(&homeButton);
@@ -261,8 +277,20 @@ void drawNightProgramPage(void)
 	// Draw Screen Label
 	app_drawScreenLabel(&nightLabel);
 	
+	// Draw Program time Label
+	app_drawScreenLabel(&startLabel);
+	
+	// Draw Edit Label
+	app_drawScreenLabel(&editLabel);
+	
 	// Draw Clock
 	app_drawClock(&clock);
+	
+	// Draw Program Clock
+	app_drawProgramClock(&nightProgramClock);
+	
+	// Draw Edit Buttons
+	//app_drawProgramTimeEdit((GLCD_SIZE_X/4 + 20), 140, &nightProgramClock);
 	
 	// Draw Home Button
 	app_drawButton(&homeButton);
@@ -310,3 +338,6 @@ void playPageNavigation(char **page)
 {
 	app_userInputHandle(page, 1, playButtons, CN4Pins, &clock);
 }
+
+
+

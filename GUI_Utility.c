@@ -37,6 +37,67 @@ void app_drawClock(Clock *clk)
 		GLCD_DrawString (clk->posX, clk->posY, buffer);
 }
 
+// Draw program time
+void app_drawProgramClock(Clock *clk)
+{
+	char buffer[128];
+	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
+	GLCD_SetForegroundColor (GLCD_COLOR_GREEN);
+	GLCD_SetFont (&GLCD_Font_16x24);
+	sprintf(buffer, "%d : %d", clk->hour,clk->minute);
+	GLCD_DrawString (clk->posX, clk->posY, "          ");
+	GLCD_DrawString (clk->posX, clk->posY, buffer);
+}
+
+// Draw Program time edit
+void app_drawProgramTimeEdit(short xPos, short yPos, Clock *clock)
+{
+	char buffer[128];
+	
+	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
+	GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
+	GLCD_SetFont (&GLCD_Font_16x24);
+	sprintf(buffer, "%d", clock->hour);
+	GLCD_DrawString (xPos, yPos, "   ");
+	GLCD_DrawString (xPos, yPos, buffer);
+	GLCD_DrawString (xPos + 20, yPos, "H");
+	
+	GLCD_SetBackgroundColor (GLCD_COLOR_BLUE);
+	GLCD_DrawBargraph(xPos + 50,yPos,40,40, 0);
+	GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
+	GLCD_SetFont (&GLCD_Font_16x24);
+	GLCD_DrawString (xPos + 60, yPos, "+");
+	
+	GLCD_SetBackgroundColor (GLCD_COLOR_RED);
+	GLCD_DrawBargraph(xPos + 100,yPos,40,40, 0);
+	GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
+	GLCD_SetFont (&GLCD_Font_16x24);
+	GLCD_DrawString (xPos + 110, yPos, "-");
+	
+	
+	
+	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
+	GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
+	GLCD_SetFont (&GLCD_Font_16x24);
+	sprintf(buffer, "%d", clock->minute);
+	GLCD_DrawString (xPos + 180, yPos, "   ");
+	GLCD_DrawString (xPos + 180, yPos, buffer);
+	GLCD_DrawString (xPos + 200, yPos, "M");
+	
+	GLCD_SetBackgroundColor (GLCD_COLOR_BLUE);
+	GLCD_DrawBargraph(xPos + 230,yPos,40,40, 0);
+	GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
+	GLCD_SetFont (&GLCD_Font_16x24);
+	GLCD_DrawString (xPos + 240, yPos, "+");
+	
+	GLCD_SetBackgroundColor (GLCD_COLOR_RED);
+	GLCD_DrawBargraph(xPos + 280,yPos,40,40, 0);
+	GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
+	GLCD_SetFont (&GLCD_Font_16x24);
+	GLCD_DrawString (xPos + 290, yPos, "-");
+	
+}
+
 // Draws the screen label
 void app_drawScreenLabel(ScreenLabel *scrLbl)
 {
