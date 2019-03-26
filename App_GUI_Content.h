@@ -109,6 +109,18 @@ void drawHomePage(void);
 
 void drawManualPage(void);
 
+void drawDayProgramPage(void);
+
+void drawNightProgramPage(void);
+
+void drawPlayProgramPage(void);
+
 void homePageNavigation(char **page);
 
 void manualPageNavigation(char **page);
+
+void dayPageNavigation(char **page);
+
+void nightPageNavigation(char **page);
+
+void playPageNavigation(char **page);

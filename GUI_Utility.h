@@ -1,3 +1,4 @@
+#include "stm32f7xx_hal_gpio.h"
 #define DAY 8640000; /* 10 ms ticks in a day */
 
 
@@ -52,6 +53,12 @@ typedef struct
 	
 	unsigned short second;
 	
+	unsigned short tic;
+	
+	unsigned short toc;
+	
+	unsigned int elapsed_t;
+	
 }Clock;
 
 /**
@@ -100,4 +107,7 @@ void app_drawScreenLabel(ScreenLabel *scrLbl);
 void app_drawBargraph(Bargraph *bargraph);
 
 // Clock functionality
-void app_clockTicToc(unsigned int *tic, unsigned int *toc, unsigned int *elapsed_t, Clock *clock);
+void app_clockTicToc(Clock *clock);
+
+// User input Handler
+void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock);

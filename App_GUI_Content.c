@@ -45,6 +45,9 @@ GPIO_InitTypeDef *CN5Pins[6] = {&pinA0, &pinA1, &pinA2, &pinA3, &pinA4, &pinA5};
 // ====================== Screen Label ======================
 ScreenLabel homeLabel = {20, 20, "Home"};
 ScreenLabel manualLabel = {20, 20, "Manual"};
+ScreenLabel dayLabel = {20, 20, "Day"};
+ScreenLabel nightLabel = {20, 20, "Night"};
+ScreenLabel playLabel = {20, 20, "Play"};
 
 // ====================== Clock ======================
 Clock clock = {CLOCK_POS_X, CLOCK_POS_Y, CLOCK_HOUR, CLOCK_MIN, CLOCK_SEC};
@@ -64,6 +67,14 @@ Button lightsButton = {BUTTON_LIGHTS_POS_X, BUTTON_LIGHTS_POS_Y, BUTTON_LIGHTS_W
 Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_BITMAP, BUTTON_HOME_BACKGROUND_COLOR, BUTTON_HOME_TEXT_COLOR, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
 Button *manualButtons[3] = {&doorButton, &lightsButton, &homeButton};
 
+// ====================== Day Buttons ======================
+Button *dayButtons[1] = {&homeButton};
+
+// ====================== Night Buttons ======================
+Button *nightButtons[1] = {&homeButton};
+
+// ====================== Play Buttons ======================
+Button *playButtons[1] = {&homeButton};
 
 // ====================== Bargraph ======================
 Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, WATER_BARGRAPH_BITMAP, WATER_BARGRAPH_LABEL };
@@ -211,11 +222,14 @@ void drawHomePage(void)
 }
 
 // Draws the manual page
-void drawManualPage()
+void drawManualPage(void)
 {
 	
 	// Draw Screen Label
 	app_drawScreenLabel(&manualLabel);
+	
+	// Draw Clock
+	app_drawClock(&clock);
 	
 	// Draw Door Button
 	app_drawButton(&doorButton);
@@ -228,104 +242,71 @@ void drawManualPage()
 	
 }
 
-// Home Page Navigation
-void homePageNavigation(char **page)
+// Draws the day program page
+void drawDayProgramPage(void)
 {
-	unsigned short i = 0;
-	uint32_t tic, toc = 0;
-	uint32_t elapsed_t;
-	TOUCH_STATE tscState;
+	// Draw Screen Label
+	app_drawScreenLabel(&dayLabel);
 	
-	/* elapsed_t is elapsed (10 * msec) since midnight */
-	elapsed_t = clock.second*100+clock.minute*60*100+clock.hour*60*60*100;
+	// Draw Clock
+	app_drawClock(&clock);
 	
-	while(1)
-	{
-		if (strcmp(*page, "Home") == 0)
-		{
-			app_clockTicToc(&tic, &toc, &elapsed_t, &clock);
-			Touch_GetState(&tscState);
-			if (tscState.pressed)
-			{
-				for (i = 0; i < 4; i++)
-				{
-					if (tscState.x > homeButtons[i]->posX && tscState.x < (homeButtons[i]->width + homeButtons[i]->posX)
-					 && tscState.y > homeButtons[i]->posY && tscState.y < (homeButtons[i]->height + homeButtons[i]->posY))
-					{
-						GLCD_SetFont (&GLCD_Font_16x24);
-						GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-						GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
-						GLCD_DrawString (20, 40, homeButtons[i]->label);
-						
-						*page = homeButtons[i]->label;
-						
-					}
-				}
-			} else {
-				GLCD_SetFont (&GLCD_Font_16x24);
-				GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-				GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
-			}
-		} else {
-			break;
-		}
-	}
+	// Draw Home Button
+	app_drawButton(&homeButton);
+}
+
+// Draws the night program page
+void drawNightProgramPage(void)
+{
+	// Draw Screen Label
+	app_drawScreenLabel(&nightLabel);
+	
+	// Draw Clock
+	app_drawClock(&clock);
+	
+	// Draw Home Button
+	app_drawButton(&homeButton);
+}
+
+// Draws the night program page
+void drawPlayProgramPage(void)
+{
+	// Draw Screen Label
+	app_drawScreenLabel(&playLabel);
+	
+	// Draw Clock
+	app_drawClock(&clock);
+	
+	// Draw Home Button
+	app_drawButton(&homeButton);
 }
 
 // Home Page Navigation
+void homePageNavigation(char **page)
+{
+	app_userInputHandle(page, 4, homeButtons, CN4Pins, &clock);
+}
+
+// Manual Page Navigation
 void manualPageNavigation(char **page)
 {
-	unsigned short i = 0;
-	TOUCH_STATE tscState;
-	
-	while(1)
-	{
-		if (strcmp(*page, "Manual") == 0)
-		{
-			Touch_GetState(&tscState);
-			if (tscState.pressed)
-			{
-				for (i = 0; i < 3; i++)
-				{
-					if (tscState.x > manualButtons[i]->posX && tscState.x < (manualButtons[i]->width + manualButtons[i]->posX)
-					 && tscState.y > manualButtons[i]->posY && tscState.y < (manualButtons[i]->height + manualButtons[i]->posY))
-					{
-						GLCD_SetFont (&GLCD_Font_16x24);
-						GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-						GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
-						GLCD_DrawString (20, 40, manualButtons[i]->label);
-						
-						if (manualButtons[i]->navigation)
-						{
-							*page = manualButtons[i]->label;
-						} else {
-							if (manualButtons[i]->funtionality->state == 0)
-							{
-								HAL_GPIO_WritePin(GPIOC, CN4Pins[manualButtons[i]->funtionality->pin]->Pin, GPIO_PIN_SET);
-								manualButtons[i]->backgroundColor = GLCD_COLOR_GREEN;
-								app_drawButton(&*manualButtons[i]);
-								manualButtons[i]->funtionality->state = 1;
-								wait(50000000);
-							} else {
-								HAL_GPIO_WritePin(GPIOC, CN4Pins[manualButtons[i]->funtionality->pin]->Pin, GPIO_PIN_RESET);
-								manualButtons[i]->backgroundColor = GLCD_COLOR_RED;
-								app_drawButton(&*manualButtons[i]);
-								manualButtons[i]->funtionality->state = 0;
-								wait(50000000);
-							}
-						}
-						
-					}
-				}
-			} else {
-				GLCD_SetFont (&GLCD_Font_16x24);
-				GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-				GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
-				GLCD_DrawString (20, 40, "            ");
-			}
-		} else {
-			break;
-		}
-	}
-	
+	app_userInputHandle(page, 3, manualButtons, CN4Pins, &clock);
+}
+
+// Day Page Navigation
+void dayPageNavigation(char **page)
+{
+	app_userInputHandle(page, 1, dayButtons, CN4Pins, &clock);
+}
+
+// Night Page Navigation
+void nightPageNavigation(char **page)
+{
+	app_userInputHandle(page, 1, nightButtons, CN4Pins, &clock);
+}
+
+// Play Page Navigation
+void playPageNavigation(char **page)
+{
+	app_userInputHandle(page, 1, playButtons, CN4Pins, &clock);
 }

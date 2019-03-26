@@ -86,6 +86,25 @@ int main(void)
 			drawManualPage();
 			wait(50000000);
 			manualPageNavigation(&page);
+		} else if (strcmp(page,"Day") == 0){
+			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
+			GLCD_ClearScreen ();
+			drawDayProgramPage();
+			wait(50000000);
+			dayPageNavigation(&page);
+		} else if (strcmp(page,"Night") == 0){
+			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
+			GLCD_ClearScreen ();
+			drawNightProgramPage();
+			wait(50000000);
+			nightPageNavigation(&page);
+		} else if (strcmp(page,"Play") == 0){
+			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
+			GLCD_ClearScreen ();
+			drawPlayProgramPage();
+			wait(50000000);
+			playPageNavigation(&page);
+		} else {
 		}
 	}
 }

@@ -1,7 +1,9 @@
+#include <stdio.h>
+#include "stm32f7xx_hal_gpio.h"
 #include "GUI_Utility.h"
 #include "Board_GLCD.h"
 #include "GLCD_Config.h"
-#include <stdio.h>
+#include "Board_Touch.h"
 
 #ifdef __RTX
 	extern uint32_t os_time;
@@ -27,6 +29,7 @@ void app_drawButton(Button *btn)
 void app_drawClock(Clock *clk)
 {
 		char buffer[128];
+		GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 		GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
 		GLCD_SetFont (&GLCD_Font_16x24);
 		sprintf(buffer, "%d : %d : %d", clk->hour,clk->minute, clk->second);
@@ -56,17 +59,68 @@ void app_drawBargraph(Bargraph *bargraph)
 }
 
 // Clock functionality
-void app_clockTicToc(uint32_t *tic, uint32_t *toc, uint32_t *elapsed_t, Clock *clock)
+void app_clockTicToc(Clock *clock)
 {
 	char buffer[128];
-	*tic = HAL_GetTick()/10;
-		if (*tic != *toc) { /* 10 ms update */
-			*toc = *tic;
-			clock->second = (*elapsed_t/100)%60; /* update time */
-			clock->minute = (*elapsed_t/6000)%60;
-			clock->hour = (*elapsed_t/360000)%24;
+	clock->tic = HAL_GetTick()/10;
+		if (clock->tic != clock->toc) { /* 10 ms update */
+			clock->toc = clock->tic;
+			clock->second = (clock->elapsed_t/100)%60; /* update time */
+			clock->minute = (clock->elapsed_t/6000)%60;
+			clock->hour = (clock->elapsed_t/360000)%24;
 			/* Update Display */
 			app_drawClock(clock);
-			*elapsed_t = (*elapsed_t+1) % DAY;
+			clock->elapsed_t = (clock->elapsed_t+1) % DAY;
 		}
+}
+
+// User input handler
+void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock)
+{
+	unsigned short i = 0;
+	char *currentPage = *page;
+	TOUCH_STATE tscState;
+	clock->elapsed_t = clock->second*100+clock->minute*60*100+clock->hour*60*60*100;
+	
+	while(1)
+	{
+		if (strcmp(*page, currentPage) == 0)
+		{
+			app_clockTicToc(clock);
+			Touch_GetState(&tscState);
+			if (tscState.pressed)
+			{
+				for (i = 0; i < numOfButtons; i++)
+				{
+					if (tscState.x > buttons[i]->posX && tscState.x < (buttons[i]->width + buttons[i]->posX)
+					 && tscState.y > buttons[i]->posY && tscState.y < (buttons[i]->height + buttons[i]->posY))
+					{
+						if (buttons[i]->navigation)
+						{
+							*page = buttons[i]->label;
+						} 
+						else {
+							if (buttons[i]->funtionality->state == 0)
+							{
+								HAL_GPIO_WritePin(GPIOC, pins[buttons[i]->funtionality->pin]->Pin, GPIO_PIN_SET);
+								buttons[i]->backgroundColor = GLCD_COLOR_GREEN;
+								app_drawButton(&*buttons[i]);
+								buttons[i]->funtionality->state = 1;
+								wait(50000000);
+							} else {
+								HAL_GPIO_WritePin(GPIOC, pins[buttons[i]->funtionality->pin]->Pin, GPIO_PIN_RESET);
+								buttons[i]->backgroundColor = GLCD_COLOR_RED;
+								app_drawButton(&*buttons[i]);
+								buttons[i]->funtionality->state = 0;
+								wait(50000000);
+							}
+						}
+					}
+				}
+			}
+		} else {
+			break;
+		}
+	}
+	
 }
