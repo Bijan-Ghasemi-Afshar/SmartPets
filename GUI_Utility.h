@@ -24,11 +24,7 @@ typedef struct
 	
 	unsigned short height; 
 	
-	const short *bitmap;
-	
 	unsigned int backgroundColor;
-	
-	unsigned int color;
 	
 	char *label;
 	
@@ -87,8 +83,6 @@ typedef struct
 	
 	unsigned short height; 
 	
-	const short *bitmap;
-	
 	char *label;
 	
 }Bargraph;
@@ -117,3 +111,12 @@ void app_clockTicToc(Clock *clock);
 
 // User input Handler
 void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock);
+
+// Wait
+void wait(int delay);
+
+// Open Door
+void app_openDoor(void);
+
+// Close Door
+void app_closeDoor(void);
