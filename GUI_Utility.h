@@ -24,8 +24,6 @@ typedef struct
 	
 	unsigned short height; 
 	
-	unsigned int backgroundColor;
-	
 	char *label;
 	
 	char navigation;

@@ -1,15 +1,8 @@
 #include "GUI_Utility.h"
-#include "Board_GLCD.h"
 #include "GLCD_Config.h"
 #include "App_GUI_Content.h"
-#include "Board_Touch.h"
-#include <string.h>
 #include "stm32f7xx_hal.h"
 #include "stm32f7xx_hal_gpio.h"
-
-
-extern GLCD_FONT GLCD_Font_16x24;
-
 
 // ====================== CN4 GPIO PINS ======================
 GPIO_InitTypeDef pinD0 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
@@ -57,18 +50,18 @@ Clock dayProgramClock = {DAY_PROGRAM_CLOCK_POS_X, DAY_PROGRAM_CLOCK_POS_Y, DAY_P
 Clock nightProgramClock = {NIGHT_PROGRAM_CLOCK_POS_X, NIGHT_PROGRAM_CLOCK_POS_Y, NIGHT_PROGRAM_CLOCK_HOUR, NIGHT_PROGRAM_CLOCK_MIN};
 
 // ====================== Home Buttons ======================
-Button dayButton = {BUTTON_DAY_POS_X, BUTTON_DAY_POS_Y, BUTTON_DAY_WIDTH, BUTTON_DAY_HEIGHT, BUTTON_DAY_BACKGROUND_COLOR, BUTTON_DAY_LABEL, BUTTON_DAY_NAVIGATION};
-Button nightButton = {BUTTON_NIGHT_POS_X, BUTTON_NIGHT_POS_Y, BUTTON_NIGHT_WIDTH, BUTTON_NIGHT_HEIGHT, BUTTON_NIGHT_BACKGROUND_COLOR, BUTTON_NIGHT_LABEL, BUTTON_NIGHT_NAVIGATION};
-Button playButton = {BUTTON_PLAY_POS_X, BUTTON_PLAY_POS_Y, BUTTON_PLAY_WIDTH, BUTTON_PLAY_HEIGHT, BUTTON_PLAY_BACKGROUND_COLOR, BUTTON_PLAY_LABEL, BUTTON_PLAY_NAVIGATION};
-Button manButton = {BUTTON_MANUAL_POS_X, BUTTON_MANUAL_POS_Y, BUTTON_MANUAL_WIDTH, BUTTON_MANUAL_HEIGHT, BUTTON_MANUAL_BACKGROUND_COLOR, BUTTON_MANUAL_LABEL, BUTTON_MANUAL_NAVIGATION};
+Button dayButton = {GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Day", 1};
+Button nightButton = {((GLCD_SIZE_X/4) * 2) + 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Night", 1};
+Button playButton = {BUTTON_PLAY_POS_X, BUTTON_PLAY_POS_Y, BUTTON_PLAY_WIDTH, BUTTON_PLAY_HEIGHT, BUTTON_PLAY_LABEL, BUTTON_PLAY_NAVIGATION};
+Button manButton = {BUTTON_MANUAL_POS_X, BUTTON_MANUAL_POS_Y, BUTTON_MANUAL_WIDTH, BUTTON_MANUAL_HEIGHT, BUTTON_MANUAL_LABEL, BUTTON_MANUAL_NAVIGATION};
 Button *homeButtons[4] = {&dayButton, &nightButton, &playButton, &manButton};
 
 // ====================== Manual Buttons ======================
 Functionality doorButtonFunc = {BUTTON_DOOR_PIN, BUTTON_DOOR_STATE};
-Button doorButton = {BUTTON_DOOR_POS_X, BUTTON_DOOR_POS_Y, BUTTON_DOOR_WIDTH, BUTTON_DOOR_HEIGHT, BUTTON_DOOR_BACKGROUND_COLOR, BUTTON_DOOR_LABEL, BUTTON_DOOR_NAVIGATION, &doorButtonFunc};
+Button doorButton = {BUTTON_DOOR_POS_X, BUTTON_DOOR_POS_Y, BUTTON_DOOR_WIDTH, BUTTON_DOOR_HEIGHT, BUTTON_DOOR_LABEL, BUTTON_DOOR_NAVIGATION, &doorButtonFunc};
 Functionality lightsButtonFunc = {BUTTON_LIGHTS_PIN, BUTTON_LIGHTS_STATE};
-Button lightsButton = {BUTTON_LIGHTS_POS_X, BUTTON_LIGHTS_POS_Y, BUTTON_LIGHTS_WIDTH, BUTTON_LIGHTS_HEIGHT, BUTTON_LIGHTS_BACKGROUND_COLOR, BUTTON_LIGHTS_LABEL, BUTTON_LIGHTS_NAVIGATION, &lightsButtonFunc};
-Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_BACKGROUND_COLOR, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
+Button lightsButton = {BUTTON_LIGHTS_POS_X, BUTTON_LIGHTS_POS_Y, BUTTON_LIGHTS_WIDTH, BUTTON_LIGHTS_HEIGHT, BUTTON_LIGHTS_LABEL, BUTTON_LIGHTS_NAVIGATION, &lightsButtonFunc};
+Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
 Button *manualButtons[3] = {&doorButton, &lightsButton, &homeButton};
 
 // ====================== Day Buttons ======================
@@ -185,14 +178,10 @@ void initializePins()
 
 
 // Draws the home page
-void drawHomePage(void)
+void drawHomePage(char **page)
 {
-	
 	// Draw Screen Label
 	app_drawScreenLabel(&homeLabel);
-	
-	// Set Background To Purple
-	GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
 	
 	// Draw Day Button
 	app_drawButton(&dayButton);
@@ -212,10 +201,11 @@ void drawHomePage(void)
 	// Draw Food Level
 	app_drawBargraph(&foodBargraph);
 	
+	app_userInputHandle(page, 4, homeButtons, CN4Pins, &clock);
 }
 
 // Draws the manual page
-void drawManualPage(void)
+void drawManualPage(char **page)
 {
 	
 	// Draw Screen Label
@@ -230,10 +220,12 @@ void drawManualPage(void)
 	// Draw Home Button
 	app_drawButton(&homeButton);
 	
+	app_userInputHandle(page, 4, manualButtons, CN4Pins, &clock);
+	
 }
 
 // Draws the day program page
-void drawDayProgramPage(void)
+void drawDayProgramPage(char **page)
 {
 	// Draw Screen Label
 	app_drawScreenLabel(&dayLabel);
@@ -252,10 +244,12 @@ void drawDayProgramPage(void)
 	
 	// Draw Home Button
 	app_drawButton(&homeButton);
+	
+	app_userInputHandle(page, 1, dayButtons, CN4Pins, &clock);
 }
 
 // Draws the night program page
-void drawNightProgramPage(void)
+void drawNightProgramPage(char **page)
 {
 	// Draw Screen Label
 	app_drawScreenLabel(&nightLabel);
@@ -274,10 +268,12 @@ void drawNightProgramPage(void)
 	
 	// Draw Home Button
 	app_drawButton(&homeButton);
+	
+	app_userInputHandle(page, 1, nightButtons, CN4Pins, &clock);
 }
 
 // Draws the night program page
-void drawPlayProgramPage(void)
+void drawPlayProgramPage(char **page)
 {
 	// Draw Screen Label
 	app_drawScreenLabel(&playLabel);
@@ -287,37 +283,7 @@ void drawPlayProgramPage(void)
 	
 	// Draw Home Button
 	app_drawButton(&homeButton);
-}
-
-// Home Page Navigation
-void homePageNavigation(char **page)
-{
-	app_userInputHandle(page, 4, homeButtons, CN4Pins, &clock);
-}
-
-// Manual Page Navigation
-void manualPageNavigation(char **page)
-{
-	app_userInputHandle(page, 3, manualButtons, CN4Pins, &clock);
-}
-
-// Day Page Navigation
-void dayPageNavigation(char **page)
-{
-	app_userInputHandle(page, 1, dayButtons, CN4Pins, &clock);
-}
-
-// Night Page Navigation
-void nightPageNavigation(char **page)
-{
-	app_userInputHandle(page, 1, nightButtons, CN4Pins, &clock);
-}
-
-// Play Page Navigation
-void playPageNavigation(char **page)
-{
+	
 	app_userInputHandle(page, 1, playButtons, CN4Pins, &clock);
 }
-
-
 

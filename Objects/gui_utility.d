@@ -1,5 +1,4 @@
 .\objects\gui_utility.o: GUI_Utility.c
-.\objects\gui_utility.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\gui_utility.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 .\objects\gui_utility.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 .\objects\gui_utility.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h
@@ -12,6 +11,7 @@
 .\objects\gui_utility.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\mpu_armv7.h
 .\objects\gui_utility.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\system_stm32f7xx.h
 .\objects\gui_utility.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
+.\objects\gui_utility.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\gui_utility.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
 .\objects\gui_utility.o: GUI_Utility.h
 .\objects\gui_utility.o: C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_GLCD.h

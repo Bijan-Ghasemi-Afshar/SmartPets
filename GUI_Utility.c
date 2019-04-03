@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "stm32f7xx_hal_gpio.h"
 #include "GUI_Utility.h"
 #include "Board_GLCD.h"
@@ -61,7 +60,6 @@ void app_closeDoor(void)
 // Draws a button with a label on top of it
 void app_drawButton(Button *btn)
 {
-		GLCD_SetBackgroundColor (btn->backgroundColor);
 		GLCD_DrawBargraph(btn->posX,btn->posY,btn->width,btn->height,0);
 		GLCD_DrawString ((btn->posX + 10), (btn->posY + (btn->height/4)), btn->label);
 }
@@ -129,10 +127,9 @@ void app_drawProgramTimeEdit(short xPos, short yPos, Clock *clock)
 // Draws the screen label
 void app_drawScreenLabel(ScreenLabel *scrLbl)
 {
-	GLCD_SetFont (&GLCD_Font_16x24);
 	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-	GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
 	GLCD_DrawString (scrLbl->posX, scrLbl->posY, scrLbl->name);
+	GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
 }
 
 // Draws the bargraph
@@ -193,15 +190,11 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 							{
 								//HAL_GPIO_WritePin(GPIOC, pins[buttons[i]->funtionality->pin]->Pin, GPIO_PIN_SET);
 								app_openDoor();
-								buttons[i]->backgroundColor = GLCD_COLOR_GREEN;
-								app_drawButton(&*buttons[i]);
 								buttons[i]->funtionality->state = 1;
 								//wait(50000000);
 							} else {
 								//HAL_GPIO_WritePin(GPIOC, pins[buttons[i]->funtionality->pin]->Pin, GPIO_PIN_RESET);
 								app_closeDoor();
-								buttons[i]->backgroundColor = GLCD_COLOR_RED;
-								app_drawButton(&*buttons[i]);
 								buttons[i]->funtionality->state = 0;
 								//wait(50000000);
 							}

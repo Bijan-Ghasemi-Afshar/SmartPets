@@ -27,13 +27,23 @@ Project File Date:  03/29/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
+compiling main.c...
+main.c(60): warning:  #223-D: function "initializePins" declared implicitly
+  	initializePins();
+main.c(62): warning:  #223-D: function "Touch_Initialize" declared implicitly
+  	Touch_Initialize();
+main.c(99): warning:  #1-D: last line of file ends without a newline
+  }
+main.c(11): warning:  #177-D: function "initDisplay" was declared but never referenced
+  static void initDisplay(void);
+main.c: 4 warnings, 0 errors
 compiling App_GUI_Content.c...
-GUI_Utility.h(122): warning:  #1-D: last line of file ends without a newline
+GUI_Utility.h(120): warning:  #1-D: last line of file ends without a newline
   void app_closeDoor(void);
 App_GUI_Content.c: 1 warning, 0 errors
 linking...
-Program Size: Code=22008 RO-data=7052 RW-data=692 ZI-data=266524  
-".\Objects\SmartPets.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=21916 RO-data=7052 RW-data=664 ZI-data=266520  
+".\Objects\SmartPets.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -190,7 +200,7 @@ Package Vendor: Keil
 
    * Component: Keil.STM32F746G-Discovery::Board Support:Touchscreen:1.1.1
       Source file:   MDK\Boards\ST\STM32F746G_Discovery\Common\Touch_746G_Discovery.c
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

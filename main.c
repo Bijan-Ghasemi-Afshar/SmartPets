@@ -1,19 +1,12 @@
-#include <stdio.h>
 #include "GLCD_Config.h"
 #include "Board_GLCD.h"
-#include "Board_Touch.h"
 #include "stm32f7xx_hal.h"
-#include "stm32f7xx_hal_gpio.h"
-#include "GUI_Utility.h"
 #include "App_GUI_Content.h"
 #include <string.h>
 
 #define wait_delay HAL_Delay
-extern GLCD_FONT GLCD_Font_6x8;
 extern GLCD_FONT GLCD_Font_16x24;
 
-
-extern GLCD_FONT GLCD_Font_6x8;
 static void SystemClock_Config(void);
 static void initDisplay(void);
 
@@ -59,8 +52,6 @@ void SystemClock_Config(void) {
 */
 int main(void)
 {
-	unsigned int count;
-	GPIO_InitTypeDef gpio;
 	char *page = "Home";
 
 	HAL_Init (); /* Init Hardware Abstraction Layer */
@@ -70,6 +61,9 @@ int main(void)
 	GLCD_Initialize();
 	Touch_Initialize();
 	
+	GLCD_SetFont (&GLCD_Font_16x24);
+	GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
+	
 	// SUPER LOOP
 	while(1)
 	{
@@ -77,33 +71,28 @@ int main(void)
 		{
 			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 			GLCD_ClearScreen ();
-			drawHomePage();
-			wait(50000000);
-			homePageNavigation(&page);
+			GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
+			drawHomePage(&page);
 		} else if (strcmp(page,"Manual") == 0){
 			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 			GLCD_ClearScreen ();
-			drawManualPage();
-			wait(50000000);
-			manualPageNavigation(&page);
+			GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
+			drawManualPage(&page);
 		} else if (strcmp(page,"Day") == 0){
 			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 			GLCD_ClearScreen ();
-			drawDayProgramPage();
-			wait(50000000);
-			dayPageNavigation(&page);
+			GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
+			drawDayProgramPage(&page);
 		} else if (strcmp(page,"Night") == 0){
 			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 			GLCD_ClearScreen ();
-			drawNightProgramPage();
-			wait(50000000);
-			nightPageNavigation(&page);
+			drawNightProgramPage(&page);
+			GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
 		} else if (strcmp(page,"Play") == 0){
 			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 			GLCD_ClearScreen ();
-			drawPlayProgramPage();
-			wait(50000000);
-			playPageNavigation(&page);
+			GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
+			drawPlayProgramPage(&page);
 		} else {
 		}
 	}

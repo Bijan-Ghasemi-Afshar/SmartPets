@@ -1,28 +1,8 @@
-// DAY Button Properties
-#define BUTTON_DAY_POS_X GLCD_SIZE_X/4 - 20
-#define BUTTON_DAY_POS_Y GLCD_SIZE_Y/4
-#define BUTTON_DAY_WIDTH GLCD_SIZE_X/4
-#define BUTTON_DAY_HEIGHT GLCD_SIZE_Y/5
-#define BUTTON_DAY_BACKGROUND_COLOR GLCD_COLOR_PURPLE
-#define BUTTON_DAY_TEXT_COLOR GLCD_COLOR_WHITE
-#define BUTTON_DAY_LABEL "Day"
-#define BUTTON_DAY_NAVIGATION 1
-
-// NIGHT Button Properties
-#define BUTTON_NIGHT_POS_X ((GLCD_SIZE_X/4) * 2) + 20
-#define BUTTON_NIGHT_POS_Y GLCD_SIZE_Y/4
-#define BUTTON_NIGHT_WIDTH GLCD_SIZE_X/4
-#define BUTTON_NIGHT_HEIGHT GLCD_SIZE_Y/5
-#define BUTTON_NIGHT_BACKGROUND_COLOR GLCD_COLOR_PURPLE
-#define BUTTON_NIGHT_LABEL "Night"
-#define BUTTON_NIGHT_NAVIGATION 1
-
 // PLAY Button Properties
 #define BUTTON_PLAY_POS_X GLCD_SIZE_X/4 - 20
 #define BUTTON_PLAY_POS_Y GLCD_SIZE_Y/4 * 2
 #define BUTTON_PLAY_WIDTH GLCD_SIZE_X/4
 #define BUTTON_PLAY_HEIGHT GLCD_SIZE_Y/5
-#define BUTTON_PLAY_BACKGROUND_COLOR GLCD_COLOR_PURPLE
 #define BUTTON_PLAY_LABEL "Play"
 #define BUTTON_PLAY_NAVIGATION 1
 
@@ -31,16 +11,14 @@
 #define BUTTON_MANUAL_POS_Y (GLCD_SIZE_Y/4) * 2
 #define BUTTON_MANUAL_WIDTH GLCD_SIZE_X/4
 #define BUTTON_MANUAL_HEIGHT GLCD_SIZE_Y/5
-#define BUTTON_MANUAL_BACKGROUND_COLOR GLCD_COLOR_PURPLE
 #define BUTTON_MANUAL_LABEL "Manual"
 #define BUTTON_MANUAL_NAVIGATION 1
 
 // DOOR Button Properties
 #define BUTTON_DOOR_POS_X GLCD_SIZE_X/4 - 20
-#define BUTTON_DOOR_POS_Y GLCD_SIZE_Y/2 - 20
+#define BUTTON_DOOR_POS_Y GLCD_SIZE_Y/3 - 30
 #define BUTTON_DOOR_WIDTH GLCD_SIZE_X/4
 #define BUTTON_DOOR_HEIGHT GLCD_SIZE_Y/5
-#define BUTTON_DOOR_BACKGROUND_COLOR GLCD_COLOR_RED
 #define BUTTON_DOOR_LABEL "Door"
 #define BUTTON_DOOR_NAVIGATION 0
 #define BUTTON_DOOR_PIN 2
@@ -48,10 +26,9 @@
 
 // LIGHTS Button Properties
 #define BUTTON_LIGHTS_POS_X ((GLCD_SIZE_X/4) * 2) + 20
-#define BUTTON_LIGHTS_POS_Y GLCD_SIZE_Y/2 - 20
+#define BUTTON_LIGHTS_POS_Y GLCD_SIZE_Y/3 - 30
 #define BUTTON_LIGHTS_WIDTH GLCD_SIZE_X/4
 #define BUTTON_LIGHTS_HEIGHT GLCD_SIZE_Y/5
-#define BUTTON_LIGHTS_BACKGROUND_COLOR GLCD_COLOR_RED
 #define BUTTON_LIGHTS_LABEL "Lights"
 #define BUTTON_LIGHTS_NAVIGATION 0
 #define BUTTON_LIGHTS_PIN 0
@@ -62,7 +39,6 @@
 #define BUTTON_HOME_POS_Y (GLCD_SIZE_Y/5 * 3) + 40
 #define BUTTON_HOME_WIDTH GLCD_SIZE_X/4
 #define BUTTON_HOME_HEIGHT GLCD_SIZE_Y/5
-#define BUTTON_HOME_BACKGROUND_COLOR GLCD_COLOR_GREEN
 #define BUTTON_HOME_LABEL "Home"
 #define BUTTON_HOME_NAVIGATION 1
 
@@ -100,22 +76,13 @@
 #define FOOD_BARGRAPH_HEIGHT 10
 #define FOOD_BARGRAPH_LABEL "Food"
 
-void drawHomePage(void);
+void drawHomePage(char **page);
 
-void drawManualPage(void);
+void drawManualPage(char **page);
 
-void drawDayProgramPage(void);
+void drawDayProgramPage(char **page);
 
-void drawNightProgramPage(void);
+void drawNightProgramPage(char **page);
 
-void drawPlayProgramPage(void);
+void drawPlayProgramPage(char **page);
 
-void homePageNavigation(char **page);
-
-void manualPageNavigation(char **page);
-
-void dayPageNavigation(char **page);
-
-void nightPageNavigation(char **page);
-
-void playPageNavigation(char **page);

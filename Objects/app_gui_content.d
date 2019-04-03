@@ -14,12 +14,8 @@
 .\objects\app_gui_content.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
 .\objects\app_gui_content.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\app_gui_content.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
-.\objects\app_gui_content.o: C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_GLCD.h
-.\objects\app_gui_content.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\app_gui_content.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Config.h
 .\objects\app_gui_content.o: App_GUI_Content.h
-.\objects\app_gui_content.o: C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_Touch.h
-.\objects\app_gui_content.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\app_gui_content.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
 .\objects\app_gui_content.o: C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h
 .\objects\app_gui_content.o: C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h
