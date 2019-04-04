@@ -1,6 +1,5 @@
-#include "stm32f7xx_hal_gpio.h"
+#include "stm32f7xx_hal.h"
 #define DAY 8640000; /* 10 ms ticks in a day */
-
 
 /**
 * This struct contains properties related to a functionality ( concept level functionality )
@@ -91,6 +90,9 @@ typedef struct
 // Draws a button with a label on top of it
 void app_drawButton(Button *btn);
 
+
+void ConfigureADC(void);
+
 // Draws a clock
 void app_drawClock(Clock *clk);
 
@@ -120,3 +122,6 @@ void app_openDoor(void);
 
 // Close Door
 void app_closeDoor(void);
+
+// Update water level
+void app_updateWaterLevel(Bargraph *bargraph);

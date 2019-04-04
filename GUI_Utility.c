@@ -14,6 +14,50 @@
 extern GLCD_FONT GLCD_Font_6x8;
 extern GLCD_FONT GLCD_Font_16x24;
 
+ADC_HandleTypeDef g_AdcHandle;
+
+void ConfigureADC()
+{
+	GPIO_InitTypeDef gpioInit;
+	ADC_ChannelConfTypeDef adcChannel;
+	
+	__GPIOA_CLK_ENABLE();
+	__ADC3_CLK_ENABLE();
+
+	gpioInit.Pin = GPIO_PIN_0;
+	gpioInit.Mode = GPIO_MODE_ANALOG;
+	gpioInit.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOA, &gpioInit);
+
+	HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(ADC_IRQn);
+
+	g_AdcHandle.Instance = ADC3;
+
+	g_AdcHandle.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+	g_AdcHandle.Init.Resolution = ADC_RESOLUTION_12B;
+	g_AdcHandle.Init.ScanConvMode = DISABLE;
+	g_AdcHandle.Init.ContinuousConvMode = ENABLE;
+	g_AdcHandle.Init.DiscontinuousConvMode = DISABLE;
+	g_AdcHandle.Init.NbrOfDiscConversion = 0;
+	g_AdcHandle.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+	g_AdcHandle.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC1;
+	g_AdcHandle.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+	g_AdcHandle.Init.NbrOfConversion = 1;
+	g_AdcHandle.Init.DMAContinuousRequests = ENABLE;
+	g_AdcHandle.Init.EOCSelection = DISABLE;
+
+	HAL_ADC_Init(&g_AdcHandle);
+	//HAL_ADC_MspInit(&g_AdcHandle);
+
+	adcChannel.Channel = ADC_CHANNEL_0;
+	adcChannel.Rank = 1;
+	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+	adcChannel.Offset = 0;
+
+}
+
+	
 // Delay Function
 void wait(int delay)
 {
@@ -162,19 +206,52 @@ void app_clockTicToc(Clock *clock)
 		}
 }
 
+// Update water level
+void app_updateWaterLevel(Bargraph *bargraph)
+{
+	int g_ADCValue;
+	char buffer[128];
+	
+	g_ADCValue = HAL_ADC_GetValue(&g_AdcHandle);
+	
+//	sprintf(buffer, "%d", g_ADCValue);
+//	GLCD_DrawString (20, 150, "              ");
+//	GLCD_DrawString (20, 150, buffer);
+	
+	if (g_ADCValue >= 0 && g_ADCValue < 3600)
+	{
+		bargraph->width = 40;
+		bargraph->background = GLCD_COLOR_RED;
+		app_drawBargraph(bargraph);
+	} else if (g_ADCValue >= 3600 && g_ADCValue < 4090)
+	{
+		bargraph->width = GLCD_SIZE_X/3;
+		bargraph->background = GLCD_COLOR_GREEN;
+		app_drawBargraph(bargraph);
+	} else if (g_ADCValue >= 4090)
+	{
+		bargraph->width = GLCD_SIZE_X/2 + 40;
+		bargraph->background = GLCD_COLOR_GREEN;
+		app_drawBargraph(bargraph);
+	} else {}
+}
+
 // User input handler
 void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock)
 {
 	unsigned short i = 0;
 	char *currentPage = *page;
 	TOUCH_STATE tscState;
+	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
 	clock->elapsed_t = clock->second*100+clock->minute*60*100+clock->hour*60*60*100;
+	HAL_ADC_Start(&g_AdcHandle);
 	
 	while(1)
 	{
 		if (strcmp(*page, currentPage) == 0)
 		{
 			app_clockTicToc(clock);
+			app_updateWaterLevel(&waterBargraph);
 			Touch_GetState(&tscState);
 			if (tscState.pressed)
 			{
