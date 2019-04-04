@@ -1,5 +1,6 @@
 #include "GUI_Utility.h"
 #include "GLCD_Config.h"
+#include "Board_GLCD.h"
 #include "App_GUI_Content.h"
 #include "stm32f7xx_hal.h"
 #include "stm32f7xx_hal_gpio.h"
@@ -74,8 +75,51 @@ Button *nightButtons[1] = {&homeButton};
 Button *playButtons[1] = {&homeButton};
 
 // ====================== Bargraph ======================
-Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, WATER_BARGRAPH_LABEL };
-Bargraph foodBargraph = { FOOD_BARGRAPH_POS_X, FOOD_BARGRAPH_POS_Y, FOOD_BARGRAPH_WIDTH, FOOD_BARGRAPH_HEIGHT, FOOD_BARGRAPH_LABEL };
+Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, WATER_BARGRAPH_LABEL };
+Bargraph foodBargraph = { FOOD_BARGRAPH_POS_X, FOOD_BARGRAPH_POS_Y, FOOD_BARGRAPH_WIDTH, FOOD_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, FOOD_BARGRAPH_LABEL };
+
+ADC_HandleTypeDef g_AdcHandle;
+
+void ConfigureADC()
+{
+	GPIO_InitTypeDef gpioInit;
+	ADC_ChannelConfTypeDef adcChannel;
+	
+	__GPIOA_CLK_ENABLE();
+	__ADC3_CLK_ENABLE();
+
+	gpioInit.Pin = GPIO_PIN_0;
+	gpioInit.Mode = GPIO_MODE_ANALOG;
+	gpioInit.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOA, &gpioInit);
+
+	HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(ADC_IRQn);
+
+	g_AdcHandle.Instance = ADC3;
+
+	g_AdcHandle.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+	g_AdcHandle.Init.Resolution = ADC_RESOLUTION_12B;
+	g_AdcHandle.Init.ScanConvMode = DISABLE;
+	g_AdcHandle.Init.ContinuousConvMode = ENABLE;
+	g_AdcHandle.Init.DiscontinuousConvMode = DISABLE;
+	g_AdcHandle.Init.NbrOfDiscConversion = 0;
+	g_AdcHandle.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+	g_AdcHandle.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC1;
+	g_AdcHandle.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+	g_AdcHandle.Init.NbrOfConversion = 1;
+	g_AdcHandle.Init.DMAContinuousRequests = ENABLE;
+	g_AdcHandle.Init.EOCSelection = DISABLE;
+
+	HAL_ADC_Init(&g_AdcHandle);
+	//HAL_ADC_MspInit(&g_AdcHandle);
+
+	adcChannel.Channel = ADC_CHANNEL_0;
+	adcChannel.Rank = 1;
+	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+	adcChannel.Offset = 0;
+
+}
 
 // Initialize Pins
 void initializePins()
@@ -180,6 +224,9 @@ void initializePins()
 // Draws the home page
 void drawHomePage(char **page)
 {
+	int g_ADCValue;
+	char buffer[128];
+	
 	// Draw Screen Label
 	app_drawScreenLabel(&homeLabel);
 	
@@ -200,6 +247,31 @@ void drawHomePage(char **page)
 	
 	// Draw Food Level
 	app_drawBargraph(&foodBargraph);
+	
+	HAL_ADC_Start(&g_AdcHandle);
+	
+	g_ADCValue = HAL_ADC_GetValue(&g_AdcHandle);
+	
+//	sprintf(buffer, "%d", g_ADCValue);
+//	GLCD_DrawString (20, 150, "              ");
+//	GLCD_DrawString (20, 150, buffer);
+	
+	if (g_ADCValue >= 0 && g_ADCValue < 3600)
+	{
+		waterBargraph.width = 40;
+		waterBargraph.background = GLCD_COLOR_RED;
+		app_drawBargraph(&waterBargraph);
+	} else if (g_ADCValue >= 3600 && g_ADCValue < 4090)
+	{
+		waterBargraph.width = GLCD_SIZE_X/3;
+		waterBargraph.background = GLCD_COLOR_GREEN;
+		app_drawBargraph(&waterBargraph);
+	} else if (g_ADCValue >= 4090)
+	{
+		waterBargraph.width = GLCD_SIZE_X/2 + 40;
+		waterBargraph.background = GLCD_COLOR_GREEN;
+		app_drawBargraph(&waterBargraph);
+	} else {}
 	
 	app_userInputHandle(page, 4, homeButtons, CN4Pins, &clock);
 }

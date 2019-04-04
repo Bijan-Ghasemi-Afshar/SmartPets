@@ -135,7 +135,9 @@ void app_drawScreenLabel(ScreenLabel *scrLbl)
 // Draws the bargraph
 void app_drawBargraph(Bargraph *bargraph)
 {
-		GLCD_SetBackgroundColor (GLCD_COLOR_GREEN);
+		GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
+		GLCD_DrawBargraph(bargraph->posX,bargraph->posY,GLCD_SIZE_X/2 + 40,bargraph->height,0);
+		GLCD_SetBackgroundColor (bargraph->background);
 		GLCD_DrawBargraph(bargraph->posX,bargraph->posY,bargraph->width,bargraph->height,0);
 		GLCD_SetFont (&GLCD_Font_6x8);
 		GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);

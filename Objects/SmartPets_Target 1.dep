@@ -1,12 +1,12 @@
 Dependencies for Project 'SmartPets', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x5CA52228)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x5CA5CC76)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Config.h)(0x5593F300)
 I (C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_GLCD.h)(0x58777E5C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E68CA)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x569E68CA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -25,6 +25,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -38,7 +40,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart_ex.h)(0x5B3A7874)
 I (App_GUI_Content.h)(0x5CA5241E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x569E68CA)
-F (.\GUI_Utility.c)(0x5CA52274)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\gui_utility.o --omf_browse .\objects\gui_utility.crf --depend .\objects\gui_utility.d)
+F (.\GUI_Utility.c)(0x5CA5D9ED)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\gui_utility.o --omf_browse .\objects\gui_utility.crf --depend .\objects\gui_utility.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -53,13 +55,13 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569E68CA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h)(0x5B3A7874)
-I (GUI_Utility.h)(0x5CA520B8)
+I (GUI_Utility.h)(0x5CA5D9C8)
 I (C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_GLCD.h)(0x58777E5C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x569E68CA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Config.h)(0x5593F300)
 I (C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_Touch.h)(0x58C1076E)
-F (.\App_GUI_Content.c)(0x5CA52415)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\app_gui_content.o --omf_browse .\objects\app_gui_content.crf --depend .\objects\app_gui_content.d)
-I (GUI_Utility.h)(0x5CA520B8)
+F (.\App_GUI_Content.c)(0x5CA5DA1A)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\app_gui_content.o --omf_browse .\objects\app_gui_content.crf --depend .\objects\app_gui_content.d)
+I (GUI_Utility.h)(0x5CA5D9C8)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -75,15 +77,19 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569E68CA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Config.h)(0x5593F300)
+I (C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_GLCD.h)(0x58777E5C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x569E68CA)
 I (App_GUI_Content.h)(0x5CA5241E)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -103,7 +109,7 @@ F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery\stm32746g_discovery.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -123,6 +129,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -138,7 +146,7 @@ F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_sdram.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -158,6 +166,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -174,7 +184,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery\stm32746g_discovery.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -194,6 +204,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -210,7 +222,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\Components\Common\t
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_746G_Discovery.c)(0x58A56996)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\glcd_746g_discovery.o --omf_browse .\objects\glcd_746g_discovery.crf --depend .\objects\glcd_746g_discovery.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -230,6 +242,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -254,7 +268,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery\stm32746g_discovery.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -274,6 +288,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -297,7 +313,7 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC\RTX_CM_lib.h)(0x5B2CDF
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal.o --omf_browse .\objects\stm32f7xx_hal.crf --depend .\objects\stm32f7xx_hal.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -317,6 +333,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -331,7 +349,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_cortex.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_cortex.o --omf_browse .\objects\stm32f7xx_hal_cortex.crf --depend .\objects\stm32f7xx_hal_cortex.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -351,6 +369,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -365,7 +385,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_dma.o --omf_browse .\objects\stm32f7xx_hal_dma.crf --depend .\objects\stm32f7xx_hal_dma.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -385,6 +405,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -399,7 +421,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma_ex.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_dma_ex.o --omf_browse .\objects\stm32f7xx_hal_dma_ex.crf --depend .\objects\stm32f7xx_hal_dma_ex.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -419,6 +441,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -433,7 +457,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_gpio.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_gpio.o --omf_browse .\objects\stm32f7xx_hal_gpio.crf --depend .\objects\stm32f7xx_hal_gpio.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -453,6 +477,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -467,7 +493,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_i2c.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_i2c.o --omf_browse .\objects\stm32f7xx_hal_i2c.crf --depend .\objects\stm32f7xx_hal_i2c.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -487,6 +513,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -501,7 +529,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_i2c_ex.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_i2c_ex.o --omf_browse .\objects\stm32f7xx_hal_i2c_ex.crf --depend .\objects\stm32f7xx_hal_i2c_ex.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -521,6 +549,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -535,7 +565,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_ltdc.c)(0x5B3BABF8)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_ltdc.o --omf_browse .\objects\stm32f7xx_hal_ltdc.crf --depend .\objects\stm32f7xx_hal_ltdc.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -555,6 +585,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -569,7 +601,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_ltdc_ex.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_ltdc_ex.o --omf_browse .\objects\stm32f7xx_hal_ltdc_ex.crf --depend .\objects\stm32f7xx_hal_ltdc_ex.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -589,6 +621,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -603,7 +637,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pwr.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_pwr.o --omf_browse .\objects\stm32f7xx_hal_pwr.crf --depend .\objects\stm32f7xx_hal_pwr.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -623,6 +657,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -637,7 +673,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pwr_ex.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_pwr_ex.o --omf_browse .\objects\stm32f7xx_hal_pwr_ex.crf --depend .\objects\stm32f7xx_hal_pwr_ex.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -657,6 +693,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -671,7 +709,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_rcc.o --omf_browse .\objects\stm32f7xx_hal_rcc.crf --depend .\objects\stm32f7xx_hal_rcc.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -691,6 +729,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -705,7 +745,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc_ex.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_rcc_ex.o --omf_browse .\objects\stm32f7xx_hal_rcc_ex.crf --depend .\objects\stm32f7xx_hal_rcc_ex.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -725,6 +765,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -739,7 +781,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_sdram.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_sdram.o --omf_browse .\objects\stm32f7xx_hal_sdram.crf --depend .\objects\stm32f7xx_hal_sdram.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -759,6 +801,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -773,7 +817,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_uart.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_uart.o --omf_browse .\objects\stm32f7xx_hal_uart.crf --depend .\objects\stm32f7xx_hal_uart.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -793,6 +837,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -807,7 +853,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_ll_fmc.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_ll_fmc.o --omf_browse .\objects\stm32f7xx_ll_fmc.crf --depend .\objects\stm32f7xx_ll_fmc.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
-I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5C9D72C9)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
@@ -827,6 +873,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
@@ -851,3 +899,75 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5B
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5B61E104)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\mpu_armv7.h)(0x5B61E104)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\system_stm32f7xx.h)(0x5B3A7874)
+F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_adc.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_adc.o --omf_browse .\objects\stm32f7xx_hal_adc.crf --depend .\objects\stm32f7xx_hal_adc.d)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f746xx.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\core_cm7.h)(0x5B61E104)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E68CA)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_version.h)(0x5B1FAF14)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5B58B446)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5B61E104)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\mpu_armv7.h)(0x5B61E104)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\system_stm32f7xx.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569E68CA)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_fmc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_i2c.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_i2c_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_ltdc.h)(0x5B3BAB70)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pwr.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pwr_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart_ex.h)(0x5B3A7874)
+F (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_adc_ex.c)(0x5B3A7874)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\stm32f7xx_hal_adc_ex.o --omf_browse .\objects\stm32f7xx_hal_adc_ex.crf --depend .\objects\stm32f7xx_hal_adc_ex.d)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
+I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h)(0x5ACB1DA6)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f746xx.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\core_cm7.h)(0x5B61E104)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E68CA)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_version.h)(0x5B1FAF14)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5B58B446)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5B61E104)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\mpu_armv7.h)(0x5B61E104)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include\system_stm32f7xx.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569E68CA)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h)(0x5B3BAC46)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_fmc.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_i2c.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_i2c_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_ltdc.h)(0x5B3BAB70)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pwr.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pwr_ex.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart.h)(0x5B3A7874)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart_ex.h)(0x5B3A7874)

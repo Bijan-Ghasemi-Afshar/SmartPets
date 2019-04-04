@@ -2,6 +2,7 @@
 #include "Board_GLCD.h"
 #include "stm32f7xx_hal.h"
 #include "App_GUI_Content.h"
+#include "stm32f7xx_hal_adc.h"
 #include <string.h>
 
 #define wait_delay HAL_Delay
@@ -60,6 +61,7 @@ int main(void)
 	initializePins();
 	GLCD_Initialize();
 	Touch_Initialize();
+	ConfigureADC();
 	
 	GLCD_SetFont (&GLCD_Font_16x24);
 	GLCD_SetForegroundColor (GLCD_COLOR_WHITE);

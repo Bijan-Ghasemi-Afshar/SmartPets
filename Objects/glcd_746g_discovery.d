@@ -21,6 +21,8 @@
 .\objects\glcd_746g_discovery.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h
 .\objects\glcd_746g_discovery.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h
 .\objects\glcd_746g_discovery.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h
+.\objects\glcd_746g_discovery.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h
+.\objects\glcd_746g_discovery.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h
 .\objects\glcd_746g_discovery.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h
 .\objects\glcd_746g_discovery.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h
 .\objects\glcd_746g_discovery.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h

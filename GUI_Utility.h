@@ -81,6 +81,8 @@ typedef struct
 	
 	unsigned short height; 
 	
+	unsigned short background;
+	
 	char *label;
 	
 }Bargraph;
