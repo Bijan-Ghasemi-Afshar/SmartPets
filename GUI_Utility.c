@@ -236,13 +236,45 @@ void app_updateWaterLevel(Bargraph *bargraph)
 	} else {}
 }
 
+// Page specific logic
+void app_homePageSpecific()
+{
+	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
+	
+	app_updateWaterLevel(&waterBargraph);
+}
+
+// Handle sensor type
+void app_handleSensor(Button *button, short pin)
+{
+	if (button->funtionality->state == 0)
+	{
+		if (strcmp(button->funtionality->type, "pwm") == 0)
+		{
+			app_openDoor();
+			button->funtionality->state = 1;
+		} else if (strcmp(button->funtionality->type, "digital") == 0){
+			HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_SET);
+			button->funtionality->state = 1;
+		} else {}
+	} else {
+		if (strcmp(button->funtionality->type, "pwm") == 0)
+		{
+			app_closeDoor();
+			button->funtionality->state = 0;
+		} else if (strcmp(button->funtionality->type, "digital") == 0){
+			HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_RESET);
+			button->funtionality->state = 0;
+		} else {}
+	}
+}
+
 // User input handler
 void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock)
 {
 	unsigned short i = 0;
 	char *currentPage = *page;
 	TOUCH_STATE tscState;
-	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
 	clock->elapsed_t = clock->second*100+clock->minute*60*100+clock->hour*60*60*100;
 	HAL_ADC_Start(&g_AdcHandle);
 	
@@ -251,7 +283,17 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 		if (strcmp(*page, currentPage) == 0)
 		{
 			app_clockTicToc(clock);
-			app_updateWaterLevel(&waterBargraph);
+			
+			if (strcmp(*page, "Home") == 0)
+			{
+				app_homePageSpecific();
+			} else if (strcmp(*page, "Day") == 0){
+			} else if (strcmp(*page, "Night") == 0){
+			} else if (strcmp(*page, "Play") == 0){
+			} else if (strcmp(*page, "Manual") == 0){
+			} else {
+			}
+			
 			Touch_GetState(&tscState);
 			if (tscState.pressed)
 			{
@@ -265,18 +307,8 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 							*page = buttons[i]->label;
 						} 
 						else {
-							if (buttons[i]->funtionality->state == 0)
-							{
-								//HAL_GPIO_WritePin(GPIOC, pins[buttons[i]->funtionality->pin]->Pin, GPIO_PIN_SET);
-								app_openDoor();
-								buttons[i]->funtionality->state = 1;
-								//wait(50000000);
-							} else {
-								//HAL_GPIO_WritePin(GPIOC, pins[buttons[i]->funtionality->pin]->Pin, GPIO_PIN_RESET);
-								app_closeDoor();
-								buttons[i]->funtionality->state = 0;
-								//wait(50000000);
-							}
+							app_handleSensor(buttons[i], pins[buttons[i]->funtionality->pin]->Pin);
+							wait(50000000);
 						}
 					}
 				}

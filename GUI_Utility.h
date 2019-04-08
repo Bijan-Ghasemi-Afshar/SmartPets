@@ -9,6 +9,9 @@ typedef struct
 	unsigned char pin;
 	
 	unsigned char state;
+	
+	unsigned char *type;
+	
 }Functionality;
 /**
 * This struct contains properties related to a button ( concept level button )
@@ -113,6 +116,12 @@ void app_clockTicToc(Clock *clock);
 
 // User input Handler
 void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock);
+
+// Page specific logic
+void app_homePageSpecific(void);
+
+// Handle sensor type
+void app_handleSensor(Button *button,  short pin);
 
 // Wait
 void wait(int delay);

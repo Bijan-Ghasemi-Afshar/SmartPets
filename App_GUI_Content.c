@@ -58,9 +58,9 @@ Button manButton = {BUTTON_MANUAL_POS_X, BUTTON_MANUAL_POS_Y, BUTTON_MANUAL_WIDT
 Button *homeButtons[4] = {&dayButton, &nightButton, &playButton, &manButton};
 
 // ====================== Manual Buttons ======================
-Functionality doorButtonFunc = {BUTTON_DOOR_PIN, BUTTON_DOOR_STATE};
+Functionality doorButtonFunc = {BUTTON_DOOR_PIN, BUTTON_DOOR_STATE, "pwm"};
 Button doorButton = {BUTTON_DOOR_POS_X, BUTTON_DOOR_POS_Y, BUTTON_DOOR_WIDTH, BUTTON_DOOR_HEIGHT, BUTTON_DOOR_LABEL, BUTTON_DOOR_NAVIGATION, &doorButtonFunc};
-Functionality lightsButtonFunc = {BUTTON_LIGHTS_PIN, BUTTON_LIGHTS_STATE};
+Functionality lightsButtonFunc = {BUTTON_LIGHTS_PIN, BUTTON_LIGHTS_STATE, "digital"};
 Button lightsButton = {BUTTON_LIGHTS_POS_X, BUTTON_LIGHTS_POS_Y, BUTTON_LIGHTS_WIDTH, BUTTON_LIGHTS_HEIGHT, BUTTON_LIGHTS_LABEL, BUTTON_LIGHTS_NAVIGATION, &lightsButtonFunc};
 Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
 Button *manualButtons[3] = {&doorButton, &lightsButton, &homeButton};
