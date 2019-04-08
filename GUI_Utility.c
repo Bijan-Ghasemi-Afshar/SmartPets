@@ -67,6 +67,44 @@ void wait(int delay)
 	}
 }
 	
+// Buzz
+void buzz(void)
+{
+	GPIO_InitTypeDef pinD0 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+	HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_SET);
+	wait(40000000);
+	HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_RESET);
+}
+
+// Check program time
+Program dayProgram = { 11, 21, 0 };
+Program nightProgram = { 11, 22, 0 };
+void app_checkProgram(Clock *clk)
+{
+	
+	
+	// If it's day program
+	if (dayProgram.hour <= clk->hour && dayProgram.minute <= clk->minute && nightProgram.hour >= clk->hour && nightProgram.minute > clk->minute)
+	{
+		if (dayProgram.programRunning == 0){
+			dayProgram.programRunning = 1;
+			nightProgram.programRunning = 0;
+			GLCD_DrawString (50, 120, "Day Program");
+			buzz();
+		} else {}
+	} else if (nightProgram.hour <= clk->hour && nightProgram.minute <= clk->minute){
+		if (nightProgram.programRunning == 0){
+			dayProgram.programRunning = 0;
+			nightProgram.programRunning = 1;
+			GLCD_DrawString (50, 120, "Night Program");
+			buzz();
+		} else {}
+	}
+	else {
+		//GLCD_DrawString (50, 120, "FUUCK");
+	}
+}
+
 // Open Door
 void app_openDoor(void)
 {
@@ -254,7 +292,8 @@ void app_handleSensor(Button *button, short pin)
 			app_openDoor();
 			button->funtionality->state = 1;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
-			HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_SET);
+			//HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_SET);
+			buzz();
 			button->funtionality->state = 1;
 		} else {}
 	} else {
@@ -263,7 +302,8 @@ void app_handleSensor(Button *button, short pin)
 			app_closeDoor();
 			button->funtionality->state = 0;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
-			HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_RESET);
+			//HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_RESET);
+			buzz();
 			button->funtionality->state = 0;
 		} else {}
 	}
@@ -278,11 +318,13 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 	clock->elapsed_t = clock->second*100+clock->minute*60*100+clock->hour*60*60*100;
 	HAL_ADC_Start(&g_AdcHandle);
 	
+	
 	while(1)
 	{
 		if (strcmp(*page, currentPage) == 0)
 		{
 			app_clockTicToc(clock);
+			app_checkProgram(clock);
 			
 			if (strcmp(*page, "Home") == 0)
 			{

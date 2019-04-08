@@ -90,10 +90,31 @@ typedef struct
 }Bargraph;
 
 
+/**
+* Program struct
+*/
+typedef struct
+{
+	unsigned short hour;
+	
+	unsigned short minute;
+	
+	unsigned char programRunning;
+	
+	GPIO_InitTypeDef **pin;
+	
+}Program;
+
 // Draws a button with a label on top of it
 void app_drawButton(Button *btn);
 
+// Check program time
+void app_checkProgram(Clock *clk);
 
+// Buzz
+void buzz(void);
+
+// Configure Analog to Digital Converter
 void ConfigureADC(void);
 
 // Draws a clock
