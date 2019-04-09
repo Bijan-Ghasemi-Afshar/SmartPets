@@ -77,25 +77,23 @@ void buzz(void)
 }
 
 // Check program time
-Program dayProgram = { 11, 21, 0 };
-Program nightProgram = { 11, 22, 0 };
-void app_checkProgram(Clock *clk)
+void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *clk)
 {
 	
 	
 	// If it's day program
-	if (dayProgram.hour <= clk->hour && dayProgram.minute <= clk->minute && nightProgram.hour >= clk->hour && nightProgram.minute > clk->minute)
+	if (dayProgram->hour <= clk->hour && dayProgram->minute <= clk->minute && nightProgram->hour >= clk->hour && nightProgram->minute > clk->minute)
 	{
-		if (dayProgram.programRunning == 0){
-			dayProgram.programRunning = 1;
-			nightProgram.programRunning = 0;
+		if (dayProgram->programRunning == 0){
+			dayProgram->programRunning = 1;
+			nightProgram->programRunning = 0;
 			GLCD_DrawString (50, 120, "Day Program");
 			buzz();
 		} else {}
-	} else if (nightProgram.hour <= clk->hour && nightProgram.minute <= clk->minute){
-		if (nightProgram.programRunning == 0){
-			dayProgram.programRunning = 0;
-			nightProgram.programRunning = 1;
+	} else if (nightProgram->hour <= clk->hour && nightProgram->minute <= clk->minute){
+		if (nightProgram->programRunning == 0){
+			dayProgram->programRunning = 0;
+			nightProgram->programRunning = 1;
 			GLCD_DrawString (50, 120, "Night Program");
 			buzz();
 		} else {}
@@ -170,39 +168,44 @@ void app_drawProgramClock(Clock *clk)
 }
 
 // Draw Program time edit
-void app_drawProgramTimeEdit(short xPos, short yPos, Clock *clock)
+void app_drawProgramTimeEdit(Button *editIncHour, Button *editDecHour, Button *editIncMin, Button *editDecMin, Clock *clock)
 {
 	char buffer[128];
+//	// ====================== Edit Program Buttons ======================
+//	Button editIncHour = {(GLCD_SIZE_X/4 + 60), 140, 40, 40};
+//	Button editDecHour = {(GLCD_SIZE_X/4 + 120), 140, 40, 40};
+//	Button editIncMin = {(GLCD_SIZE_X/4 + 250), 140, 40, 40};
+//	Button editDecMin = {(GLCD_SIZE_X/4 + 300), 140, 40, 40};
 	
 	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 	sprintf(buffer, "%d", clock->hour);
-	GLCD_DrawString (xPos, yPos, "   ");
-	GLCD_DrawString (xPos, yPos, buffer);
-	GLCD_DrawString (xPos + 40, yPos, "H");
+	GLCD_DrawString (editIncHour->posX - 50, editIncHour->posY, "   ");
+	GLCD_DrawString (editIncHour->posX - 50, editIncHour->posY, buffer);
+	GLCD_DrawString (editIncHour->posX - 18, editIncHour->posY, "H");
 	
 	GLCD_SetBackgroundColor (GLCD_COLOR_BLUE);
-	GLCD_DrawBargraph(xPos + 70,yPos,40,40, 0);
-	GLCD_DrawString (xPos + 80, yPos, "+");
+	GLCD_DrawBargraph(editIncHour->posX,editIncHour->posY,editIncHour->height,editIncHour->width, 0);
+	GLCD_DrawString (editIncHour->posX + 10, editIncHour->posY, "+");
 	
 	GLCD_SetBackgroundColor (GLCD_COLOR_RED);
-	GLCD_DrawBargraph(xPos + 120,yPos,40,40, 0);
-	GLCD_DrawString (xPos + 130, yPos, "-");
+	GLCD_DrawBargraph(editDecHour->posX,editDecHour->posY,editDecHour->height,editDecHour->width, 0);
+	GLCD_DrawString (editDecHour->posX + 10, editDecHour->posY, "-");
 	
 	
 	
 	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 	sprintf(buffer, "%d", clock->minute);
-	GLCD_DrawString (xPos + 200, yPos, "   ");
-	GLCD_DrawString (xPos + 200, yPos, buffer);
-	GLCD_DrawString (xPos + 220, yPos, "M");
+	GLCD_DrawString (editIncMin->posX - 50, editIncMin->posY, "   ");
+	GLCD_DrawString (editIncMin->posX - 50, editIncMin->posY, buffer);
+	GLCD_DrawString (editIncMin->posX - 20, editIncMin->posY, "M");
 	
 	GLCD_SetBackgroundColor (GLCD_COLOR_BLUE);
-	GLCD_DrawBargraph(xPos + 250,yPos,40,40, 0);
-	GLCD_DrawString (xPos + 260, yPos, "+");
+	GLCD_DrawBargraph(editIncMin->posX,editIncMin->posY,editIncMin->height,editIncMin->width, 0);
+	GLCD_DrawString (editIncMin->posX + 10, editIncMin->posY, "+");
 	
 	GLCD_SetBackgroundColor (GLCD_COLOR_RED);
-	GLCD_DrawBargraph(xPos + 300,yPos,40,40, 0);
-	GLCD_DrawString (xPos + 310, yPos, "-");
+	GLCD_DrawBargraph(editDecMin->posX,editDecMin->posY,editDecMin->height,editDecMin->width, 0);
+	GLCD_DrawString (editDecMin->posX + 10, editDecMin->posY, "-");
 	
 }
 
@@ -242,6 +245,12 @@ void app_clockTicToc(Clock *clock)
 			app_drawClock(clock);
 			clock->elapsed_t = (clock->elapsed_t+1) % DAY;
 		}
+}
+
+// Edit Program Time
+void app_editProgramTime()
+{
+	
 }
 
 // Update water level
@@ -292,8 +301,8 @@ void app_handleSensor(Button *button, short pin)
 			app_openDoor();
 			button->funtionality->state = 1;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
-			//HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_SET);
-			buzz();
+			HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_SET);
+			//buzz();
 			button->funtionality->state = 1;
 		} else {}
 	} else {
@@ -302,15 +311,15 @@ void app_handleSensor(Button *button, short pin)
 			app_closeDoor();
 			button->funtionality->state = 0;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
-			//HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_RESET);
-			buzz();
+			HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_RESET);
+			//buzz();
 			button->funtionality->state = 0;
 		} else {}
 	}
 }
 
 // User input handler
-void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock)
+void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock, Clock **programs)
 {
 	unsigned short i = 0;
 	char *currentPage = *page;
@@ -324,7 +333,7 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 		if (strcmp(*page, currentPage) == 0)
 		{
 			app_clockTicToc(clock);
-			app_checkProgram(clock);
+			app_checkProgram(programs[0], programs[1], clock);
 			
 			if (strcmp(*page, "Home") == 0)
 			{

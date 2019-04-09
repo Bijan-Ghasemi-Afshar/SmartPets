@@ -47,8 +47,10 @@ ScreenLabel editLabel = {20, 140, "Edit"};
 
 // ====================== Clock ======================
 Clock clock = {CLOCK_POS_X, CLOCK_POS_Y, CLOCK_HOUR, CLOCK_MIN, CLOCK_SEC};
-Clock dayProgramClock = {DAY_PROGRAM_CLOCK_POS_X, DAY_PROGRAM_CLOCK_POS_Y, DAY_PROGRAM_CLOCK_HOUR, DAY_PROGRAM_CLOCK_MIN};
-Clock nightProgramClock = {NIGHT_PROGRAM_CLOCK_POS_X, NIGHT_PROGRAM_CLOCK_POS_Y, NIGHT_PROGRAM_CLOCK_HOUR, NIGHT_PROGRAM_CLOCK_MIN};
+Clock dayProgramClock = {DAY_PROGRAM_CLOCK_POS_X, DAY_PROGRAM_CLOCK_POS_Y, DAY_PROGRAM_CLOCK_HOUR, DAY_PROGRAM_CLOCK_MIN, 0, 0};
+Clock nightProgramClock = {NIGHT_PROGRAM_CLOCK_POS_X, NIGHT_PROGRAM_CLOCK_POS_Y, NIGHT_PROGRAM_CLOCK_HOUR, NIGHT_PROGRAM_CLOCK_MIN, 0, 0};
+Clock playProgramClock = {NIGHT_PROGRAM_CLOCK_POS_X, NIGHT_PROGRAM_CLOCK_POS_Y, 11, 23, 0, 0};
+Clock *programs[3] = {&dayProgramClock, &nightProgramClock, &playProgramClock};
 
 // ====================== Home Buttons ======================
 Button dayButton = {GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Day", 1};
@@ -66,7 +68,13 @@ Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BU
 Button *manualButtons[3] = {&doorButton, &lightsButton, &homeButton};
 
 // ====================== Day Buttons ======================
+// ====================== Edit Program Buttons ======================
+Button editIncHour = {(GLCD_SIZE_X/4 + 60), 140, 40, 40};
+Button editDecHour = {(GLCD_SIZE_X/4 + 120), 140, 40, 40};
+Button editIncMin = {(GLCD_SIZE_X/4 + 250), 140, 40, 40};
+Button editDecMin = {(GLCD_SIZE_X/4 + 300), 140, 40, 40};
 Button *dayButtons[1] = {&homeButton};
+
 
 // ====================== Night Buttons ======================
 Button *nightButtons[1] = {&homeButton};
@@ -77,6 +85,7 @@ Button *playButtons[1] = {&homeButton};
 // ====================== Bargraph ======================
 Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, WATER_BARGRAPH_LABEL };
 Bargraph foodBargraph = { FOOD_BARGRAPH_POS_X, FOOD_BARGRAPH_POS_Y, FOOD_BARGRAPH_WIDTH, FOOD_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, FOOD_BARGRAPH_LABEL };
+
 
 
 // Initialize Pins
@@ -203,7 +212,7 @@ void drawHomePage(char **page)
 	// Draw Food Level
 	app_drawBargraph(&foodBargraph);
 	
-	app_userInputHandle(page, 4, homeButtons, CN4Pins, &clock);
+	app_userInputHandle(page, 4, homeButtons, CN4Pins, &clock, programs);
 }
 
 // Draws the manual page
@@ -222,7 +231,7 @@ void drawManualPage(char **page)
 	// Draw Home Button
 	app_drawButton(&homeButton);
 	
-	app_userInputHandle(page, 4, manualButtons, CN4Pins, &clock);
+	app_userInputHandle(page, 3, manualButtons, CN4Pins, &clock, programs);
 	
 }
 
@@ -238,16 +247,16 @@ void drawDayProgramPage(char **page)
 	// Draw Edit Label
 	app_drawScreenLabel(&editLabel);
 	
+	// Draw Home Button
+	app_drawButton(&homeButton);
+	
 	// Draw Program Clock
 	app_drawProgramClock(&dayProgramClock);
 	
 	// Draw Edit Buttons
-	app_drawProgramTimeEdit((GLCD_SIZE_X/4 + 20), 140, &dayProgramClock);
+	app_drawProgramTimeEdit(&editIncHour, &editDecHour, &editIncMin, &editDecMin ,&dayProgramClock);
 	
-	// Draw Home Button
-	app_drawButton(&homeButton);
-	
-	app_userInputHandle(page, 1, dayButtons, CN4Pins, &clock);
+	app_userInputHandle(page, 1, dayButtons, CN4Pins, &clock, programs);
 }
 
 // Draws the night program page
@@ -262,16 +271,16 @@ void drawNightProgramPage(char **page)
 	// Draw Edit Label
 	app_drawScreenLabel(&editLabel);
 	
+	// Draw Home Button
+	app_drawButton(&homeButton);
+	
 	// Draw Program Clock
 	app_drawProgramClock(&nightProgramClock);
 	
 	// Draw Edit Buttons
-	app_drawProgramTimeEdit((GLCD_SIZE_X/4 + 20), 140, &nightProgramClock);
+	app_drawProgramTimeEdit(&editIncHour, &editDecHour, &editIncMin, &editDecMin ,&nightProgramClock);
 	
-	// Draw Home Button
-	app_drawButton(&homeButton);
-	
-	app_userInputHandle(page, 1, nightButtons, CN4Pins, &clock);
+	app_userInputHandle(page, 1, nightButtons, CN4Pins, &clock, programs);
 }
 
 // Draws the night program page
@@ -280,12 +289,21 @@ void drawPlayProgramPage(char **page)
 	// Draw Screen Label
 	app_drawScreenLabel(&playLabel);
 	
-	// Draw Clock
-	app_drawClock(&clock);
+	// Draw Program time Label
+	app_drawScreenLabel(&startLabel);
+	
+	// Draw Edit Label
+	app_drawScreenLabel(&editLabel);
 	
 	// Draw Home Button
 	app_drawButton(&homeButton);
 	
-	app_userInputHandle(page, 1, playButtons, CN4Pins, &clock);
+	// Draw Program Clock
+	app_drawProgramClock(&playProgramClock);
+	
+	// Draw Edit Buttons
+	app_drawProgramTimeEdit(&editIncHour, &editDecHour, &editIncMin, &editDecMin ,&playProgramClock);
+	
+	app_userInputHandle(page, 1, playButtons, CN4Pins, &clock, programs);
 }
 

@@ -49,6 +49,8 @@ typedef struct
 	
 	unsigned short second;
 	
+	unsigned char programRunning;
+	
 	unsigned short tic;
 	
 	unsigned short toc;
@@ -109,7 +111,7 @@ typedef struct
 void app_drawButton(Button *btn);
 
 // Check program time
-void app_checkProgram(Clock *clk);
+void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *clk);
 
 // Buzz
 void buzz(void);
@@ -124,7 +126,7 @@ void app_drawClock(Clock *clk);
 void app_drawProgramClock(Clock *clk);
 
 // Draw program time edit
-void app_drawProgramTimeEdit(short xPos, short yPos, Clock *clock);
+void app_drawProgramTimeEdit(Button *hourInc, Button *hourDec, Button *minInc, Button *minDec, Clock *clock);
 
 // Draws the screen label
 void app_drawScreenLabel(ScreenLabel *scrLbl);
@@ -136,7 +138,7 @@ void app_drawBargraph(Bargraph *bargraph);
 void app_clockTicToc(Clock *clock);
 
 // User input Handler
-void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock);
+void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock, Clock **programs);
 
 // Page specific logic
 void app_homePageSpecific(void);
@@ -152,6 +154,9 @@ void app_openDoor(void);
 
 // Close Door
 void app_closeDoor(void);
+
+// Edit program time
+void app_editProgramTime();
 
 // Update water level
 void app_updateWaterLevel(Bargraph *bargraph);

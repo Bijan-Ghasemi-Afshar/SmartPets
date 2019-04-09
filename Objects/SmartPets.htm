@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\SmartPets.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SmartPets.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Apr 08 14:26:10 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue Apr 09 13:11:39 2019
 <BR><P>
-<H3>Maximum Stack Usage =        432 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        440 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; drawPlayProgramPage &rArr; app_userInputHandle &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 <P>
@@ -302,7 +302,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9d]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 432 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 440 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; drawPlayProgramPage &rArr; app_userInputHandle &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1052,6 +1052,7 @@ Global Symbols
 <P><STRONG><a name="[ca]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f7xx_hal_gpio.o(i.HAL_GPIO_WritePin))
 <BR><BR>[Called By]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buzz
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_openDoor
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handleSensor
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_closeDoor
 <LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializePins
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_Initialize
@@ -1204,8 +1205,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
@@ -1330,8 +1331,8 @@ Global Symbols
 
 <P><STRONG><a name="[8e]"></a>_mutex_release</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, rtx_conf_cm.o(i._mutex_release), UNUSED, KEPT)
 
-<P><STRONG><a name="[ff]"></a>app_checkProgram</STRONG> (Thumb, 132 bytes, Stack size 8 bytes, gui_utility.o(i.app_checkProgram))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = app_checkProgram &rArr; GLCD_DrawString &rArr; GLCD_DrawChar
+<P><STRONG><a name="[ff]"></a>app_checkProgram</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, gui_utility.o(i.app_checkProgram))
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = app_checkProgram &rArr; GLCD_DrawString &rArr; GLCD_DrawChar
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_DrawString
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buzz
@@ -1395,7 +1396,6 @@ Global Symbols
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_clockTicToc
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawPlayProgramPage
 </UL>
 
 <P><STRONG><a name="[10b]"></a>app_drawProgramClock</STRONG> (Thumb, 56 bytes, Stack size 136 bytes, gui_utility.o(i.app_drawProgramClock))
@@ -1407,12 +1407,13 @@ Global Symbols
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_SetBackgroundColor
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawNightProgramPage
+<BR>[Called By]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawPlayProgramPage
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawNightProgramPage
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawDayProgramPage
 </UL>
 
-<P><STRONG><a name="[10c]"></a>app_drawProgramTimeEdit</STRONG> (Thumb, 266 bytes, Stack size 152 bytes, gui_utility.o(i.app_drawProgramTimeEdit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 272 + Unknown Stack Size
+<P><STRONG><a name="[10c]"></a>app_drawProgramTimeEdit</STRONG> (Thumb, 296 bytes, Stack size 160 bytes, gui_utility.o(i.app_drawProgramTimeEdit))
+<BR><BR>[Stack]<UL><LI>Max Depth = 280 + Unknown Stack Size
 <LI>Call Chain = app_drawProgramTimeEdit &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_DrawString
@@ -1420,7 +1421,8 @@ Global Symbols
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_SetBackgroundColor
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawNightProgramPage
+<BR>[Called By]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawPlayProgramPage
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawNightProgramPage
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawDayProgramPage
 </UL>
 
@@ -1437,10 +1439,10 @@ Global Symbols
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawDayProgramPage
 </UL>
 
-<P><STRONG><a name="[10e]"></a>app_handleSensor</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, gui_utility.o(i.app_handleSensor))
+<P><STRONG><a name="[10e]"></a>app_handleSensor</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, gui_utility.o(i.app_handleSensor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = app_handleSensor &rArr; app_openDoor &rArr; __aeabi_memcpy4
 </UL>
-<BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buzz
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_openDoor
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_closeDoor
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
@@ -1475,8 +1477,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_homePageSpecific
 </UL>
 
-<P><STRONG><a name="[114]"></a>app_userInputHandle</STRONG> (Thumb, 318 bytes, Stack size 40 bytes, gui_utility.o(i.app_userInputHandle))
-<BR><BR>[Stack]<UL><LI>Max Depth = 408 + Unknown Stack Size
+<P><STRONG><a name="[114]"></a>app_userInputHandle</STRONG> (Thumb, 328 bytes, Stack size 48 bytes, gui_utility.o(i.app_userInputHandle))
+<BR><BR>[Stack]<UL><LI>Max Depth = 416 + Unknown Stack Size
 <LI>Call Chain = app_userInputHandle &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Touch_GetState
@@ -1502,8 +1504,7 @@ Global Symbols
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handleSensor
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_checkProgram
+<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_checkProgram
 </UL>
 
 <P><STRONG><a name="[141]"></a>dbg_init</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, hal_cm.o(i.dbg_init))
@@ -1519,8 +1520,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_switch_req
 </UL>
 
-<P><STRONG><a name="[116]"></a>drawDayProgramPage</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, app_gui_content.o(i.drawDayProgramPage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 424 + Unknown Stack Size
+<P><STRONG><a name="[116]"></a>drawDayProgramPage</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, app_gui_content.o(i.drawDayProgramPage))
+<BR><BR>[Stack]<UL><LI>Max Depth = 432 + Unknown Stack Size
 <LI>Call Chain = drawDayProgramPage &rArr; app_userInputHandle &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_userInputHandle
@@ -1532,8 +1533,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[117]"></a>drawHomePage</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, app_gui_content.o(i.drawHomePage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 424 + Unknown Stack Size
+<P><STRONG><a name="[117]"></a>drawHomePage</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, app_gui_content.o(i.drawHomePage))
+<BR><BR>[Stack]<UL><LI>Max Depth = 432 + Unknown Stack Size
 <LI>Call Chain = drawHomePage &rArr; app_userInputHandle &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_userInputHandle
@@ -1544,8 +1545,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[118]"></a>drawManualPage</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, app_gui_content.o(i.drawManualPage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 424 + Unknown Stack Size
+<P><STRONG><a name="[118]"></a>drawManualPage</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, app_gui_content.o(i.drawManualPage))
+<BR><BR>[Stack]<UL><LI>Max Depth = 432 + Unknown Stack Size
 <LI>Call Chain = drawManualPage &rArr; app_userInputHandle &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_userInputHandle
@@ -1555,8 +1556,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[119]"></a>drawNightProgramPage</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, app_gui_content.o(i.drawNightProgramPage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 424 + Unknown Stack Size
+<P><STRONG><a name="[119]"></a>drawNightProgramPage</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, app_gui_content.o(i.drawNightProgramPage))
+<BR><BR>[Stack]<UL><LI>Max Depth = 432 + Unknown Stack Size
 <LI>Call Chain = drawNightProgramPage &rArr; app_userInputHandle &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_userInputHandle
@@ -1568,13 +1569,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[11a]"></a>drawPlayProgramPage</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, app_gui_content.o(i.drawPlayProgramPage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 424 + Unknown Stack Size
+<P><STRONG><a name="[11a]"></a>drawPlayProgramPage</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, app_gui_content.o(i.drawPlayProgramPage))
+<BR><BR>[Stack]<UL><LI>Max Depth = 432 + Unknown Stack Size
 <LI>Call Chain = drawPlayProgramPage &rArr; app_userInputHandle &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_userInputHandle
 <LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_drawScreenLabel
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_drawClock
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_drawProgramTimeEdit
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_drawProgramClock
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_drawButton
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1704,7 +1706,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8a]"></a>main</STRONG> (Thumb, 236 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 432 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 440 + Unknown Stack Size
 <LI>Call Chain = main &rArr; drawPlayProgramPage &rArr; app_userInputHandle &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializePins
