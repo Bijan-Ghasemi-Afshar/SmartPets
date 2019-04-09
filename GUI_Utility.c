@@ -292,7 +292,7 @@ void app_homePageSpecific()
 }
 
 // Handle sensor type
-void app_handleSensor(Button *button, short pin)
+void app_handleSensor(Button *button, short pin, Clock **programs)
 {
 	if (button->funtionality->state == 0)
 	{
@@ -304,6 +304,25 @@ void app_handleSensor(Button *button, short pin)
 			HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_SET);
 			//buzz();
 			button->funtionality->state = 1;
+		} else if (strcmp(button->funtionality->type, "edit") == 0){		// Edit buttons state is always 0
+			
+			if (strcmp(button->label, "+h") == 0)
+			{
+				
+				programs[0]->hour++;
+			} else if (strcmp(button->label, "-h") == 0)
+			{
+				programs[0]->hour--;
+			} else if (strcmp(button->label, "+m") == 0)
+			{
+				programs[0]->minute++;
+			} else if (strcmp(button->label, "-m") == 0)
+			{
+				GLCD_DrawString (30, 120, "AAHH");
+				programs[0]->minute--;
+			} else {}
+			//GLCD_DrawString (30, 120, "SHIT");
+				
 		} else {}
 	} else {
 		if (strcmp(button->funtionality->type, "pwm") == 0)
@@ -358,7 +377,7 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 							*page = buttons[i]->label;
 						} 
 						else {
-							app_handleSensor(buttons[i], pins[buttons[i]->funtionality->pin]->Pin);
+							app_handleSensor(buttons[i], pins[buttons[i]->funtionality->pin]->Pin, programs);
 							wait(50000000);
 						}
 					}

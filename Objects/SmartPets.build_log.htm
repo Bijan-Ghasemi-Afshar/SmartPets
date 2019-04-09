@@ -27,15 +27,29 @@ Project File Date:  04/04/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling App_GUI_Content.c...
+compiling GUI_Utility.c...
 GUI_Utility.h(159): warning:  #1295-D: Deprecated declaration app_editProgramTime - give arg types
   void app_editProgramTime();
 GUI_Utility.h(162): warning:  #1-D: last line of file ends without a newline
   void app_updateWaterLevel(Bargraph *bargraph);
-App_GUI_Content.c: 2 warnings, 0 errors
+GUI_Utility.c(22): warning:  #550-D: variable "adcChannel" was set but never used
+  	ADC_ChannelConfTypeDef adcChannel;
+GUI_Utility.c(237): warning:  #177-D: variable "buffer" was declared but never referenced
+  	char buffer[128];
+GUI_Utility.c(260): warning:  #177-D: variable "buffer" was declared but never referenced
+  	char buffer[128];
+GUI_Utility.c(299): warning:  #223-D: function "strcmp" declared implicitly
+  		if (strcmp(button->funtionality->type, "pwm") == 0)
+GUI_Utility.c(328): warning:  #223-D: function "strcmp" declared implicitly
+  		if (strcmp(button->funtionality->type, "pwm") == 0)
+GUI_Utility.c(352): warning:  #223-D: function "strcmp" declared implicitly
+  		if (strcmp(*page, currentPage) == 0)
+GUI_Utility.c(391): warning:  #1-D: last line of file ends without a newline
+  }
+GUI_Utility.c: 9 warnings, 0 errors
 linking...
-Program Size: Code=23600 RO-data=7100 RW-data=792 ZI-data=266592  
-".\Objects\SmartPets.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=23752 RO-data=7124 RW-data=808 ZI-data=266592  
+".\Objects\SmartPets.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 

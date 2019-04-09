@@ -67,20 +67,13 @@ Button lightsButton = {BUTTON_LIGHTS_POS_X, BUTTON_LIGHTS_POS_Y, BUTTON_LIGHTS_W
 Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
 Button *manualButtons[3] = {&doorButton, &lightsButton, &homeButton};
 
-// ====================== Day Buttons ======================
 // ====================== Edit Program Buttons ======================
-Button editIncHour = {(GLCD_SIZE_X/4 + 60), 140, 40, 40};
-Button editDecHour = {(GLCD_SIZE_X/4 + 120), 140, 40, 40};
-Button editIncMin = {(GLCD_SIZE_X/4 + 250), 140, 40, 40};
-Button editDecMin = {(GLCD_SIZE_X/4 + 300), 140, 40, 40};
-Button *dayButtons[1] = {&homeButton};
-
-
-// ====================== Night Buttons ======================
-Button *nightButtons[1] = {&homeButton};
-
-// ====================== Play Buttons ======================
-Button *playButtons[1] = {&homeButton};
+Functionality editFunctionality = {0, 0, "edit"};
+Button editIncHour = {(GLCD_SIZE_X/4 + 60), 140, 40, 40, "+h", 0, &editFunctionality};
+Button editDecHour = {(GLCD_SIZE_X/4 + 120), 140, 40, 40, "-h", 0, &editFunctionality};
+Button editIncMin = {(GLCD_SIZE_X/4 + 250), 140, 40, 40, "+m", 0, &editFunctionality};
+Button editDecMin = {(GLCD_SIZE_X/4 + 300), 140, 40, 40, "-m", 0, &editFunctionality};
+Button *editButtons[5] = {&homeButton, &editIncHour, &editDecHour, &editIncMin, &editDecMin};
 
 // ====================== Bargraph ======================
 Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, WATER_BARGRAPH_LABEL };
@@ -256,7 +249,7 @@ void drawDayProgramPage(char **page)
 	// Draw Edit Buttons
 	app_drawProgramTimeEdit(&editIncHour, &editDecHour, &editIncMin, &editDecMin ,&dayProgramClock);
 	
-	app_userInputHandle(page, 1, dayButtons, CN4Pins, &clock, programs);
+	app_userInputHandle(page, 5, editButtons, CN4Pins, &clock, programs);
 }
 
 // Draws the night program page
@@ -280,7 +273,7 @@ void drawNightProgramPage(char **page)
 	// Draw Edit Buttons
 	app_drawProgramTimeEdit(&editIncHour, &editDecHour, &editIncMin, &editDecMin ,&nightProgramClock);
 	
-	app_userInputHandle(page, 1, nightButtons, CN4Pins, &clock, programs);
+	app_userInputHandle(page, 5, editButtons, CN4Pins, &clock, programs);
 }
 
 // Draws the night program page
@@ -304,6 +297,6 @@ void drawPlayProgramPage(char **page)
 	// Draw Edit Buttons
 	app_drawProgramTimeEdit(&editIncHour, &editDecHour, &editIncMin, &editDecMin ,&playProgramClock);
 	
-	app_userInputHandle(page, 1, playButtons, CN4Pins, &clock, programs);
+	app_userInputHandle(page, 5, editButtons, CN4Pins, &clock, programs);
 }
 

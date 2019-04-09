@@ -144,7 +144,7 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 void app_homePageSpecific(void);
 
 // Handle sensor type
-void app_handleSensor(Button *button,  short pin);
+void app_handleSensor(Button *button,  short pin, Clock **programs);
 
 // Wait
 void wait(int delay);
