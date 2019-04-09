@@ -292,7 +292,7 @@ void app_homePageSpecific()
 }
 
 // Handle sensor type
-void app_handleSensor(Button *button, short pin, Clock **programs)
+void app_handleSensor(Button *button, short pin, Clock *program)
 {
 	if (button->funtionality->state == 0)
 	{
@@ -309,17 +309,17 @@ void app_handleSensor(Button *button, short pin, Clock **programs)
 			if (strcmp(button->label, "+h") == 0)
 			{
 				
-				programs[0]->hour++;
+				program->hour++;
 			} else if (strcmp(button->label, "-h") == 0)
 			{
-				programs[0]->hour--;
+				program->hour--;
 			} else if (strcmp(button->label, "+m") == 0)
 			{
-				programs[0]->minute++;
+				program->minute++;
 			} else if (strcmp(button->label, "-m") == 0)
 			{
 				GLCD_DrawString (30, 120, "AAHH");
-				programs[0]->minute--;
+				program->minute--;
 			} else {}
 			//GLCD_DrawString (30, 120, "SHIT");
 				
@@ -341,6 +341,7 @@ void app_handleSensor(Button *button, short pin, Clock **programs)
 void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock, Clock **programs)
 {
 	unsigned short i = 0;
+	Clock *program;
 	char *currentPage = *page;
 	TOUCH_STATE tscState;
 	clock->elapsed_t = clock->second*100+clock->minute*60*100+clock->hour*60*60*100;
@@ -358,8 +359,11 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 			{
 				app_homePageSpecific();
 			} else if (strcmp(*page, "Day") == 0){
+				program = programs[0];
 			} else if (strcmp(*page, "Night") == 0){
+				program = programs[1];
 			} else if (strcmp(*page, "Play") == 0){
+				program = programs[2];
 			} else if (strcmp(*page, "Manual") == 0){
 			} else {
 			}
@@ -377,7 +381,7 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 							*page = buttons[i]->label;
 						} 
 						else {
-							app_handleSensor(buttons[i], pins[buttons[i]->funtionality->pin]->Pin, programs);
+							app_handleSensor(buttons[i], pins[buttons[i]->funtionality->pin]->Pin, program);
 							wait(50000000);
 						}
 					}

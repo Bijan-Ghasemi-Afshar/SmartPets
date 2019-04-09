@@ -2169,10 +2169,10 @@ Image Symbol Table
     i.app_drawProgramTimeEdit                0x08003e80   Section        0  gui_utility.o(i.app_drawProgramTimeEdit)
     i.app_drawScreenLabel                    0x08003fc0   Section        0  gui_utility.o(i.app_drawScreenLabel)
     i.app_handleSensor                       0x08003fe0   Section        0  gui_utility.o(i.app_handleSensor)
-    i.app_homePageSpecific                   0x080040fc   Section        0  gui_utility.o(i.app_homePageSpecific)
-    i.app_openDoor                           0x08004114   Section        0  gui_utility.o(i.app_openDoor)
-    i.app_updateWaterLevel                   0x08004164   Section        0  gui_utility.o(i.app_updateWaterLevel)
-    i.app_userInputHandle                    0x080041cc   Section        0  gui_utility.o(i.app_userInputHandle)
+    i.app_homePageSpecific                   0x080040ec   Section        0  gui_utility.o(i.app_homePageSpecific)
+    i.app_openDoor                           0x08004104   Section        0  gui_utility.o(i.app_openDoor)
+    i.app_updateWaterLevel                   0x08004154   Section        0  gui_utility.o(i.app_updateWaterLevel)
+    i.app_userInputHandle                    0x080041bc   Section        0  gui_utility.o(i.app_userInputHandle)
     i.buzz                                   0x08004344   Section        0  gui_utility.o(i.buzz)
     i.dbg_init                               0x08004380   Section        0  hal_cm.o(i.dbg_init)
     i.dbg_task_notify                        0x080043b0   Section        0  hal_cm.o(i.dbg_task_notify)
@@ -2661,11 +2661,11 @@ Image Symbol Table
     app_drawProgramClock                     0x08003e31   Thumb Code    56  gui_utility.o(i.app_drawProgramClock)
     app_drawProgramTimeEdit                  0x08003e81   Thumb Code   296  gui_utility.o(i.app_drawProgramTimeEdit)
     app_drawScreenLabel                      0x08003fc1   Thumb Code    32  gui_utility.o(i.app_drawScreenLabel)
-    app_handleSensor                         0x08003fe1   Thumb Code   236  gui_utility.o(i.app_handleSensor)
-    app_homePageSpecific                     0x080040fd   Thumb Code    18  gui_utility.o(i.app_homePageSpecific)
-    app_openDoor                             0x08004115   Thumb Code    66  gui_utility.o(i.app_openDoor)
-    app_updateWaterLevel                     0x08004165   Thumb Code   100  gui_utility.o(i.app_updateWaterLevel)
-    app_userInputHandle                      0x080041cd   Thumb Code   330  gui_utility.o(i.app_userInputHandle)
+    app_handleSensor                         0x08003fe1   Thumb Code   220  gui_utility.o(i.app_handleSensor)
+    app_homePageSpecific                     0x080040ed   Thumb Code    18  gui_utility.o(i.app_homePageSpecific)
+    app_openDoor                             0x08004105   Thumb Code    66  gui_utility.o(i.app_openDoor)
+    app_updateWaterLevel                     0x08004155   Thumb Code   100  gui_utility.o(i.app_updateWaterLevel)
+    app_userInputHandle                      0x080041bd   Thumb Code   346  gui_utility.o(i.app_userInputHandle)
     buzz                                     0x08004345   Thumb Code    48  gui_utility.o(i.buzz)
     dbg_init                                 0x08004381   Thumb Code    34  hal_cm.o(i.dbg_init)
     dbg_task_notify                          0x080043b1   Thumb Code    32  hal_cm.o(i.dbg_task_notify)
@@ -3041,11 +3041,11 @@ Memory Map of the image
     0x08003e30   0x00000050   Code   RO          168    i.app_drawProgramClock  gui_utility.o
     0x08003e80   0x00000140   Code   RO          169    i.app_drawProgramTimeEdit  gui_utility.o
     0x08003fc0   0x00000020   Code   RO          170    i.app_drawScreenLabel  gui_utility.o
-    0x08003fe0   0x0000011c   Code   RO          172    i.app_handleSensor  gui_utility.o
-    0x080040fc   0x00000018   Code   RO          173    i.app_homePageSpecific  gui_utility.o
-    0x08004114   0x00000050   Code   RO          174    i.app_openDoor      gui_utility.o
-    0x08004164   0x00000068   Code   RO          175    i.app_updateWaterLevel  gui_utility.o
-    0x080041cc   0x00000178   Code   RO          176    i.app_userInputHandle  gui_utility.o
+    0x08003fe0   0x0000010c   Code   RO          172    i.app_handleSensor  gui_utility.o
+    0x080040ec   0x00000018   Code   RO          173    i.app_homePageSpecific  gui_utility.o
+    0x08004104   0x00000050   Code   RO          174    i.app_openDoor      gui_utility.o
+    0x08004154   0x00000068   Code   RO          175    i.app_updateWaterLevel  gui_utility.o
+    0x080041bc   0x00000188   Code   RO          176    i.app_userInputHandle  gui_utility.o
     0x08004344   0x0000003c   Code   RO          177    i.buzz              gui_utility.o
     0x08004380   0x00000030   Code   RO         4800    i.dbg_init          RTX_CM4.lib(hal_cm.o)
     0x080043b0   0x00000020   Code   RO         4801    i.dbg_task_notify   RTX_CM4.lib(hal_cm.o)
@@ -3225,7 +3225,7 @@ Image component sizes
        900         52          0         46          0      17895   ft5336.o
        984         98          0          8     261288       7998   glcd_746g_discovery.o
          0          0       6304          0          0        792   glcd_fonts.o
-      2170        296         82          0         72      13647   gui_utility.o
+      2170        296         82          0         72      13683   gui_utility.o
        420         48          0          0          0     821229   main.o
        126         26        104         20       3016       9339   rtx_conf_cm.o
         64         26        456          0       1536        868   startup_stm32f746xx.o
@@ -3247,7 +3247,7 @@ Image component sizes
         88          0          0          0          0       2100   touch_746g_discovery.o
 
     ----------------------------------------------------------------------
-     17198       1276       7124        768     266392     985768   Object Totals
+     17198       1276       7124        768     266392     985804   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         14          0          5          5          0          0   (incl. Padding)
 
@@ -3326,8 +3326,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     23752       1834       7124        808     266592    1046532   Grand Totals
-     23752       1834       7124        324     266592    1046532   ELF Image Totals (compressed)
+     23752       1834       7124        808     266592    1046568   Grand Totals
+     23752       1834       7124        324     266592    1046568   ELF Image Totals (compressed)
      23752       1834       7124        324          0          0   ROM Totals
 
 ==============================================================================

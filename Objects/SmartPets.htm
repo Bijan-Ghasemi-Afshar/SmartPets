@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\SmartPets.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SmartPets.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue Apr 09 14:41:23 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue Apr 09 14:59:14 2019
 <BR><P>
 <H3>Maximum Stack Usage =        440 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1440,7 +1440,7 @@ Global Symbols
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawDayProgramPage
 </UL>
 
-<P><STRONG><a name="[10e]"></a>app_handleSensor</STRONG> (Thumb, 236 bytes, Stack size 16 bytes, gui_utility.o(i.app_handleSensor))
+<P><STRONG><a name="[10e]"></a>app_handleSensor</STRONG> (Thumb, 220 bytes, Stack size 16 bytes, gui_utility.o(i.app_handleSensor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = app_handleSensor &rArr; GLCD_DrawString &rArr; GLCD_DrawChar
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1479,7 +1479,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_homePageSpecific
 </UL>
 
-<P><STRONG><a name="[114]"></a>app_userInputHandle</STRONG> (Thumb, 330 bytes, Stack size 48 bytes, gui_utility.o(i.app_userInputHandle))
+<P><STRONG><a name="[114]"></a>app_userInputHandle</STRONG> (Thumb, 346 bytes, Stack size 48 bytes, gui_utility.o(i.app_userInputHandle))
 <BR><BR>[Stack]<UL><LI>Max Depth = 416 + Unknown Stack Size
 <LI>Call Chain = app_userInputHandle &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
