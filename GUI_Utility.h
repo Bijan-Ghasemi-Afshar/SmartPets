@@ -8,6 +8,8 @@ typedef struct
 {
 	unsigned char pin;
 	
+	GPIO_TypeDef *base;
+	
 	unsigned char state;
 	
 	unsigned char *type;
@@ -109,6 +111,9 @@ typedef struct
 
 // Draws a button with a label on top of it
 void app_drawButton(Button *btn);
+
+// Miliseconds
+void milDelay(int dl);
 
 // Check program time
 void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *clk);

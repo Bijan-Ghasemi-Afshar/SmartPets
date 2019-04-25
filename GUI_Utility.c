@@ -16,6 +16,33 @@ extern GLCD_FONT GLCD_Font_16x24;
 
 ADC_HandleTypeDef g_AdcHandle;
 
+void milDelay(int dl)
+{
+	int osTime = 0;
+	int counter = 0;
+	int initalTime = 0;
+	char buffer[128];
+	while(1)
+	{
+		if(counter == 0)
+		{
+				initalTime = HAL_GetTick();
+		}
+//		sprintf(buffer, "%d", initalTime);
+//		GLCD_DrawString (20, 130, " 3");
+//		GLCD_DrawString (20, 130, buffer);
+		osTime = HAL_GetTick();
+		if(osTime >= initalTime + dl)
+		{
+//			sprintf(buffer, "%d", osTime);
+//			GLCD_DrawString (20, 150, " 3");
+//			GLCD_DrawString (20, 150, buffer);
+			break;
+		}
+		counter++;
+	}
+}
+	
 void ConfigureADC()
 {
 	GPIO_InitTypeDef gpioInit;
@@ -106,34 +133,34 @@ void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *clk)
 // Open Door
 void app_openDoor(void)
 {
-	GPIO_InitTypeDef pinD0 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
-	int counter =0;
-	while(counter<20)
+	GPIO_InitTypeDef pinD0 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+	//HAL_GPIO_Init(GPIOC, &pinD0);
+	int counter = 0;
+	GLCD_DrawString (30, 150, "Opening Door");
+	while(counter < 10)
 	{
-		
-
 		HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_SET);
-		wait(1000);
+		milDelay(2);
 		HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_RESET);
-		wait(1000000);
-		counter +=1;
+		milDelay(22);
+		counter++;
 	}
 }
 	
 // Close Door
 void app_closeDoor(void)
 {
-	GPIO_InitTypeDef pinD0 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
-	
+GPIO_InitTypeDef pinD0 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+	//HAL_GPIO_Init(GPIOC, &pinD0);
 	int counter = 0;
-	while(counter<20)
+	GLCD_DrawString (30, 150, "Opening Door");
+	while(counter < 10)
 	{
-	
 		HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_SET);
-		wait(1000000);
+		milDelay(1);
 		HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_RESET);
-		wait(1000);
-		counter +=1;
+		milDelay(22);
+		counter++;
 	}
 }
 	
@@ -301,7 +328,7 @@ void app_handleSensor(Button *button, short pin, Clock *program)
 			app_openDoor();
 			button->funtionality->state = 1;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
-			HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
 			//buzz();
 			button->funtionality->state = 1;
 		} else if (strcmp(button->funtionality->type, "edit") == 0){		// Edit buttons state is always 0
@@ -330,7 +357,7 @@ void app_handleSensor(Button *button, short pin, Clock *program)
 			app_closeDoor();
 			button->funtionality->state = 0;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
-			HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_RESET);
 			//buzz();
 			button->funtionality->state = 0;
 		} else {}
@@ -347,23 +374,28 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 	clock->elapsed_t = clock->second*100+clock->minute*60*100+clock->hour*60*60*100;
 	HAL_ADC_Start(&g_AdcHandle);
 	
+	if (strcmp(*page, "Day") == 0){
+		program = programs[0];
+	} else if (strcmp(*page, "Night") == 0){
+		program = programs[1];
+	} else if (strcmp(*page, "Play") == 0){
+		program = programs[2];
+	} else {}
+	
 	
 	while(1)
 	{
 		if (strcmp(*page, currentPage) == 0)
 		{
 			app_clockTicToc(clock);
-			app_checkProgram(programs[0], programs[1], clock);
+			//app_checkProgram(programs[0], programs[1], clock);
 			
 			if (strcmp(*page, "Home") == 0)
 			{
 				app_homePageSpecific();
 			} else if (strcmp(*page, "Day") == 0){
-				program = programs[0];
 			} else if (strcmp(*page, "Night") == 0){
-				program = programs[1];
 			} else if (strcmp(*page, "Play") == 0){
-				program = programs[2];
 			} else if (strcmp(*page, "Manual") == 0){
 			} else {
 			}
@@ -382,7 +414,7 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 						} 
 						else {
 							app_handleSensor(buttons[i], pins[buttons[i]->funtionality->pin]->Pin, program);
-							wait(50000000);
+							wait(10000000);
 						}
 					}
 				}
