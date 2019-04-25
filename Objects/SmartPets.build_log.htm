@@ -27,15 +27,39 @@ Project File Date:  04/04/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling App_GUI_Content.c...
+compiling GUI_Utility.c...
 GUI_Utility.h(164): warning:  #1295-D: Deprecated declaration app_editProgramTime - give arg types
   void app_editProgramTime();
-GUI_Utility.h(167): warning:  #1-D: last line of file ends without a newline
-  void app_updateWaterLevel(Bargraph *bargraph);
-App_GUI_Content.c: 2 warnings, 0 errors
+GUI_Utility.h(179): warning:  #1-D: last line of file ends without a newline
+  void app_updateTempreture();
+GUI_Utility.h(179): warning:  #1295-D: Deprecated declaration app_updateTempreture - give arg types
+  void app_updateTempreture();
+GUI_Utility.c(61): warning:  #177-D: variable "pinStatus" was declared but never referenced
+  	int pinStatus = 0;
+GUI_Utility.c(101): warning:  #550-D: variable "adcChannel" was set but never used
+  	ADC_ChannelConfTypeDef adcChannel;
+GUI_Utility.c(316): warning:  #177-D: variable "buffer" was declared but never referenced
+  	char buffer[128];
+GUI_Utility.c(339): warning:  #177-D: variable "buffer" was declared but never referenced
+  	char buffer[128];
+GUI_Utility.c(369): warning:  #550-D: variable "rhByte2" was set but never used
+  	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
+GUI_Utility.c(369): warning:  #550-D: variable "tempByte2" was set but never used
+  	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
+GUI_Utility.c(369): warning:  #550-D: variable "sum" was set but never used
+  	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
+GUI_Utility.c(418): warning:  #223-D: function "strcmp" declared implicitly
+  		if (strcmp(button->funtionality->type, "pwm") == 0)
+GUI_Utility.c(447): warning:  #223-D: function "strcmp" declared implicitly
+  		if (strcmp(button->funtionality->type, "pwm") == 0)
+GUI_Utility.c(469): warning:  #223-D: function "strcmp" declared implicitly
+  	if (strcmp(*page, "Day") == 0){
+GUI_Utility.c(519): warning:  #1-D: last line of file ends without a newline
+  }
+GUI_Utility.c: 14 warnings, 0 errors
 linking...
-Program Size: Code=23704 RO-data=7136 RW-data=912 ZI-data=270792  
-".\Objects\SmartPets.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=24260 RO-data=7156 RW-data=916 ZI-data=270796  
+".\Objects\SmartPets.axf" - 0 Error(s), 14 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -197,7 +221,7 @@ Package Vendor: Keil
       Source file:   Drivers\BSP\Components\ft5336\ft5336.c
       Include file:  Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_ts.h
       Source file:   Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_ts.c
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

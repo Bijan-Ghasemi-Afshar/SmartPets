@@ -3,6 +3,7 @@
 #include "Board_GLCD.h"
 #include "GLCD_Config.h"
 #include "Board_Touch.h"
+#include "dwt_stm32_delay.h"
 
 #ifdef __RTX
 	extern uint32_t os_time;
@@ -15,34 +16,85 @@ extern GLCD_FONT GLCD_Font_6x8;
 extern GLCD_FONT GLCD_Font_16x24;
 
 ADC_HandleTypeDef g_AdcHandle;
-
+int check = 0;
+	
+// A milisecond delay function
 void milDelay(int dl)
 {
 	int osTime = 0;
 	int counter = 0;
 	int initalTime = 0;
-	char buffer[128];
 	while(1)
 	{
 		if(counter == 0)
 		{
 				initalTime = HAL_GetTick();
 		}
-//		sprintf(buffer, "%d", initalTime);
-//		GLCD_DrawString (20, 130, " 3");
-//		GLCD_DrawString (20, 130, buffer);
 		osTime = HAL_GetTick();
 		if(osTime >= initalTime + dl)
 		{
-//			sprintf(buffer, "%d", osTime);
-//			GLCD_DrawString (20, 150, " 3");
-//			GLCD_DrawString (20, 150, buffer);
 			break;
 		}
 		counter++;
 	}
 }
 	
+void DHT11Start(GPIO_InitTypeDef* pin)
+{
+	// Set pin as output
+	pin->Mode = GPIO_MODE_OUTPUT_PP;
+	HAL_GPIO_Init(GPIOB, pin);
+	
+	// Send a 0 (LOW) to sensor
+	HAL_GPIO_WritePin(GPIOB, pin->Pin, GPIO_PIN_RESET);
+	
+	// Wait for 18 (miliseconds)
+	DWT_Delay_us(18000);
+	
+	// Set pin as input
+	pin->Mode = GPIO_MODE_INPUT;
+	HAL_GPIO_Init(GPIOB, pin);
+}
+
+void checkResponse(GPIO_InitTypeDef* pin)
+{
+	int pinStatus = 0;
+	
+	// 40us (microsecond) delay
+	DWT_Delay_us(40);
+	
+	if (!(HAL_GPIO_ReadPin (GPIOB, pin->Pin)))
+	{
+		// Wait for 80us (microsecond)
+		DWT_Delay_us(80);
+		if ((HAL_GPIO_ReadPin (GPIOB, pin->Pin)))
+		{
+			check = 1;
+		}
+	}
+	while((HAL_GPIO_ReadPin (GPIOB, pin->Pin)));
+}
+
+int readData(GPIO_InitTypeDef* pin)
+{
+	int i,j;
+	for (j=0;j<8;j++)
+	{
+		while (!(HAL_GPIO_ReadPin (GPIOB, pin->Pin)));   // wait for the pin to go high
+		DWT_Delay_us (40);   // wait for 40 us
+		if ((HAL_GPIO_ReadPin (GPIOB, pin->Pin)) == 0)   // if the pin is low 
+		{
+			i&= ~(1<<(7-j));   // write 0
+		}
+		else {
+			i|= (1<<(7-j));  // if the pin is high, write 1
+		}
+		while ((HAL_GPIO_ReadPin (GPIOB, pin->Pin)));  // wait for the pin to go low
+	}
+	return i;
+}
+
+
 void ConfigureADC()
 {
 	GPIO_InitTypeDef gpioInit;
@@ -310,12 +362,52 @@ void app_updateWaterLevel(Bargraph *bargraph)
 	} else {}
 }
 
+
+// Update Tempreture
+void app_updateTempreture()
+{
+	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
+	GPIO_InitTypeDef pinD3 = {GPIO_PIN_4, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_LOW};
+	char buffer[128];
+	check = 0;
+	
+	DWT_Delay_Init();
+	
+	HAL_GPIO_Init(GPIOB, &pinD3);
+	// Send a 1 (HIGH) to sensor
+	HAL_GPIO_WritePin(GPIOB, pinD3.Pin, GPIO_PIN_SET);
+	DWT_Delay_us(2000);
+	
+	DHT11Start(&pinD3);
+	checkResponse(&pinD3);
+	if (check)
+	{
+		//GLCD_DrawString (20, 20, "Tempreture sensor is OK");
+		rhByte1 = readData(&pinD3);
+		rhByte2 = readData(&pinD3);
+		tempByte1 = readData(&pinD3);
+		tempByte2 = readData(&pinD3);
+		sum = readData(&pinD3);
+	}
+	
+	sprintf(buffer, "%d", rhByte1);
+	GLCD_DrawString (20, 50, buffer);
+	sprintf(buffer, "%d", tempByte1);
+	GLCD_DrawString (20, 90, buffer);
+}
+
+
 // Page specific logic
 void app_homePageSpecific()
 {
 	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
 	
 	app_updateWaterLevel(&waterBargraph);
+	
+	if (HAL_GetTick()%2000 == 0 )
+	{
+		app_updateTempreture();
+	}
 }
 
 // Handle sensor type

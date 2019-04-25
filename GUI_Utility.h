@@ -112,7 +112,7 @@ typedef struct
 // Draws a button with a label on top of it
 void app_drawButton(Button *btn);
 
-// Miliseconds
+// A milisecond delay function
 void milDelay(int dl);
 
 // Check program time
@@ -165,3 +165,15 @@ void app_editProgramTime();
 
 // Update water level
 void app_updateWaterLevel(Bargraph *bargraph);
+
+// Send a request to the tempreture sensor for getting a value
+void DHT11Start(GPIO_InitTypeDef* pin);	
+
+// Checking the response of the tempreture sensor
+void checkResponse(GPIO_InitTypeDef* pin);
+
+// Reading the data of the tempreture sensor
+int readData(GPIO_InitTypeDef* pin);
+
+// Update Tempreture
+void app_updateTempreture();
