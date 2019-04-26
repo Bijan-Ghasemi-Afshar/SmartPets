@@ -390,6 +390,11 @@
               <FileType>1</FileType>
               <FilePath>.\App_GUI_Content.c</FilePath>
             </File>
+            <File>
+              <FileName>dwt_stm32_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\dwt_stm32_delay.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

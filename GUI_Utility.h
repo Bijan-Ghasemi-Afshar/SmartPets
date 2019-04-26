@@ -155,10 +155,10 @@ void app_handleSensor(Button *button,  short pin, Clock *program);
 void wait(int delay);
 
 // Open Door
-void app_openDoor(void);
+void app_openDoor(Button *button, short pin);
 
 // Close Door
-void app_closeDoor(void);
+void app_closeDoor(Button *button, short pin);
 
 // Edit program time
 void app_editProgramTime();

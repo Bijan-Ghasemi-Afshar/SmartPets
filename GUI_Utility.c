@@ -183,34 +183,28 @@ void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *clk)
 }
 
 // Open Door
-void app_openDoor(void)
+void app_openDoor(Button *button, short pin)
 {
-	GPIO_InitTypeDef pinD0 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
-	//HAL_GPIO_Init(GPIOC, &pinD0);
 	int counter = 0;
-	GLCD_DrawString (30, 150, "Opening Door");
 	while(counter < 10)
 	{
-		HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
 		milDelay(2);
-		HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_RESET);
 		milDelay(22);
 		counter++;
 	}
 }
 	
 // Close Door
-void app_closeDoor(void)
+void app_closeDoor(Button *button, short pin)
 {
-GPIO_InitTypeDef pinD0 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
-	//HAL_GPIO_Init(GPIOC, &pinD0);
 	int counter = 0;
-	GLCD_DrawString (30, 150, "Opening Door");
 	while(counter < 10)
 	{
-		HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
 		milDelay(1);
-		HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_RESET);
 		milDelay(22);
 		counter++;
 	}
@@ -337,24 +331,25 @@ void app_updateWaterLevel(Bargraph *bargraph)
 {
 	int g_ADCValue;
 	char buffer[128];
+	//GLCD_DrawString (20, 120, " Get Water Level");
 	
 	g_ADCValue = HAL_ADC_GetValue(&g_AdcHandle);
 	
-//	sprintf(buffer, "%d", g_ADCValue);
-//	GLCD_DrawString (20, 150, "              ");
-//	GLCD_DrawString (20, 150, buffer);
+	sprintf(buffer, "%d", g_ADCValue);
+	GLCD_DrawString (20, 150, "       ");
+	GLCD_DrawString (20, 150, buffer);
 	
-	if (g_ADCValue >= 0 && g_ADCValue < 3600)
+	if (g_ADCValue >= 0 && g_ADCValue < 2500)
 	{
 		bargraph->width = 40;
 		bargraph->background = GLCD_COLOR_RED;
 		app_drawBargraph(bargraph);
-	} else if (g_ADCValue >= 3600 && g_ADCValue < 4090)
+	} else if (g_ADCValue >= 3100 && g_ADCValue < 3500)
 	{
 		bargraph->width = GLCD_SIZE_X/3;
 		bargraph->background = GLCD_COLOR_GREEN;
 		app_drawBargraph(bargraph);
-	} else if (g_ADCValue >= 4090)
+	} else if (g_ADCValue >= 3500)
 	{
 		bargraph->width = GLCD_SIZE_X/2 + 40;
 		bargraph->background = GLCD_COLOR_GREEN;
@@ -401,12 +396,10 @@ void app_updateTempreture()
 void app_homePageSpecific()
 {
 	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
-	
-	app_updateWaterLevel(&waterBargraph);
-	
-	if (HAL_GetTick()%2000 == 0 )
+	if (HAL_GetTick()%5 == 0 )
 	{
-		app_updateTempreture();
+		app_updateWaterLevel(&waterBargraph);
+		//app_updateTempreture();
 	}
 }
 
@@ -417,7 +410,7 @@ void app_handleSensor(Button *button, short pin, Clock *program)
 	{
 		if (strcmp(button->funtionality->type, "pwm") == 0)
 		{
-			app_openDoor();
+			app_openDoor(button, pin);
 			button->funtionality->state = 1;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
 			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
@@ -446,7 +439,7 @@ void app_handleSensor(Button *button, short pin, Clock *program)
 	} else {
 		if (strcmp(button->funtionality->type, "pwm") == 0)
 		{
-			app_closeDoor();
+			app_closeDoor(button, pin);
 			button->funtionality->state = 0;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
 			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_RESET);

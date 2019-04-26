@@ -17,15 +17,6 @@ GPIO_InitTypeDef pinD7 = {GPIO_PIN_3, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPE
 GPIO_InitTypeDef *CN4Pins[8] = {&pinD0, &pinD1, &pinD2, &pinD3, &pinD4, &pinD5, &pinD6, &pinD7};
 
 
-// ====================== CN5 GPIO PINS ======================
-//GPIO_InitTypeDef pinA0 = {GPIO_PIN_0, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
-//GPIO_InitTypeDef pinA1 = {GPIO_PIN_10, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
-//GPIO_InitTypeDef pinA2 = {GPIO_PIN_9, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
-//GPIO_InitTypeDef pinA3 = {GPIO_PIN_8, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
-//GPIO_InitTypeDef pinA4 = {GPIO_PIN_7, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
-//GPIO_InitTypeDef pinA5 = {GPIO_PIN_6, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_HIGH};
-//GPIO_InitTypeDef *CN5Pins[6] = {&pinA0, &pinA1, &pinA2, &pinA3, &pinA4, &pinA5};
-
 // ====================== Screen Label ======================
 ScreenLabel homeLabel = {20, 20, "Home"};
 ScreenLabel manualLabel = {20, 20, "Manual"};
@@ -50,16 +41,19 @@ Button manButton = {BUTTON_MANUAL_POS_X, BUTTON_MANUAL_POS_Y, BUTTON_MANUAL_WIDT
 Button *homeButtons[4] = {&dayButton, &nightButton, &playButton, &manButton};
 
 // ====================== Manual Buttons ======================
-Functionality doorButtonFunc = {BUTTON_DOOR_PIN, GPIOC, BUTTON_DOOR_STATE, "pwm"};
+Functionality doorButtonFunc = {BUTTON_DOOR_PIN, GPIOH, BUTTON_DOOR_STATE, "pwm"};
+Functionality treatButtonFunc = {BUTTON_TREAT_PIN, GPIOI, BUTTON_TREAT_STATE, "pwm"};
 Functionality lightsButtonFunc = {BUTTON_LIGHTS_PIN, GPIOC, BUTTON_LIGHTS_STATE, "digital"};
 Functionality heatingButtonFunc = {BUTTON_HEATING_PIN, GPIOC, BUTTON_HEATING_STATE, "digital"};
 Functionality fanButtonFunc = {BUTTON_FAN_PIN, GPIOG, BUTTON_FAN_STATE, "digital"};
+
 Button doorButton = {BUTTON_DOOR_POS_X, BUTTON_DOOR_POS_Y, BUTTON_DOOR_WIDTH, BUTTON_DOOR_HEIGHT, BUTTON_DOOR_LABEL, BUTTON_DOOR_NAVIGATION, &doorButtonFunc};
+Button treatButton = {BUTTON_TREAT_POS_X, BUTTON_TREAT_POS_Y, BUTTON_TREAT_WIDTH, BUTTON_TREAT_HEIGHT, BUTTON_TREAT_LABEL, BUTTON_TREAT_NAVIGATION, &treatButtonFunc};
 Button lightsButton = {BUTTON_LIGHTS_POS_X, BUTTON_LIGHTS_POS_Y, BUTTON_LIGHTS_WIDTH, BUTTON_LIGHTS_HEIGHT, BUTTON_LIGHTS_LABEL, BUTTON_LIGHTS_NAVIGATION, &lightsButtonFunc};
 Button HeatingButton = {BUTTON_HEATING_POS_X, BUTTON_HEATING_POS_Y, BUTTON_HEATING_WIDTH, BUTTON_HEATING_HEIGHT, BUTTON_HEATING_LABEL, BUTTON_HEATING_NAVIGATION, &heatingButtonFunc};
 Button fanButton = {BUTTON_FAN_POS_X, BUTTON_FAN_POS_Y, BUTTON_FAN_WIDTH, BUTTON_FAN_HEIGHT, BUTTON_FAN_LABEL, BUTTON_FAN_NAVIGATION, &fanButtonFunc};
 Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
-Button *manualButtons[5] = {&doorButton, &lightsButton, &homeButton, &HeatingButton, &fanButton};
+Button *manualButtons[6] = {&doorButton, &lightsButton, &homeButton, &HeatingButton, &fanButton, &treatButton};
 
 // ====================== Edit Program Buttons ======================
 Functionality editFunctionality = {0, 0, 0, "edit"};
@@ -221,11 +215,14 @@ void drawManualPage(char **page)
 	// Draw Fan Button
 	app_drawButton(&fanButton);
 	
+	// Draw Fan Button
+	app_drawButton(&treatButton);
+	
 	// Draw Home Button
 	app_drawButton(&homeButton);
 	
 	// Handle user input
-	app_userInputHandle(page, 5, manualButtons, CN4Pins, &clock, programs);
+	app_userInputHandle(page, 6, manualButtons, CN4Pins, &clock, programs);
 	
 }
 
