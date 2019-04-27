@@ -1,4 +1,4 @@
-#include "stm32f7xx_hal_gpio.h"
+#include "stm32f7xx_hal.h"
 #include "GUI_Utility.h"
 #include "Board_GLCD.h"
 #include "GLCD_Config.h"
@@ -15,7 +15,8 @@
 extern GLCD_FONT GLCD_Font_6x8;
 extern GLCD_FONT GLCD_Font_16x24;
 
-ADC_HandleTypeDef g_AdcHandle;
+ADC_HandleTypeDef g_AdcHandleWater;
+ADC_HandleTypeDef g_AdcHandleFood;
 int check = 0;
 	
 // A milisecond delay function
@@ -39,6 +40,7 @@ void milDelay(int dl)
 	}
 }
 	
+// Send a request signal to the tempreture sensor
 void DHT11Start(GPIO_InitTypeDef* pin)
 {
 	// Set pin as output
@@ -56,6 +58,7 @@ void DHT11Start(GPIO_InitTypeDef* pin)
 	HAL_GPIO_Init(GPIOB, pin);
 }
 
+// Check the response of the tempreture sensor
 void checkResponse(GPIO_InitTypeDef* pin)
 {
 	int pinStatus = 0;
@@ -75,6 +78,7 @@ void checkResponse(GPIO_InitTypeDef* pin)
 	while((HAL_GPIO_ReadPin (GPIOB, pin->Pin)));
 }
 
+// Read the data of the tempreture sensor
 int readData(GPIO_InitTypeDef* pin)
 {
 	int i,j;
@@ -95,7 +99,8 @@ int readData(GPIO_InitTypeDef* pin)
 }
 
 
-void ConfigureADC()
+// Configure the Analog to Digital Converter
+void ConfigureADCWater()
 {
 	GPIO_InitTypeDef gpioInit;
 	ADC_ChannelConfTypeDef adcChannel;
@@ -111,22 +116,22 @@ void ConfigureADC()
 	HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);
 	HAL_NVIC_EnableIRQ(ADC_IRQn);
 
-	g_AdcHandle.Instance = ADC3;
+	g_AdcHandleWater.Instance = ADC3;
 
-	g_AdcHandle.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
-	g_AdcHandle.Init.Resolution = ADC_RESOLUTION_12B;
-	g_AdcHandle.Init.ScanConvMode = DISABLE;
-	g_AdcHandle.Init.ContinuousConvMode = ENABLE;
-	g_AdcHandle.Init.DiscontinuousConvMode = DISABLE;
-	g_AdcHandle.Init.NbrOfDiscConversion = 0;
-	g_AdcHandle.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-	g_AdcHandle.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC1;
-	g_AdcHandle.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-	g_AdcHandle.Init.NbrOfConversion = 1;
-	g_AdcHandle.Init.DMAContinuousRequests = ENABLE;
-	g_AdcHandle.Init.EOCSelection = DISABLE;
+	g_AdcHandleWater.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+	g_AdcHandleWater.Init.Resolution = ADC_RESOLUTION_12B;
+	g_AdcHandleWater.Init.ScanConvMode = DISABLE;
+	g_AdcHandleWater.Init.ContinuousConvMode = ENABLE;
+	g_AdcHandleWater.Init.DiscontinuousConvMode = DISABLE;
+	g_AdcHandleWater.Init.NbrOfDiscConversion = 0;
+	g_AdcHandleWater.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+	g_AdcHandleWater.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC1;
+	g_AdcHandleWater.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+	g_AdcHandleWater.Init.NbrOfConversion = 1;
+	g_AdcHandleWater.Init.DMAContinuousRequests = ENABLE;
+	g_AdcHandleWater.Init.EOCSelection = DISABLE;
 
-	HAL_ADC_Init(&g_AdcHandle);
+	HAL_ADC_Init(&g_AdcHandleWater);
 	//HAL_ADC_MspInit(&g_AdcHandle);
 
 	adcChannel.Channel = ADC_CHANNEL_0;
@@ -134,9 +139,60 @@ void ConfigureADC()
 	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
 	adcChannel.Offset = 0;
 
+	if (HAL_ADC_ConfigChannel(&g_AdcHandleWater, &adcChannel) != HAL_OK)
+	{
+		GLCD_DrawString (150, 150, "ADC is NOT OK");
+	}
+
 }
 
+// Configure Analog to Digital Converter for FOOD Sensor
+void ConfigureADCFood()
+{
+	GPIO_InitTypeDef gpioInit;
+	ADC_ChannelConfTypeDef adcChannel;
 	
+	__GPIOF_CLK_ENABLE();
+	__ADC3_CLK_ENABLE();
+
+	gpioInit.Pin = GPIO_PIN_10;
+	gpioInit.Mode = GPIO_MODE_ANALOG;
+	gpioInit.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOF, &gpioInit);
+
+	HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(ADC_IRQn);
+
+	g_AdcHandleFood.Instance = ADC3;
+
+	g_AdcHandleFood.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+	g_AdcHandleFood.Init.Resolution = ADC_RESOLUTION_12B;
+	g_AdcHandleFood.Init.ScanConvMode = DISABLE;
+	g_AdcHandleFood.Init.ContinuousConvMode = ENABLE;
+	g_AdcHandleFood.Init.DiscontinuousConvMode = DISABLE;
+	g_AdcHandleFood.Init.NbrOfDiscConversion = 0;
+	g_AdcHandleFood.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+	g_AdcHandleFood.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC1;
+	g_AdcHandleFood.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+	g_AdcHandleFood.Init.NbrOfConversion = 1;
+	g_AdcHandleFood.Init.DMAContinuousRequests = ENABLE;
+	g_AdcHandleFood.Init.EOCSelection = DISABLE;
+
+	HAL_ADC_Init(&g_AdcHandleFood);
+	//HAL_ADC_MspInit(&g_AdcHandle);
+
+	adcChannel.Channel = ADC_CHANNEL_8;
+	adcChannel.Rank = 1;
+	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+	adcChannel.Offset = 0;
+
+	if (HAL_ADC_ConfigChannel(&g_AdcHandleFood, &adcChannel) != HAL_OK)
+	{
+		GLCD_DrawString (150, 150, "ADC is NOT OK");
+	}
+
+}	
+
 // Delay Function
 void wait(int delay)
 {
@@ -149,10 +205,22 @@ void wait(int delay)
 // Buzz
 void buzz(void)
 {
-	GPIO_InitTypeDef pinD0 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
-	HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_SET);
+	GPIO_InitTypeDef pinD5 = {GPIO_PIN_0, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+	HAL_GPIO_WritePin(GPIOI, pinD5.Pin, GPIO_PIN_SET);
 	wait(40000000);
-	HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOI, pinD5.Pin, GPIO_PIN_RESET);
+}
+
+// Turn Wheel ON
+void turnOnWheel(void)
+{
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);
+}
+
+// Turn Wheel OFF
+void turnOffWheel(void)
+{
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);
 }
 
 // Check program time
@@ -329,27 +397,27 @@ void app_editProgramTime()
 // Update water level
 void app_updateWaterLevel(Bargraph *bargraph)
 {
-	int g_ADCValue;
+	int g_ADCValueWater = 0;
 	char buffer[128];
 	//GLCD_DrawString (20, 120, " Get Water Level");
 	
-	g_ADCValue = HAL_ADC_GetValue(&g_AdcHandle);
-	
-	sprintf(buffer, "%d", g_ADCValue);
-	GLCD_DrawString (20, 150, "       ");
-	GLCD_DrawString (20, 150, buffer);
-	
-	if (g_ADCValue >= 0 && g_ADCValue < 2500)
+	ConfigureADCWater();
+	HAL_ADC_Start(&g_AdcHandleWater);
+	g_ADCValueWater = HAL_ADC_GetValue(&g_AdcHandleWater);
+//	sprintf(buffer, "%d", g_ADCValueWater);
+//	GLCD_DrawString (150, 100, "           ");
+//	GLCD_DrawString (150, 100, buffer);
+	if (g_ADCValueWater >= 0 && g_ADCValueWater < 2500)
 	{
 		bargraph->width = 40;
 		bargraph->background = GLCD_COLOR_RED;
 		app_drawBargraph(bargraph);
-	} else if (g_ADCValue >= 3100 && g_ADCValue < 3500)
+	} else if (g_ADCValueWater >= 3100 && g_ADCValueWater < 3500)
 	{
 		bargraph->width = GLCD_SIZE_X/3;
 		bargraph->background = GLCD_COLOR_GREEN;
 		app_drawBargraph(bargraph);
-	} else if (g_ADCValue >= 3500)
+	} else if (g_ADCValueWater >= 3500)
 	{
 		bargraph->width = GLCD_SIZE_X/2 + 40;
 		bargraph->background = GLCD_COLOR_GREEN;
@@ -357,6 +425,34 @@ void app_updateWaterLevel(Bargraph *bargraph)
 	} else {}
 }
 
+// Update food level
+void app_updateFoodLevel(Bargraph *bargraph)
+{
+	int g_ADCValueFood = 0;
+	char buffer[128];
+	
+	ConfigureADCFood();
+	HAL_ADC_Start(&g_AdcHandleFood);
+	g_ADCValueFood = HAL_ADC_GetValue(&g_AdcHandleFood);
+	
+	if (g_ADCValueFood >= 0 && g_ADCValueFood < 2500)
+	{
+		bargraph->width = 40;
+		bargraph->background = GLCD_COLOR_RED;
+		app_drawBargraph(bargraph);
+	} else if (g_ADCValueFood >= 3100 && g_ADCValueFood < 3500)
+	{
+		bargraph->width = GLCD_SIZE_X/3;
+		bargraph->background = GLCD_COLOR_GREEN;
+		app_drawBargraph(bargraph);
+	} else if (g_ADCValueFood >= 3500)
+	{
+		bargraph->width = GLCD_SIZE_X/2 + 40;
+		bargraph->background = GLCD_COLOR_GREEN;
+		app_drawBargraph(bargraph);
+	} else {}
+	
+}
 
 // Update Tempreture
 void app_updateTempreture()
@@ -395,10 +491,13 @@ void app_updateTempreture()
 // Page specific logic
 void app_homePageSpecific()
 {
-	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
+	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
+	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
+	app_updateFoodLevel(&waterBargraph);
+	app_updateWaterLevel(&foodBargraph);
 	if (HAL_GetTick()%5 == 0 )
 	{
-		app_updateWaterLevel(&waterBargraph);
+		
 		//app_updateTempreture();
 	}
 }
@@ -414,7 +513,6 @@ void app_handleSensor(Button *button, short pin, Clock *program)
 			button->funtionality->state = 1;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
 			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
-			//buzz();
 			button->funtionality->state = 1;
 		} else if (strcmp(button->funtionality->type, "edit") == 0){		// Edit buttons state is always 0
 			
@@ -430,10 +528,8 @@ void app_handleSensor(Button *button, short pin, Clock *program)
 				program->minute++;
 			} else if (strcmp(button->label, "-m") == 0)
 			{
-				GLCD_DrawString (30, 120, "AAHH");
 				program->minute--;
 			} else {}
-			//GLCD_DrawString (30, 120, "SHIT");
 				
 		} else {}
 	} else {
@@ -443,7 +539,6 @@ void app_handleSensor(Button *button, short pin, Clock *program)
 			button->funtionality->state = 0;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
 			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_RESET);
-			//buzz();
 			button->funtionality->state = 0;
 		} else {}
 	}
@@ -457,7 +552,6 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 	char *currentPage = *page;
 	TOUCH_STATE tscState;
 	clock->elapsed_t = clock->second*100+clock->minute*60*100+clock->hour*60*60*100;
-	HAL_ADC_Start(&g_AdcHandle);
 	
 	if (strcmp(*page, "Day") == 0){
 		program = programs[0];

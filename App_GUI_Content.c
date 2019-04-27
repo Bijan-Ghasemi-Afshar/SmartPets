@@ -46,14 +46,16 @@ Functionality treatButtonFunc = {BUTTON_TREAT_PIN, GPIOI, BUTTON_TREAT_STATE, "p
 Functionality lightsButtonFunc = {BUTTON_LIGHTS_PIN, GPIOC, BUTTON_LIGHTS_STATE, "digital"};
 Functionality heatingButtonFunc = {BUTTON_HEATING_PIN, GPIOC, BUTTON_HEATING_STATE, "digital"};
 Functionality fanButtonFunc = {BUTTON_FAN_PIN, GPIOG, BUTTON_FAN_STATE, "digital"};
+Functionality alarmButtonFunc = {BUTTON_ALARM_PIN, GPIOI, BUTTON_ALARM_STATE, "digital"};
 
 Button doorButton = {BUTTON_DOOR_POS_X, BUTTON_DOOR_POS_Y, BUTTON_DOOR_WIDTH, BUTTON_DOOR_HEIGHT, BUTTON_DOOR_LABEL, BUTTON_DOOR_NAVIGATION, &doorButtonFunc};
 Button treatButton = {BUTTON_TREAT_POS_X, BUTTON_TREAT_POS_Y, BUTTON_TREAT_WIDTH, BUTTON_TREAT_HEIGHT, BUTTON_TREAT_LABEL, BUTTON_TREAT_NAVIGATION, &treatButtonFunc};
 Button lightsButton = {BUTTON_LIGHTS_POS_X, BUTTON_LIGHTS_POS_Y, BUTTON_LIGHTS_WIDTH, BUTTON_LIGHTS_HEIGHT, BUTTON_LIGHTS_LABEL, BUTTON_LIGHTS_NAVIGATION, &lightsButtonFunc};
 Button HeatingButton = {BUTTON_HEATING_POS_X, BUTTON_HEATING_POS_Y, BUTTON_HEATING_WIDTH, BUTTON_HEATING_HEIGHT, BUTTON_HEATING_LABEL, BUTTON_HEATING_NAVIGATION, &heatingButtonFunc};
 Button fanButton = {BUTTON_FAN_POS_X, BUTTON_FAN_POS_Y, BUTTON_FAN_WIDTH, BUTTON_FAN_HEIGHT, BUTTON_FAN_LABEL, BUTTON_FAN_NAVIGATION, &fanButtonFunc};
+Button alarmButton = {BUTTON_ALARM_POS_X, BUTTON_ALARM_POS_Y, BUTTON_ALARM_WIDTH, BUTTON_ALARM_HEIGHT, BUTTON_ALARM_LABEL, BUTTON_ALARM_NAVIGATION, &alarmButtonFunc};
 Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
-Button *manualButtons[6] = {&doorButton, &lightsButton, &homeButton, &HeatingButton, &fanButton, &treatButton};
+Button *manualButtons[7] = {&doorButton, &lightsButton, &homeButton, &HeatingButton, &fanButton, &treatButton, &alarmButton};
 
 // ====================== Edit Program Buttons ======================
 Functionality editFunctionality = {0, 0, 0, "edit"};
@@ -111,61 +113,6 @@ void initializePins()
 	HAL_GPIO_Init(GPIOI, &pinD7);
 	HAL_GPIO_WritePin(GPIOI, pinD7.Pin, GPIO_PIN_RESET);
 	
-	// Initialize Pin D8
-//	HAL_GPIO_Init(GPIOI, &pinD8);
-//	HAL_GPIO_WritePin(GPIOI, pinD8.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin D9
-//	HAL_GPIO_Init(GPIOA, &pinD9);
-//	HAL_GPIO_WritePin(GPIOA, pinD9.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin D10
-//	HAL_GPIO_Init(GPIOA, &pinD10);
-//	HAL_GPIO_WritePin(GPIOA, pinD10.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin D11
-//	HAL_GPIO_Init(GPIOB, &pinD11);
-//	HAL_GPIO_WritePin(GPIOB, pinD11.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin D12
-//	HAL_GPIO_Init(GPIOB, &pinD12);
-//	HAL_GPIO_WritePin(GPIOB, pinD12.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin D13
-//	HAL_GPIO_Init(GPIOI, &pinD13);
-//	HAL_GPIO_WritePin(GPIOI, pinD13.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin D14
-//	HAL_GPIO_Init(GPIOB, &pinD14);
-//	HAL_GPIO_WritePin(GPIOB, pinD14.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin D15
-//	HAL_GPIO_Init(GPIOB, &pinD15);
-//	HAL_GPIO_WritePin(GPIOB, pinD15.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin A0
-//	HAL_GPIO_Init(GPIOA, &pinA0);
-//	HAL_GPIO_WritePin(GPIOA, pinA0.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin A1
-//	HAL_GPIO_Init(GPIOF, &pinA1);
-//	HAL_GPIO_WritePin(GPIOF, pinA1.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin A2
-//	HAL_GPIO_Init(GPIOF, &pinA2);
-//	HAL_GPIO_WritePin(GPIOF, pinA2.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin A3
-//	HAL_GPIO_Init(GPIOF, &pinA3);
-//	HAL_GPIO_WritePin(GPIOF, pinA3.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin A4
-//	HAL_GPIO_Init(GPIOF, &pinA4);
-//	HAL_GPIO_WritePin(GPIOF, pinA4.Pin, GPIO_PIN_RESET);
-//	
-//	// Initialize Pin A5
-//	HAL_GPIO_Init(GPIOF, &pinA5);
-//	HAL_GPIO_WritePin(GPIOF, pinA5.Pin, GPIO_PIN_RESET);
 }
 
 
@@ -215,14 +162,17 @@ void drawManualPage(char **page)
 	// Draw Fan Button
 	app_drawButton(&fanButton);
 	
-	// Draw Fan Button
+	// Draw Treat Button
 	app_drawButton(&treatButton);
+	
+	// Draw Alarm Button
+	app_drawButton(&alarmButton);
 	
 	// Draw Home Button
 	app_drawButton(&homeButton);
 	
 	// Handle user input
-	app_userInputHandle(page, 6, manualButtons, CN4Pins, &clock, programs);
+	app_userInputHandle(page, 7, manualButtons, CN4Pins, &clock, programs);
 	
 }
 

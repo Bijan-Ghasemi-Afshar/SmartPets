@@ -61,7 +61,7 @@ int main(void)
 	initializePins();
 	GLCD_Initialize();
 	Touch_Initialize();
-	ConfigureADC();
+
 	
 	GLCD_SetFont (&GLCD_Font_16x24);
 	GLCD_SetForegroundColor (GLCD_COLOR_WHITE);

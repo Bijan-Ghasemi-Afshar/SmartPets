@@ -118,11 +118,20 @@ void milDelay(int dl);
 // Check program time
 void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *clk);
 
+// Turn Wheel ON
+void turnOnWheel(void);
+
+// Turn Wheel OFF
+void turnOffWheel(void);
+
 // Buzz
 void buzz(void);
 
 // Configure Analog to Digital Converter
-void ConfigureADC(void);
+void ConfigureADCWater(void);
+
+// Configure Analog to Digital Converter
+void ConfigureADCFood(void);
 
 // Draws a clock
 void app_drawClock(Clock *clk);
@@ -165,6 +174,9 @@ void app_editProgramTime();
 
 // Update water level
 void app_updateWaterLevel(Bargraph *bargraph);
+
+// Update food level
+void app_updateFoodLevel(Bargraph *bargraph);
 
 // Send a request to the tempreture sensor for getting a value
 void DHT11Start(GPIO_InitTypeDef* pin);	
