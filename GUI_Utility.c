@@ -15,8 +15,7 @@
 extern GLCD_FONT GLCD_Font_6x8;
 extern GLCD_FONT GLCD_Font_16x24;
 
-ADC_HandleTypeDef g_AdcHandleWater;
-ADC_HandleTypeDef g_AdcHandleFood;
+ADC_HandleTypeDef g_AdcHandle;
 int check = 0;
 	
 // A milisecond delay function
@@ -100,98 +99,30 @@ int readData(GPIO_InitTypeDef* pin)
 
 
 // Configure the Analog to Digital Converter
-void ConfigureADCWater()
+void ConfigureADC()
 {
-	GPIO_InitTypeDef gpioInit;
-	ADC_ChannelConfTypeDef adcChannel;
-	
-	__GPIOA_CLK_ENABLE();
 	__ADC3_CLK_ENABLE();
-
-	gpioInit.Pin = GPIO_PIN_0;
-	gpioInit.Mode = GPIO_MODE_ANALOG;
-	gpioInit.Pull = GPIO_NOPULL;
-	HAL_GPIO_Init(GPIOA, &gpioInit);
 
 	HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);
 	HAL_NVIC_EnableIRQ(ADC_IRQn);
 
-	g_AdcHandleWater.Instance = ADC3;
+	g_AdcHandle.Instance = ADC3;
+	g_AdcHandle.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+	g_AdcHandle.Init.Resolution = ADC_RESOLUTION_12B;
+	g_AdcHandle.Init.ScanConvMode = DISABLE;
+	g_AdcHandle.Init.ContinuousConvMode = ENABLE;
+	g_AdcHandle.Init.DiscontinuousConvMode = DISABLE;
+	g_AdcHandle.Init.NbrOfDiscConversion = 0;
+	g_AdcHandle.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+	g_AdcHandle.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC1;
+	g_AdcHandle.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+	g_AdcHandle.Init.NbrOfConversion = 1;
+	g_AdcHandle.Init.DMAContinuousRequests = ENABLE;
+	g_AdcHandle.Init.EOCSelection = DISABLE;
 
-	g_AdcHandleWater.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
-	g_AdcHandleWater.Init.Resolution = ADC_RESOLUTION_12B;
-	g_AdcHandleWater.Init.ScanConvMode = DISABLE;
-	g_AdcHandleWater.Init.ContinuousConvMode = ENABLE;
-	g_AdcHandleWater.Init.DiscontinuousConvMode = DISABLE;
-	g_AdcHandleWater.Init.NbrOfDiscConversion = 0;
-	g_AdcHandleWater.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-	g_AdcHandleWater.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC1;
-	g_AdcHandleWater.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-	g_AdcHandleWater.Init.NbrOfConversion = 1;
-	g_AdcHandleWater.Init.DMAContinuousRequests = ENABLE;
-	g_AdcHandleWater.Init.EOCSelection = DISABLE;
-
-	HAL_ADC_Init(&g_AdcHandleWater);
-	//HAL_ADC_MspInit(&g_AdcHandle);
-
-	adcChannel.Channel = ADC_CHANNEL_0;
-	adcChannel.Rank = 1;
-	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
-	adcChannel.Offset = 0;
-
-	if (HAL_ADC_ConfigChannel(&g_AdcHandleWater, &adcChannel) != HAL_OK)
-	{
-		GLCD_DrawString (150, 150, "ADC is NOT OK");
-	}
-
+	HAL_ADC_Init(&g_AdcHandle);
+	
 }
-
-// Configure Analog to Digital Converter for FOOD Sensor
-void ConfigureADCFood()
-{
-	GPIO_InitTypeDef gpioInit;
-	ADC_ChannelConfTypeDef adcChannel;
-	
-	__GPIOF_CLK_ENABLE();
-	__ADC3_CLK_ENABLE();
-
-	gpioInit.Pin = GPIO_PIN_10;
-	gpioInit.Mode = GPIO_MODE_ANALOG;
-	gpioInit.Pull = GPIO_NOPULL;
-	HAL_GPIO_Init(GPIOF, &gpioInit);
-
-	HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);
-	HAL_NVIC_EnableIRQ(ADC_IRQn);
-
-	g_AdcHandleFood.Instance = ADC3;
-
-	g_AdcHandleFood.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
-	g_AdcHandleFood.Init.Resolution = ADC_RESOLUTION_12B;
-	g_AdcHandleFood.Init.ScanConvMode = DISABLE;
-	g_AdcHandleFood.Init.ContinuousConvMode = ENABLE;
-	g_AdcHandleFood.Init.DiscontinuousConvMode = DISABLE;
-	g_AdcHandleFood.Init.NbrOfDiscConversion = 0;
-	g_AdcHandleFood.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-	g_AdcHandleFood.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC1;
-	g_AdcHandleFood.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-	g_AdcHandleFood.Init.NbrOfConversion = 1;
-	g_AdcHandleFood.Init.DMAContinuousRequests = ENABLE;
-	g_AdcHandleFood.Init.EOCSelection = DISABLE;
-
-	HAL_ADC_Init(&g_AdcHandleFood);
-	//HAL_ADC_MspInit(&g_AdcHandle);
-
-	adcChannel.Channel = ADC_CHANNEL_8;
-	adcChannel.Rank = 1;
-	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
-	adcChannel.Offset = 0;
-
-	if (HAL_ADC_ConfigChannel(&g_AdcHandleFood, &adcChannel) != HAL_OK)
-	{
-		GLCD_DrawString (150, 150, "ADC is NOT OK");
-	}
-
-}	
 
 // Delay Function
 void wait(int delay)
@@ -397,16 +328,18 @@ void app_editProgramTime()
 // Update water level
 void app_updateWaterLevel(Bargraph *bargraph)
 {
+	ADC_ChannelConfTypeDef adcChannel;
 	int g_ADCValueWater = 0;
 	char buffer[128];
-	//GLCD_DrawString (20, 120, " Get Water Level");
 	
-	ConfigureADCWater();
-	HAL_ADC_Start(&g_AdcHandleWater);
-	g_ADCValueWater = HAL_ADC_GetValue(&g_AdcHandleWater);
-//	sprintf(buffer, "%d", g_ADCValueWater);
-//	GLCD_DrawString (150, 100, "           ");
-//	GLCD_DrawString (150, 100, buffer);
+	adcChannel.Channel = ADC_CHANNEL_0;
+	adcChannel.Rank = 1;
+	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+	adcChannel.Offset = 0;
+	HAL_ADC_ConfigChannel(&g_AdcHandle, &adcChannel);
+	HAL_ADC_Start(&g_AdcHandle);
+	g_ADCValueWater = HAL_ADC_GetValue(&g_AdcHandle);
+
 	if (g_ADCValueWater >= 0 && g_ADCValueWater < 2500)
 	{
 		bargraph->width = 40;
@@ -428,12 +361,17 @@ void app_updateWaterLevel(Bargraph *bargraph)
 // Update food level
 void app_updateFoodLevel(Bargraph *bargraph)
 {
+	ADC_ChannelConfTypeDef adcChannel;
 	int g_ADCValueFood = 0;
 	char buffer[128];
 	
-	ConfigureADCFood();
-	HAL_ADC_Start(&g_AdcHandleFood);
-	g_ADCValueFood = HAL_ADC_GetValue(&g_AdcHandleFood);
+	adcChannel.Channel = ADC_CHANNEL_8;
+	adcChannel.Rank = 1;
+	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+	adcChannel.Offset = 0;
+	HAL_ADC_ConfigChannel(&g_AdcHandle, &adcChannel);
+	HAL_ADC_Start(&g_AdcHandle);
+	g_ADCValueFood = HAL_ADC_GetValue(&g_AdcHandle);
 	
 	if (g_ADCValueFood >= 0 && g_ADCValueFood < 2500)
 	{
@@ -481,10 +419,15 @@ void app_updateTempreture()
 		sum = readData(&pinD3);
 	}
 	
+	GLCD_DrawString (20, 50, "H: ");
 	sprintf(buffer, "%d", rhByte1);
-	GLCD_DrawString (20, 50, buffer);
+	GLCD_DrawString (50, 50, "  ");
+	GLCD_DrawString (50, 50, buffer);
+	
+	GLCD_DrawString (20, 90, "T: ");
 	sprintf(buffer, "%d", tempByte1);
-	GLCD_DrawString (20, 90, buffer);
+	GLCD_DrawString (50, 90, "  ");
+	GLCD_DrawString (50, 90, buffer);
 }
 
 
@@ -493,12 +436,13 @@ void app_homePageSpecific()
 {
 	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
 	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
-	app_updateFoodLevel(&waterBargraph);
-	app_updateWaterLevel(&foodBargraph);
+	
+	//app_updateFoodLevel(&waterBargraph);
+	//app_updateWaterLevel(&foodBargraph);
+	
 	if (HAL_GetTick()%5 == 0 )
 	{
-		
-		//app_updateTempreture();
+		app_updateTempreture();
 	}
 }
 

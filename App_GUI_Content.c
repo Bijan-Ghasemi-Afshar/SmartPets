@@ -5,7 +5,7 @@
 #include "stm32f7xx_hal.h"
 #include "stm32f7xx_hal_gpio.h"
 
-// ====================== CN4 GPIO PINS ======================
+// ====================== GPIO PINS ======================
 GPIO_InitTypeDef pinD0 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 GPIO_InitTypeDef pinD1 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 GPIO_InitTypeDef pinD2 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
@@ -14,6 +14,7 @@ GPIO_InitTypeDef pinD4 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPE
 GPIO_InitTypeDef pinD5 = {GPIO_PIN_0, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 GPIO_InitTypeDef pinD6 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 GPIO_InitTypeDef pinD7 = {GPIO_PIN_3, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+//GPIO_InitTypeDef raspberryPin = {GPIO_PIN_2, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 GPIO_InitTypeDef *CN4Pins[8] = {&pinD0, &pinD1, &pinD2, &pinD3, &pinD4, &pinD5, &pinD6, &pinD7};
 
 
@@ -74,12 +75,16 @@ Bargraph foodBargraph = { FOOD_BARGRAPH_POS_X, FOOD_BARGRAPH_POS_Y, FOOD_BARGRAP
 // Initialize Pins
 void initializePins()
 {
+	GPIO_InitTypeDef gpioInit;
+	
 	// Enable all bases
 	__HAL_RCC_GPIOC_CLK_ENABLE();
 	__HAL_RCC_GPIOG_CLK_ENABLE();
 	__HAL_RCC_GPIOH_CLK_ENABLE();
 	__HAL_RCC_GPIOI_CLK_ENABLE();
 	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__GPIOA_CLK_ENABLE();
+	__GPIOF_CLK_ENABLE();
 	
 	// Initialize Pin D0
 	HAL_GPIO_Init(GPIOC, &pinD0);
@@ -112,6 +117,25 @@ void initializePins()
 	// Initialize Pin D7
 	HAL_GPIO_Init(GPIOI, &pinD7);
 	HAL_GPIO_WritePin(GPIOI, pinD7.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D8
+//	HAL_GPIO_Init(GPIOI, &raspberryPin);
+//	HAL_GPIO_WritePin(GPIOI, raspberryPin.Pin, GPIO_PIN_RESET);
+	
+	gpioInit.Pin = GPIO_PIN_0;
+	gpioInit.Mode = GPIO_MODE_ANALOG;
+	gpioInit.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOA, &gpioInit);
+	
+	gpioInit.Pin = GPIO_PIN_10;
+	gpioInit.Mode = GPIO_MODE_ANALOG;
+	gpioInit.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOF, &gpioInit);
+	
+	gpioInit.Pin = GPIO_PIN_9;
+	gpioInit.Mode = GPIO_MODE_ANALOG;
+	gpioInit.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOF, &gpioInit);
 	
 }
 

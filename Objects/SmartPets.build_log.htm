@@ -28,38 +28,42 @@ Project File Date:  04/25/2019
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling GUI_Utility.c...
-GUI_Utility.h(173): warning:  #1295-D: Deprecated declaration app_editProgramTime - give arg types
+GUI_Utility.h(170): warning:  #1295-D: Deprecated declaration app_editProgramTime - give arg types
   void app_editProgramTime();
-GUI_Utility.h(191): warning:  #1-D: last line of file ends without a newline
+GUI_Utility.h(188): warning:  #1-D: last line of file ends without a newline
   void app_updateTempreture();
-GUI_Utility.h(191): warning:  #1295-D: Deprecated declaration app_updateTempreture - give arg types
+GUI_Utility.h(188): warning:  #1295-D: Deprecated declaration app_updateTempreture - give arg types
   void app_updateTempreture();
-GUI_Utility.c(64): warning:  #177-D: variable "pinStatus" was declared but never referenced
+GUI_Utility.c(63): warning:  #177-D: variable "pinStatus" was declared but never referenced
   	int pinStatus = 0;
-GUI_Utility.c(378): warning:  #177-D: variable "buffer" was declared but never referenced
+GUI_Utility.c(309): warning:  #177-D: variable "buffer" was declared but never referenced
   	char buffer[128];
-GUI_Utility.c(401): warning:  #177-D: variable "buffer" was declared but never referenced
+GUI_Utility.c(333): warning:  #177-D: variable "buffer" was declared but never referenced
   	char buffer[128];
-GUI_Utility.c(432): warning:  #177-D: variable "buffer" was declared but never referenced
+GUI_Utility.c(366): warning:  #177-D: variable "buffer" was declared but never referenced
   	char buffer[128];
-GUI_Utility.c(460): warning:  #550-D: variable "rhByte2" was set but never used
+GUI_Utility.c(398): warning:  #550-D: variable "rhByte2" was set but never used
   	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
-GUI_Utility.c(460): warning:  #550-D: variable "tempByte2" was set but never used
+GUI_Utility.c(398): warning:  #550-D: variable "tempByte2" was set but never used
   	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
-GUI_Utility.c(460): warning:  #550-D: variable "sum" was set but never used
+GUI_Utility.c(398): warning:  #550-D: variable "sum" was set but never used
   	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
-GUI_Utility.c(510): warning:  #223-D: function "strcmp" declared implicitly
+GUI_Utility.c(437): warning:  #177-D: variable "foodBargraph" was declared but never referenced
+  	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
+GUI_Utility.c(438): warning:  #177-D: variable "waterBargraph" was declared but never referenced
+  	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
+GUI_Utility.c(454): warning:  #223-D: function "strcmp" declared implicitly
   		if (strcmp(button->funtionality->type, "pwm") == 0)
-GUI_Utility.c(536): warning:  #223-D: function "strcmp" declared implicitly
+GUI_Utility.c(480): warning:  #223-D: function "strcmp" declared implicitly
   		if (strcmp(button->funtionality->type, "pwm") == 0)
-GUI_Utility.c(556): warning:  #223-D: function "strcmp" declared implicitly
+GUI_Utility.c(500): warning:  #223-D: function "strcmp" declared implicitly
   	if (strcmp(*page, "Day") == 0){
-GUI_Utility.c(606): warning:  #1-D: last line of file ends without a newline
+GUI_Utility.c(550): warning:  #1-D: last line of file ends without a newline
   }
-GUI_Utility.c: 14 warnings, 0 errors
+GUI_Utility.c: 16 warnings, 0 errors
 linking...
-Program Size: Code=24452 RO-data=7156 RW-data=992 ZI-data=270864  
-".\Objects\SmartPets.axf" - 0 Error(s), 14 Warning(s).
+Program Size: Code=23932 RO-data=7156 RW-data=996 ZI-data=270796  
+".\Objects\SmartPets.axf" - 0 Error(s), 16 Warning(s).
 
 <h2>Software Packages used:</h2>
 

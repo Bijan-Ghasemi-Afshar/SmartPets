@@ -128,10 +128,7 @@ void turnOffWheel(void);
 void buzz(void);
 
 // Configure Analog to Digital Converter
-void ConfigureADCWater(void);
-
-// Configure Analog to Digital Converter
-void ConfigureADCFood(void);
+void ConfigureADC(void);
 
 // Draws a clock
 void app_drawClock(Clock *clk);
