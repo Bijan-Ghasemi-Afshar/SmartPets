@@ -34,36 +34,38 @@ GUI_Utility.h(188): warning:  #1-D: last line of file ends without a newline
   void app_updateTempreture();
 GUI_Utility.h(188): warning:  #1295-D: Deprecated declaration app_updateTempreture - give arg types
   void app_updateTempreture();
-GUI_Utility.c(63): warning:  #177-D: variable "pinStatus" was declared but never referenced
+GUI_Utility.c(64): warning:  #177-D: variable "pinStatus" was declared but never referenced
   	int pinStatus = 0;
-GUI_Utility.c(309): warning:  #177-D: variable "buffer" was declared but never referenced
+GUI_Utility.c(219): warning:  #177-D: variable "g_ADCValueDoor" was declared but never referenced
+  	int g_ADCValueDoor = 0;
+GUI_Utility.c(220): warning:  #177-D: variable "buffer" was declared but never referenced
   	char buffer[128];
-GUI_Utility.c(333): warning:  #177-D: variable "buffer" was declared but never referenced
+GUI_Utility.c(221): warning:  #177-D: variable "adcChannel" was declared but never referenced
+  	ADC_ChannelConfTypeDef adcChannel;
+GUI_Utility.c(350): warning:  #177-D: variable "buffer" was declared but never referenced
   	char buffer[128];
-GUI_Utility.c(366): warning:  #177-D: variable "buffer" was declared but never referenced
+GUI_Utility.c(374): warning:  #177-D: variable "buffer" was declared but never referenced
   	char buffer[128];
-GUI_Utility.c(398): warning:  #550-D: variable "rhByte2" was set but never used
+GUI_Utility.c(407): warning:  #177-D: variable "buffer" was declared but never referenced
+  	char buffer[128];
+GUI_Utility.c(439): warning:  #550-D: variable "rhByte2" was set but never used
   	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
-GUI_Utility.c(398): warning:  #550-D: variable "tempByte2" was set but never used
+GUI_Utility.c(439): warning:  #550-D: variable "tempByte2" was set but never used
   	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
-GUI_Utility.c(398): warning:  #550-D: variable "sum" was set but never used
+GUI_Utility.c(439): warning:  #550-D: variable "sum" was set but never used
   	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
-GUI_Utility.c(437): warning:  #177-D: variable "foodBargraph" was declared but never referenced
-  	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
-GUI_Utility.c(438): warning:  #177-D: variable "waterBargraph" was declared but never referenced
-  	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
-GUI_Utility.c(454): warning:  #223-D: function "strcmp" declared implicitly
+GUI_Utility.c(495): warning:  #223-D: function "strcmp" declared implicitly
   		if (strcmp(button->funtionality->type, "pwm") == 0)
-GUI_Utility.c(480): warning:  #223-D: function "strcmp" declared implicitly
+GUI_Utility.c(520): warning:  #223-D: function "strcmp" declared implicitly
   		if (strcmp(button->funtionality->type, "pwm") == 0)
-GUI_Utility.c(500): warning:  #223-D: function "strcmp" declared implicitly
+GUI_Utility.c(540): warning:  #223-D: function "strcmp" declared implicitly
   	if (strcmp(*page, "Day") == 0){
-GUI_Utility.c(550): warning:  #1-D: last line of file ends without a newline
+GUI_Utility.c(590): warning:  #1-D: last line of file ends without a newline
   }
-GUI_Utility.c: 16 warnings, 0 errors
+GUI_Utility.c: 17 warnings, 0 errors
 linking...
-Program Size: Code=23932 RO-data=7156 RW-data=996 ZI-data=270796  
-".\Objects\SmartPets.axf" - 0 Error(s), 16 Warning(s).
+Program Size: Code=24296 RO-data=7156 RW-data=992 ZI-data=270792  
+".\Objects\SmartPets.axf" - 0 Error(s), 17 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -225,7 +227,7 @@ Package Vendor: Keil
       Include file:  MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Config.h
       Source file:   MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Fonts.c
       Source file:   MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_746G_Discovery.c
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

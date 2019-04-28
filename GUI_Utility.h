@@ -116,7 +116,7 @@ void app_drawButton(Button *btn);
 void milDelay(int dl);
 
 // Check program time
-void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *clk);
+void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *playProgram, Clock *clk);
 
 // Turn Wheel ON
 void turnOnWheel(void);

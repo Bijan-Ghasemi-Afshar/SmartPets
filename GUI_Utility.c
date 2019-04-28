@@ -4,6 +4,7 @@
 #include "GLCD_Config.h"
 #include "Board_Touch.h"
 #include "dwt_stm32_delay.h"
+#include "App_GUI_Content.h"
 
 #ifdef __RTX
 	extern uint32_t os_time;
@@ -155,7 +156,7 @@ void turnOffWheel(void)
 }
 
 // Check program time
-void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *clk)
+void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *playProgram, Clock *clk)
 {
 	
 	
@@ -165,6 +166,8 @@ void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *clk)
 		if (dayProgram->programRunning == 0){
 			dayProgram->programRunning = 1;
 			nightProgram->programRunning = 0;
+			//Turn off Lights
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
 			GLCD_DrawString (50, 120, "Day Program");
 			buzz();
 		} else {}
@@ -172,7 +175,21 @@ void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *clk)
 		if (nightProgram->programRunning == 0){
 			dayProgram->programRunning = 0;
 			nightProgram->programRunning = 1;
+			//Turn off Lights
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
 			GLCD_DrawString (50, 120, "Night Program");
+			buzz();
+		} else {}
+	}
+	else if (playProgram->hour <= clk->hour && playProgram->minute <= clk->minute){
+		if (nightProgram->programRunning == 0){
+			dayProgram->programRunning = 0;
+			nightProgram->programRunning = 1;
+			// Open Door
+			HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);
+			// Start Wheel
+			HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);
+			GLCD_DrawString (50, 120, "Play Program");
 			buzz();
 		} else {}
 	}
@@ -199,6 +216,30 @@ void app_openDoor(Button *button, short pin)
 void app_closeDoor(Button *button, short pin)
 {
 	int counter = 0;
+	int g_ADCValueDoor = 0;
+	char buffer[128];
+	ADC_ChannelConfTypeDef adcChannel;
+	
+//	adcChannel.Channel = ADC_CHANNEL_7;
+//	adcChannel.Rank = 1;
+//	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+//	adcChannel.Offset = 0;
+//	HAL_ADC_ConfigChannel(&g_AdcHandle, &adcChannel);
+//	HAL_ADC_Start(&g_AdcHandle);
+//	g_ADCValueDoor = HAL_ADC_GetValue(&g_AdcHandle);
+	
+//	sprintf(buffer, "%d", g_ADCValueDoor );
+//	GLCD_DrawString (50, 50, "  ");
+//	GLCD_DrawString (50, 50, buffer);
+	
+//	while (g_ADCValueDoor < 3300 || g_ADCValueDoor > 4095)
+//	{
+//		g_ADCValueDoor = HAL_ADC_GetValue(&g_AdcHandle);
+//		sprintf(buffer, "%d", g_ADCValueDoor );
+//		GLCD_DrawString (50, 50, "  ");
+//		GLCD_DrawString (50, 50, buffer);
+//	}
+	
 	while(counter < 10)
 	{
 		HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
@@ -437,12 +478,12 @@ void app_homePageSpecific()
 	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
 	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
 	
-	//app_updateFoodLevel(&waterBargraph);
-	//app_updateWaterLevel(&foodBargraph);
+	app_updateFoodLevel(&waterBargraph);
+	app_updateWaterLevel(&foodBargraph);
 	
 	if (HAL_GetTick()%5 == 0 )
 	{
-		app_updateTempreture();
+		//app_updateTempreture();
 	}
 }
 
@@ -462,7 +503,6 @@ void app_handleSensor(Button *button, short pin, Clock *program)
 			
 			if (strcmp(button->label, "+h") == 0)
 			{
-				
 				program->hour++;
 			} else if (strcmp(button->label, "-h") == 0)
 			{
@@ -511,7 +551,7 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 		if (strcmp(*page, currentPage) == 0)
 		{
 			app_clockTicToc(clock);
-			//app_checkProgram(programs[0], programs[1], clock);
+			//app_checkProgram(programs[0], programs[1], programs[2], clock);
 			
 			if (strcmp(*page, "Home") == 0)
 			{

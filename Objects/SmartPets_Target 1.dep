@@ -40,7 +40,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart_ex.h)(0x5B3A7874)
 I (App_GUI_Content.h)(0x5CC30942)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x569E68CA)
-F (.\GUI_Utility.c)(0x5CC47AD9)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\gui_utility.o --omf_browse .\objects\gui_utility.crf --depend .\objects\gui_utility.d)
+F (.\GUI_Utility.c)(0x5CC49828)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\gui_utility.o --omf_browse .\objects\gui_utility.crf --depend .\objects\gui_utility.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
@@ -76,14 +76,15 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pwr_ex.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart_ex.h)(0x5B3A7874)
-I (GUI_Utility.h)(0x5CC46550)
+I (GUI_Utility.h)(0x5CC48A61)
 I (C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_GLCD.h)(0x58777E5C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x569E68CA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Config.h)(0x5593F300)
 I (C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_Touch.h)(0x58C1076E)
 I (dwt_stm32_delay.h)(0x5CB4529C)
+I (App_GUI_Content.h)(0x5CC30942)
 F (.\App_GUI_Content.c)(0x5CC4791A)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\app_gui_content.o --omf_browse .\objects\app_gui_content.crf --depend .\objects\app_gui_content.d)
-I (GUI_Utility.h)(0x5CC46550)
+I (GUI_Utility.h)(0x5CC48A61)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x5B3A7874)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h)(0x5B90EC5C)
 I (C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\RTE_Components.h)(0x5CA5BEF5)
@@ -364,7 +365,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\Components\ft5336\f
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\Components\Common\ts.h)(0x5B3A7874)
 I (C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_Touch.h)(0x58C1076E)
 F (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\LIB\ARM\RTX_CM4.lib)(0x5B2CDF1E)()
-F (RTE\CMSIS\RTX_Conf_CM.c)(0x5CC1943B)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\rtx_conf_cm.o --omf_browse .\objects\rtx_conf_cm.crf --depend .\objects\rtx_conf_cm.d)
+F (RTE\CMSIS\RTX_Conf_CM.c)(0x5CC48D75)(-c --cpu Cortex-M7.fp.sp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE"-I "C:\Users\bijan\Desktop\Embedded Systems\SmartPets\RTE\Device\STM32F746NGHx"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\BSP\STM32746G-Discovery-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\Drivers\STM32F7xx_HAL_Driver\Inc-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F746xx-o .\objects\rtx_conf_cm.o --omf_browse .\objects\rtx_conf_cm.crf --depend .\objects\rtx_conf_cm.d)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\RTOS\RTX\INC\cmsis_os.h)(0x5B2CDF1E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E68CA)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x569E68CA)
