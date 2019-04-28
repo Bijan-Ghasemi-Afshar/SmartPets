@@ -37,9 +37,9 @@ ScreenLabel manualLabel = {20, 20, "Manual"};
 Clock clock = {CLOCK_POS_X, CLOCK_POS_Y, CLOCK_HOUR, CLOCK_MIN, CLOCK_SEC};
 
 // ====================== Home Buttons ======================
-Functionality dayButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 1, "day"};
-Functionality nightButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 1, "night"};
-Functionality playButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 1, "play"};
+Functionality dayButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 0, "day"};
+Functionality nightButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 0, "night"};
+Functionality playButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 0, "play"};
 Button dayButton = {GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Day", 0, &dayButtonFunc};
 Button nightButton = {((GLCD_SIZE_X/4) * 2) + 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Night", 0, &nightButtonFunc};
 Button playButton = {BUTTON_PLAY_POS_X, BUTTON_PLAY_POS_Y, BUTTON_PLAY_WIDTH, BUTTON_PLAY_HEIGHT, BUTTON_PLAY_LABEL, 0, &playButtonFunc};
@@ -71,7 +71,7 @@ Bargraph foodBargraph = { FOOD_BARGRAPH_POS_X, FOOD_BARGRAPH_POS_Y, FOOD_BARGRAP
 
 	
 ADC_HandleTypeDef g_AdcHandle;
-short check = 0;
+int check = 0;
 	
 // Initialize Pins
 void initializePins()
@@ -380,16 +380,16 @@ void app_closeDoor()
 	HAL_ADC_Start(&g_AdcHandle);
 	g_ADCValueDoor = HAL_ADC_GetValue(&g_AdcHandle);
 	
-	sprintf(buffer, "%d", g_ADCValueDoor );
-	GLCD_DrawString (50, 50, "  ");
-	GLCD_DrawString (50, 50, buffer);
+//	sprintf(buffer, "%d", g_ADCValueDoor );
+//	GLCD_DrawString (50, 50, "  ");
+//	GLCD_DrawString (50, 50, buffer);
 	
 	while (g_ADCValueDoor < 3300 || g_ADCValueDoor > 4095)
 	{
 		g_ADCValueDoor = HAL_ADC_GetValue(&g_AdcHandle);
-		sprintf(buffer, "%d", g_ADCValueDoor );
-		GLCD_DrawString (50, 50, "  ");
-		GLCD_DrawString (50, 50, buffer);
+//		sprintf(buffer, "%d", g_ADCValueDoor );
+//		GLCD_DrawString (50, 50, "  ");
+//		GLCD_DrawString (50, 50, buffer);
 	}
 	
 	while(counter < 10)
@@ -579,17 +579,17 @@ void app_updateTempreture()
 	GLCD_DrawString (50, 90, "  ");
 	GLCD_DrawString (50, 90, buffer);
 	
-	if (tempByte1 < 23)
-	{
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
-		turnOffFan();
-	} else if (tempByte1 > 25){
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
-		turnOnFan();
-	} else {
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
-		turnOffFan();
-	}
+//	if (tempByte1 < 23)
+//	{
+//		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
+//		turnOffFan();
+//	} else if (tempByte1 > 25){
+//		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+//		turnOnFan();
+//	} else {
+//		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+//		turnOffFan();
+//	}
 }
 
 
@@ -599,13 +599,13 @@ void app_homePageSpecific()
 	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
 	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
 	
-	app_updateFoodLevel(&waterBargraph);
-	app_updateWaterLevel(&foodBargraph);
+//	app_updateFoodLevel(&waterBargraph);
+//	app_updateWaterLevel(&foodBargraph);
 	
-	if (HAL_GetTick()%5 == 0 )
-	{
+//	if (HAL_GetTick()%5 == 0 )
+//	{
 		app_updateTempreture();
-	}
+//	}
 }
 
 // Handle sensor type
@@ -623,11 +623,11 @@ void app_handleSensor(Button *button, short pin)
 		} else if (strcmp(button->funtionality->type, "day") == 0){
 			buzz();
 			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
-			app_closeDoor();
+			//app_closeDoor();
 		} else if (strcmp(button->funtionality->type, "night") == 0){
 			buzz();
 			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
-			app_closeDoor();
+			//app_closeDoor();
 		} else if (strcmp(button->funtionality->type, "play") == 0){
 			buzz();
 			app_openDoor(&doorButton, GPIO_PIN_6);
@@ -636,13 +636,16 @@ void app_handleSensor(Button *button, short pin)
 	} else {
 		if (strcmp(button->funtionality->type, "pwm") == 0)
 		{
-			if (strcmp(button->label, "door") == 0)
+			//GLCD_DrawString (30, 100, button->label);
+			if (strcmp(button->label, "Door") == 0)
 			{
+				//GLCD_DrawString (30, 70, "wowow");
+				button->funtionality->state = 0;
 				app_closeDoor();
 			} else {
 				app_stopTreat();
+				button->funtionality->state = 0;
 			}
-			app_closeDoor(button, pin);
 			button->funtionality->state = 0;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
 			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_RESET);

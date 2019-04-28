@@ -40,6 +40,8 @@ GUI_Utility.h(306): warning:  #1295-D: Deprecated declaration app_updateTempretu
   void app_updateTempreture();
 GUI_Utility.c(246): warning:  #177-D: variable "pinStatus" was declared but never referenced
   	int pinStatus = 0;
+GUI_Utility.c(372): warning:  #177-D: variable "buffer" was declared but never referenced
+  	char buffer[128];
 GUI_Utility.c(464): warning:  #177-D: variable "buffer" was declared but never referenced
   	char buffer[128];
 GUI_Utility.c(483): warning:  #177-D: variable "buffer" was declared but never referenced
@@ -52,18 +54,20 @@ GUI_Utility.c(548): warning:  #550-D: variable "tempByte2" was set but never use
   	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
 GUI_Utility.c(548): warning:  #550-D: variable "sum" was set but never used
   	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
+GUI_Utility.c(599): warning:  #177-D: variable "foodBargraph" was declared but never referenced
+  	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
+GUI_Utility.c(600): warning:  #177-D: variable "waterBargraph" was declared but never referenced
+  	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
 GUI_Utility.c(616): warning:  #223-D: function "strcmp" declared implicitly
   		if (strcmp(button->funtionality->type, "pwm") == 0)
 GUI_Utility.c(637): warning:  #223-D: function "strcmp" declared implicitly
   		if (strcmp(button->funtionality->type, "pwm") == 0)
-GUI_Utility.c(645): warning:  #140-D: too many arguments in function call
-  			app_closeDoor(button, pin);
-GUI_Utility.c(664): warning:  #223-D: function "strcmp" declared implicitly
+GUI_Utility.c(667): warning:  #223-D: function "strcmp" declared implicitly
   		if (strcmp(*page, currentPage) == 0)
-GUI_Utility.c: 16 warnings, 0 errors
+GUI_Utility.c: 18 warnings, 0 errors
 linking...
-Program Size: Code=24344 RO-data=7136 RW-data=856 ZI-data=270792  
-".\Objects\SmartPets.axf" - 0 Error(s), 16 Warning(s).
+Program Size: Code=23864 RO-data=7136 RW-data=856 ZI-data=270792  
+".\Objects\SmartPets.axf" - 0 Error(s), 18 Warning(s).
 
 <h2>Software Packages used:</h2>
 
