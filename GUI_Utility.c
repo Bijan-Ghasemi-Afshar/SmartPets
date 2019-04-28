@@ -16,9 +16,190 @@
 extern GLCD_FONT GLCD_Font_6x8;
 extern GLCD_FONT GLCD_Font_16x24;
 
-ADC_HandleTypeDef g_AdcHandle;
-int check = 0;
 	
+// ====================== GPIO PINS ======================
+GPIO_InitTypeDef pinD0 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD1 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD2 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD3 = {GPIO_PIN_4, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD4 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD5 = {GPIO_PIN_0, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD6 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef pinD7 = {GPIO_PIN_3, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef raspberryPin = {GPIO_PIN_2, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef *CN4Pins[9] = {&pinD0, &pinD1, &pinD2, &pinD3, &pinD4, &pinD5, &pinD6, &pinD7, &raspberryPin};
+
+
+// ====================== Screen Label ======================
+ScreenLabel homeLabel = {20, 20, "Home"};
+ScreenLabel manualLabel = {20, 20, "Manual"};
+
+// ====================== Clock ======================
+Clock clock = {CLOCK_POS_X, CLOCK_POS_Y, CLOCK_HOUR, CLOCK_MIN, CLOCK_SEC};
+
+// ====================== Home Buttons ======================
+Functionality dayButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 1, "day"};
+Functionality nightButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 1, "night"};
+Functionality playButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 1, "play"};
+Button dayButton = {GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Day", 0, &dayButtonFunc};
+Button nightButton = {((GLCD_SIZE_X/4) * 2) + 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Night", 0, &nightButtonFunc};
+Button playButton = {BUTTON_PLAY_POS_X, BUTTON_PLAY_POS_Y, BUTTON_PLAY_WIDTH, BUTTON_PLAY_HEIGHT, BUTTON_PLAY_LABEL, 0, &playButtonFunc};
+Button manButton = {BUTTON_MANUAL_POS_X, BUTTON_MANUAL_POS_Y, BUTTON_MANUAL_WIDTH, BUTTON_MANUAL_HEIGHT, BUTTON_MANUAL_LABEL, BUTTON_MANUAL_NAVIGATION};
+Button *homeButtons[4] = {&dayButton, &nightButton, &playButton, &manButton};
+
+// ====================== Manual Buttons ======================
+Functionality doorButtonFunc = {BUTTON_DOOR_PIN, GPIOH, BUTTON_DOOR_STATE, "pwm"};
+Functionality treatButtonFunc = {BUTTON_TREAT_PIN, GPIOI, BUTTON_TREAT_STATE, "pwm"};
+Functionality lightsButtonFunc = {BUTTON_LIGHTS_PIN, GPIOC, BUTTON_LIGHTS_STATE, "digital"};
+Functionality heatingButtonFunc = {BUTTON_HEATING_PIN, GPIOC, BUTTON_HEATING_STATE, "digital"};
+Functionality fanButtonFunc = {BUTTON_FAN_PIN, GPIOG, BUTTON_FAN_STATE, "digital"};
+Functionality alarmButtonFunc = {BUTTON_ALARM_PIN, GPIOI, BUTTON_ALARM_STATE, "digital"};
+
+Button doorButton = {BUTTON_DOOR_POS_X, BUTTON_DOOR_POS_Y, BUTTON_DOOR_WIDTH, BUTTON_DOOR_HEIGHT, BUTTON_DOOR_LABEL, BUTTON_DOOR_NAVIGATION, &doorButtonFunc};
+Button treatButton = {BUTTON_TREAT_POS_X, BUTTON_TREAT_POS_Y, BUTTON_TREAT_WIDTH, BUTTON_TREAT_HEIGHT, BUTTON_TREAT_LABEL, BUTTON_TREAT_NAVIGATION, &treatButtonFunc};
+Button lightsButton = {BUTTON_LIGHTS_POS_X, BUTTON_LIGHTS_POS_Y, BUTTON_LIGHTS_WIDTH, BUTTON_LIGHTS_HEIGHT, BUTTON_LIGHTS_LABEL, BUTTON_LIGHTS_NAVIGATION, &lightsButtonFunc};
+Button HeatingButton = {BUTTON_HEATING_POS_X, BUTTON_HEATING_POS_Y, BUTTON_HEATING_WIDTH, BUTTON_HEATING_HEIGHT, BUTTON_HEATING_LABEL, BUTTON_HEATING_NAVIGATION, &heatingButtonFunc};
+Button fanButton = {BUTTON_FAN_POS_X, BUTTON_FAN_POS_Y, BUTTON_FAN_WIDTH, BUTTON_FAN_HEIGHT, BUTTON_FAN_LABEL, BUTTON_FAN_NAVIGATION, &fanButtonFunc};
+Button alarmButton = {BUTTON_ALARM_POS_X, BUTTON_ALARM_POS_Y, BUTTON_ALARM_WIDTH, BUTTON_ALARM_HEIGHT, BUTTON_ALARM_LABEL, BUTTON_ALARM_NAVIGATION, &alarmButtonFunc};
+Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
+Button *manualButtons[7] = {&doorButton, &lightsButton, &homeButton, &HeatingButton, &fanButton, &treatButton, &alarmButton};
+
+// ====================== Bargraph ======================
+Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, WATER_BARGRAPH_LABEL };
+Bargraph foodBargraph = { FOOD_BARGRAPH_POS_X, FOOD_BARGRAPH_POS_Y, FOOD_BARGRAPH_WIDTH, FOOD_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, FOOD_BARGRAPH_LABEL };
+
+	
+ADC_HandleTypeDef g_AdcHandle;
+short check = 0;
+	
+// Initialize Pins
+void initializePins()
+{
+	GPIO_InitTypeDef gpioInit;
+	
+	// Enable all bases
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	__HAL_RCC_GPIOG_CLK_ENABLE();
+	__HAL_RCC_GPIOH_CLK_ENABLE();
+	__HAL_RCC_GPIOI_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__GPIOA_CLK_ENABLE();
+	__GPIOF_CLK_ENABLE();
+	
+	// Initialize Pin D0
+	HAL_GPIO_Init(GPIOC, &pinD0);
+	HAL_GPIO_WritePin(GPIOC, pinD0.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D1
+	HAL_GPIO_Init(GPIOC, &pinD1);
+	HAL_GPIO_WritePin(GPIOC, pinD1.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D2
+	HAL_GPIO_Init(GPIOG, &pinD2);
+	HAL_GPIO_WritePin(GPIOG, pinD2.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D3
+	HAL_GPIO_Init(GPIOB, &pinD3);
+	HAL_GPIO_WritePin(GPIOB, pinD3.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D4
+	HAL_GPIO_Init(GPIOG, &pinD4);
+	HAL_GPIO_WritePin(GPIOG, pinD4.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D5
+	HAL_GPIO_Init(GPIOI, &pinD5);
+	HAL_GPIO_WritePin(GPIOI, pinD5.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D6
+	HAL_GPIO_Init(GPIOH, &pinD6);
+	HAL_GPIO_WritePin(GPIOH, pinD6.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D7
+	HAL_GPIO_Init(GPIOI, &pinD7);
+	HAL_GPIO_WritePin(GPIOI, pinD7.Pin, GPIO_PIN_RESET);
+	
+	// Initialize Pin D8
+	HAL_GPIO_Init(GPIOI, &raspberryPin);
+	HAL_GPIO_WritePin(GPIOI, raspberryPin.Pin, GPIO_PIN_RESET);
+	
+	gpioInit.Pin = GPIO_PIN_0;
+	gpioInit.Mode = GPIO_MODE_ANALOG;
+	gpioInit.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOA, &gpioInit);
+	
+	gpioInit.Pin = GPIO_PIN_10;
+	gpioInit.Mode = GPIO_MODE_ANALOG;
+	gpioInit.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOF, &gpioInit);
+	
+	gpioInit.Pin = GPIO_PIN_9;
+	gpioInit.Mode = GPIO_MODE_ANALOG;
+	gpioInit.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOF, &gpioInit);
+	
+}
+
+
+// Draws the home page
+void drawHomePage(char **page)
+{
+	// Draw Screen Label
+	app_drawScreenLabel(&homeLabel);
+	
+	// Draw Day Button
+	app_drawButton(&dayButton);
+
+	// Draw Night Button
+	app_drawButton(&nightButton);
+	
+	// Draw Play Button
+	app_drawButton(&playButton);
+	
+	// Draw Manual Button
+	app_drawButton(&manButton);
+	
+	// Draw Water Level
+	app_drawBargraph(&waterBargraph);
+	
+	// Draw Food Level
+	app_drawBargraph(&foodBargraph);
+	
+	app_userInputHandle(page, 4, homeButtons);
+}
+
+// Draws the manual page
+void drawManualPage(char **page)
+{
+	
+	// Draw Screen Label
+	app_drawScreenLabel(&manualLabel);
+	
+	// Draw Door Button
+	app_drawButton(&doorButton);
+	
+	// Draw Lights Button
+	app_drawButton(&lightsButton);
+	
+	// Draw Heating Button
+	app_drawButton(&HeatingButton);
+	
+	// Draw Fan Button
+	app_drawButton(&fanButton);
+	
+	// Draw Treat Button
+	app_drawButton(&treatButton);
+	
+	// Draw Alarm Button
+	app_drawButton(&alarmButton);
+	
+	// Draw Home Button
+	app_drawButton(&homeButton);
+	
+	// Handle user input
+	app_userInputHandle(page, 7, manualButtons);
+	
+}
+
 // A milisecond delay function
 void milDelay(int dl)
 {
@@ -213,43 +394,57 @@ void app_openDoor(Button *button, short pin)
 }
 	
 // Close Door
-void app_closeDoor(Button *button, short pin)
+void app_closeDoor()
 {
 	int counter = 0;
 	int g_ADCValueDoor = 0;
 	char buffer[128];
 	ADC_ChannelConfTypeDef adcChannel;
 	
-//	adcChannel.Channel = ADC_CHANNEL_7;
-//	adcChannel.Rank = 1;
-//	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
-//	adcChannel.Offset = 0;
-//	HAL_ADC_ConfigChannel(&g_AdcHandle, &adcChannel);
-//	HAL_ADC_Start(&g_AdcHandle);
-//	g_ADCValueDoor = HAL_ADC_GetValue(&g_AdcHandle);
+	adcChannel.Channel = ADC_CHANNEL_7;
+	adcChannel.Rank = 1;
+	adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+	adcChannel.Offset = 0;
+	HAL_ADC_ConfigChannel(&g_AdcHandle, &adcChannel);
+	HAL_ADC_Start(&g_AdcHandle);
+	g_ADCValueDoor = HAL_ADC_GetValue(&g_AdcHandle);
 	
-//	sprintf(buffer, "%d", g_ADCValueDoor );
-//	GLCD_DrawString (50, 50, "  ");
-//	GLCD_DrawString (50, 50, buffer);
+	sprintf(buffer, "%d", g_ADCValueDoor );
+	GLCD_DrawString (50, 50, "  ");
+	GLCD_DrawString (50, 50, buffer);
 	
-//	while (g_ADCValueDoor < 3300 || g_ADCValueDoor > 4095)
-//	{
-//		g_ADCValueDoor = HAL_ADC_GetValue(&g_AdcHandle);
-//		sprintf(buffer, "%d", g_ADCValueDoor );
-//		GLCD_DrawString (50, 50, "  ");
-//		GLCD_DrawString (50, 50, buffer);
-//	}
+	while (g_ADCValueDoor < 3300 || g_ADCValueDoor > 4095)
+	{
+		g_ADCValueDoor = HAL_ADC_GetValue(&g_AdcHandle);
+		sprintf(buffer, "%d", g_ADCValueDoor );
+		GLCD_DrawString (50, 50, "  ");
+		GLCD_DrawString (50, 50, buffer);
+	}
 	
 	while(counter < 10)
 	{
-		HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);
 		milDelay(1);
-		HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);
 		milDelay(22);
 		counter++;
 	}
 }
 	
+// stop treat
+void app_stopTreat(void)
+{
+	int counter = 0;
+	while(counter < 10)
+	{
+		HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);
+		milDelay(1);
+		HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_RESET);
+		milDelay(22);
+		counter++;
+	}
+}
+
 // Draws a button with a label on top of it
 void app_drawButton(Button *btn)
 {
@@ -258,27 +453,17 @@ void app_drawButton(Button *btn)
 }
 
 // Draws a clock
-void app_drawClock(Clock *clk)
+void app_drawClock()
 {
 		char buffer[128];
 		GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
 		GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
 		GLCD_SetFont (&GLCD_Font_16x24);
-		sprintf(buffer, "%d : %d : %d", clk->hour,clk->minute, clk->second);
-		GLCD_DrawString (clk->posX, clk->posY, "              ");
-		GLCD_DrawString (clk->posX, clk->posY, buffer);
+		sprintf(buffer, "%d : %d : %d", clock.hour,clock.minute, clock.second);
+		GLCD_DrawString (clock.posX, clock.posY, "              ");
+		GLCD_DrawString (clock.posX, clock.posY, buffer);
 }
 
-// Draw program time
-void app_drawProgramClock(Clock *clk)
-{
-	char buffer[128];
-	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-	GLCD_SetFont (&GLCD_Font_16x24);
-	sprintf(buffer, "%d : %d", clk->hour,clk->minute);
-	GLCD_DrawString (clk->posX, clk->posY, "          ");
-	GLCD_DrawString (clk->posX, clk->posY, buffer);
-}
 
 // Draws the screen label
 void app_drawScreenLabel(ScreenLabel *scrLbl)
@@ -303,18 +488,18 @@ void app_drawBargraph(Bargraph *bargraph)
 }
 
 // Clock functionality
-void app_clockTicToc(Clock *clock)
+void app_clockTicToc()
 {
 	char buffer[128];
-	clock->tic = HAL_GetTick()/10;
-		if (clock->tic != clock->toc) { /* 10 ms update */
-			clock->toc = clock->tic;
-			clock->second = (clock->elapsed_t/100)%60; /* update time */
-			clock->minute = (clock->elapsed_t/6000)%60;
-			clock->hour = (clock->elapsed_t/360000)%24;
+	clock.tic = HAL_GetTick()/10;
+		if (clock.tic != clock.toc) { /* 10 ms update */
+			clock.toc = clock.tic;
+			clock.second = (clock.elapsed_t/100)%60; /* update time */
+			clock.minute = (clock.elapsed_t/6000)%60;
+			clock.hour = (clock.elapsed_t/360000)%24;
 			/* Update Display */
-			app_drawClock(clock);
-			clock->elapsed_t = (clock->elapsed_t+1) % DAY;
+			app_drawClock();
+			clock.elapsed_t = (clock.elapsed_t+1) % DAY;
 		}
 }
 
@@ -453,49 +638,46 @@ void app_handleSensor(Button *button, short pin)
 			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
 			button->funtionality->state = 1;
 		} else if (strcmp(button->funtionality->type, "day") == 0){
-			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
-			button->funtionality->state = 1;
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+			app_closeDoor();
 		} else if (strcmp(button->funtionality->type, "night") == 0){
-			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
-			button->funtionality->state = 1;
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+			app_closeDoor();
 		} else if (strcmp(button->funtionality->type, "play") == 0){
-			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
-			button->funtionality->state = 1;
+			app_openDoor(&doorButton, GPIO_PIN_6);
+			turnOnWheel();
 		} else {}
 	} else {
 		if (strcmp(button->funtionality->type, "pwm") == 0)
 		{
+			if (strcmp(button->label, "door") == 0)
+			{
+				app_closeDoor();
+			} else {
+				app_stopTreat();
+			}
 			app_closeDoor(button, pin);
 			button->funtionality->state = 0;
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
 			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_RESET);
 			button->funtionality->state = 0;
-		} else if (strcmp(button->funtionality->type, "day") == 0){
-			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
-			button->funtionality->state = 1;
-		} else if (strcmp(button->funtionality->type, "night") == 0){
-			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
-			button->funtionality->state = 1;
-		} else if (strcmp(button->funtionality->type, "play") == 0){
-			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
-			button->funtionality->state = 1;
 		} else {}
 	}
 }
 
 // User input handler
-void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock)
+void app_userInputHandle(char **page, short numOfButtons, Button **buttons)
 {
 	unsigned short i = 0;
 	char *currentPage = *page;
 	TOUCH_STATE tscState;
-	clock->elapsed_t = clock->second*100+clock->minute*60*100+clock->hour*60*60*100;
+	clock.elapsed_t = clock.second*100+clock.minute*60*100+clock.hour*60*60*100;
 	
 	while(1)
 	{
 		if (strcmp(*page, currentPage) == 0)
 		{
-			app_clockTicToc(clock);
+			app_clockTicToc();
 			
 			if (strcmp(*page, "Home") == 0)
 			{
@@ -515,7 +697,7 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 							*page = buttons[i]->label;
 						} 
 						else {
-							app_handleSensor(buttons[i], pins[buttons[i]->funtionality->pin]->Pin);
+							app_handleSensor(buttons[i], CN4Pins[buttons[i]->funtionality->pin]->Pin);
 							wait(10000000);
 						}
 					}
