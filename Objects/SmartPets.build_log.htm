@@ -27,7 +27,43 @@ Project File Date:  04/25/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-".\Objects\SmartPets.axf" - 0 Error(s), 0 Warning(s).
+compiling GUI_Utility.c...
+GUI_Utility.h(251): warning:  #1295-D: Deprecated declaration app_drawClock - give arg types
+  void app_drawClock();
+GUI_Utility.h(263): warning:  #1295-D: Deprecated declaration app_clockTicToc - give arg types
+  void app_clockTicToc();
+GUI_Utility.h(284): warning:  #1295-D: Deprecated declaration app_closeDoor - give arg types
+  void app_closeDoor();
+GUI_Utility.h(302): warning:  #1-D: last line of file ends without a newline
+  void app_updateTempreture();
+GUI_Utility.h(302): warning:  #1295-D: Deprecated declaration app_updateTempreture - give arg types
+  void app_updateTempreture();
+GUI_Utility.c(247): warning:  #177-D: variable "pinStatus" was declared but never referenced
+  	int pinStatus = 0;
+GUI_Utility.c(495): warning:  #177-D: variable "buffer" was declared but never referenced
+  	char buffer[128];
+GUI_Utility.c(514): warning:  #177-D: variable "buffer" was declared but never referenced
+  	char buffer[128];
+GUI_Utility.c(547): warning:  #177-D: variable "buffer" was declared but never referenced
+  	char buffer[128];
+GUI_Utility.c(579): warning:  #550-D: variable "rhByte2" was set but never used
+  	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
+GUI_Utility.c(579): warning:  #550-D: variable "tempByte2" was set but never used
+  	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
+GUI_Utility.c(579): warning:  #550-D: variable "sum" was set but never used
+  	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
+GUI_Utility.c(635): warning:  #223-D: function "strcmp" declared implicitly
+  		if (strcmp(button->funtionality->type, "pwm") == 0)
+GUI_Utility.c(653): warning:  #223-D: function "strcmp" declared implicitly
+  		if (strcmp(button->funtionality->type, "pwm") == 0)
+GUI_Utility.c(661): warning:  #140-D: too many arguments in function call
+  			app_closeDoor(button, pin);
+GUI_Utility.c(680): warning:  #223-D: function "strcmp" declared implicitly
+  		if (strcmp(*page, currentPage) == 0)
+GUI_Utility.c: 16 warnings, 0 errors
+linking...
+Program Size: Code=24176 RO-data=7136 RW-data=856 ZI-data=270792  
+".\Objects\SmartPets.axf" - 0 Error(s), 16 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -189,7 +225,7 @@ Package Vendor: Keil
       Source file:   Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_ts.c
       Source file:   Drivers\BSP\Components\ft5336\ft5336.c
       Include file:  Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_ts.h
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

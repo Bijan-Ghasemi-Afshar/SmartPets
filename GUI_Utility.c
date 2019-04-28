@@ -54,15 +54,17 @@ Functionality lightsButtonFunc = {BUTTON_LIGHTS_PIN, GPIOC, BUTTON_LIGHTS_STATE,
 Functionality heatingButtonFunc = {BUTTON_HEATING_PIN, GPIOC, BUTTON_HEATING_STATE, "digital"};
 Functionality fanButtonFunc = {BUTTON_FAN_PIN, GPIOG, BUTTON_FAN_STATE, "digital"};
 Functionality alarmButtonFunc = {BUTTON_ALARM_PIN, GPIOI, BUTTON_ALARM_STATE, "digital"};
+Functionality rasbpButtonFunc = {GPIO_PIN_2, GPIOI, 0, "digital"};
 
 Button doorButton = {BUTTON_DOOR_POS_X, BUTTON_DOOR_POS_Y, BUTTON_DOOR_WIDTH, BUTTON_DOOR_HEIGHT, BUTTON_DOOR_LABEL, BUTTON_DOOR_NAVIGATION, &doorButtonFunc};
 Button treatButton = {BUTTON_TREAT_POS_X, BUTTON_TREAT_POS_Y, BUTTON_TREAT_WIDTH, BUTTON_TREAT_HEIGHT, BUTTON_TREAT_LABEL, BUTTON_TREAT_NAVIGATION, &treatButtonFunc};
 Button lightsButton = {BUTTON_LIGHTS_POS_X, BUTTON_LIGHTS_POS_Y, BUTTON_LIGHTS_WIDTH, BUTTON_LIGHTS_HEIGHT, BUTTON_LIGHTS_LABEL, BUTTON_LIGHTS_NAVIGATION, &lightsButtonFunc};
 Button HeatingButton = {BUTTON_HEATING_POS_X, BUTTON_HEATING_POS_Y, BUTTON_HEATING_WIDTH, BUTTON_HEATING_HEIGHT, BUTTON_HEATING_LABEL, BUTTON_HEATING_NAVIGATION, &heatingButtonFunc};
 Button fanButton = {BUTTON_FAN_POS_X, BUTTON_FAN_POS_Y, BUTTON_FAN_WIDTH, BUTTON_FAN_HEIGHT, BUTTON_FAN_LABEL, BUTTON_FAN_NAVIGATION, &fanButtonFunc};
-Button alarmButton = {BUTTON_ALARM_POS_X, BUTTON_ALARM_POS_Y, BUTTON_ALARM_WIDTH, BUTTON_ALARM_HEIGHT, BUTTON_ALARM_LABEL, BUTTON_ALARM_NAVIGATION, &alarmButtonFunc};
+//Button alarmButton = {BUTTON_ALARM_POS_X, BUTTON_ALARM_POS_Y, BUTTON_ALARM_WIDTH, BUTTON_ALARM_HEIGHT, BUTTON_ALARM_LABEL, BUTTON_ALARM_NAVIGATION, &alarmButtonFunc};
+Button rasbButton = {BUTTON_CAMERA_POS_X, BUTTON_CAMERA_POS_Y, BUTTON_CAMERA_WIDTH, BUTTON_CAMERA_HEIGHT, BUTTON_CAMERA_LABEL, 0, &rasbpButtonFunc};
 Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
-Button *manualButtons[7] = {&doorButton, &lightsButton, &homeButton, &HeatingButton, &fanButton, &treatButton, &alarmButton};
+Button *manualButtons[7] = {&doorButton, &lightsButton, &homeButton, &HeatingButton, &fanButton, &treatButton, &rasbButton};
 
 // ====================== Bargraph ======================
 Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, WATER_BARGRAPH_LABEL };
@@ -190,7 +192,7 @@ void drawManualPage(char **page)
 	app_drawButton(&treatButton);
 	
 	// Draw Alarm Button
-	app_drawButton(&alarmButton);
+	app_drawButton(&rasbButton);
 	
 	// Draw Home Button
 	app_drawButton(&homeButton);
