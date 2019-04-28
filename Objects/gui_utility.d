@@ -40,4 +40,3 @@
 .\objects\gui_utility.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.11.0\MDK\Boards\ST\STM32F746G_Discovery\Common\GLCD_Config.h
 .\objects\gui_utility.o: C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.8.0\Board\Board_Touch.h
 .\objects\gui_utility.o: dwt_stm32_delay.h
-.\objects\gui_utility.o: App_GUI_Content.h

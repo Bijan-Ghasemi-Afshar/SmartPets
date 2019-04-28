@@ -4,7 +4,6 @@
 #include "GLCD_Config.h"
 #include "Board_Touch.h"
 #include "dwt_stm32_delay.h"
-#include "App_GUI_Content.h"
 
 #ifdef __RTX
 	extern uint32_t os_time;
@@ -54,7 +53,7 @@ Functionality lightsButtonFunc = {BUTTON_LIGHTS_PIN, GPIOC, BUTTON_LIGHTS_STATE,
 Functionality heatingButtonFunc = {BUTTON_HEATING_PIN, GPIOC, BUTTON_HEATING_STATE, "digital"};
 Functionality fanButtonFunc = {BUTTON_FAN_PIN, GPIOG, BUTTON_FAN_STATE, "digital"};
 Functionality alarmButtonFunc = {BUTTON_ALARM_PIN, GPIOI, BUTTON_ALARM_STATE, "digital"};
-Functionality rasbpButtonFunc = {GPIO_PIN_2, GPIOI, 0, "digital"};
+Functionality rasbpButtonFunc = {BUTTON_CAMERA_PIN, GPIOI, 0, "digital"};
 
 Button doorButton = {BUTTON_DOOR_POS_X, BUTTON_DOOR_POS_Y, BUTTON_DOOR_WIDTH, BUTTON_DOOR_HEIGHT, BUTTON_DOOR_LABEL, BUTTON_DOOR_NAVIGATION, &doorButtonFunc};
 Button treatButton = {BUTTON_TREAT_POS_X, BUTTON_TREAT_POS_Y, BUTTON_TREAT_WIDTH, BUTTON_TREAT_HEIGHT, BUTTON_TREAT_LABEL, BUTTON_TREAT_NAVIGATION, &treatButtonFunc};
