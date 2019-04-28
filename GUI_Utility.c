@@ -611,7 +611,7 @@ void app_updateTempreture()
 	
 	if (tempByte1 > 23 && tempByte1 < 25 && tempByte1 != 0)
 	{
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
 		turnOffFan();
 	} else if (tempByte1 > 25 && tempByte1 != 0){
 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
@@ -653,11 +653,13 @@ void app_handleSensor(Button *button, short pin)
 		} else if (strcmp(button->funtionality->type, "day") == 0){
 			buzz();
 			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
-			//app_closeDoor();
+			app_closeDoor();
+			turnOffWheel();
 		} else if (strcmp(button->funtionality->type, "night") == 0){
 			buzz();
 			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
-			//app_closeDoor();
+			app_closeDoor();
+			turnOffWheel();
 		} else if (strcmp(button->funtionality->type, "play") == 0){
 			buzz();
 			app_openDoor(&doorButton, GPIO_PIN_6);
