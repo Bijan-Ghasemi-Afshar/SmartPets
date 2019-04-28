@@ -115,9 +115,6 @@ void app_drawButton(Button *btn);
 // A milisecond delay function
 void milDelay(int dl);
 
-// Check program time
-void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *playProgram, Clock *clk);
-
 // Turn Wheel ON
 void turnOnWheel(void);
 
@@ -149,13 +146,13 @@ void app_drawBargraph(Bargraph *bargraph);
 void app_clockTicToc(Clock *clock);
 
 // User input Handler
-void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock, Clock **programs);
+void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock);
 
 // Page specific logic
 void app_homePageSpecific(void);
 
 // Handle sensor type
-void app_handleSensor(Button *button,  short pin, Clock *program);
+void app_handleSensor(Button *button,  short pin);
 
 // Wait
 void wait(int delay);
@@ -165,9 +162,6 @@ void app_openDoor(Button *button, short pin);
 
 // Close Door
 void app_closeDoor(Button *button, short pin);
-
-// Edit program time
-void app_editProgramTime();
 
 // Update water level
 void app_updateWaterLevel(Bargraph *bargraph);

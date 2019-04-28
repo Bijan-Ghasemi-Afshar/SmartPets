@@ -280,48 +280,6 @@ void app_drawProgramClock(Clock *clk)
 	GLCD_DrawString (clk->posX, clk->posY, buffer);
 }
 
-// Draw Program time edit
-void app_drawProgramTimeEdit(Button *editIncHour, Button *editDecHour, Button *editIncMin, Button *editDecMin, Clock *clock)
-{
-	char buffer[128];
-//	// ====================== Edit Program Buttons ======================
-//	Button editIncHour = {(GLCD_SIZE_X/4 + 60), 140, 40, 40};
-//	Button editDecHour = {(GLCD_SIZE_X/4 + 120), 140, 40, 40};
-//	Button editIncMin = {(GLCD_SIZE_X/4 + 250), 140, 40, 40};
-//	Button editDecMin = {(GLCD_SIZE_X/4 + 300), 140, 40, 40};
-	
-	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-	sprintf(buffer, "%d", clock->hour);
-	GLCD_DrawString (editIncHour->posX - 50, editIncHour->posY, "   ");
-	GLCD_DrawString (editIncHour->posX - 50, editIncHour->posY, buffer);
-	GLCD_DrawString (editIncHour->posX - 18, editIncHour->posY, "H");
-	
-	GLCD_SetBackgroundColor (GLCD_COLOR_BLUE);
-	GLCD_DrawBargraph(editIncHour->posX,editIncHour->posY,editIncHour->height,editIncHour->width, 0);
-	GLCD_DrawString (editIncHour->posX + 10, editIncHour->posY, "+");
-	
-	GLCD_SetBackgroundColor (GLCD_COLOR_RED);
-	GLCD_DrawBargraph(editDecHour->posX,editDecHour->posY,editDecHour->height,editDecHour->width, 0);
-	GLCD_DrawString (editDecHour->posX + 10, editDecHour->posY, "-");
-	
-	
-	
-	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-	sprintf(buffer, "%d", clock->minute);
-	GLCD_DrawString (editIncMin->posX - 50, editIncMin->posY, "   ");
-	GLCD_DrawString (editIncMin->posX - 50, editIncMin->posY, buffer);
-	GLCD_DrawString (editIncMin->posX - 20, editIncMin->posY, "M");
-	
-	GLCD_SetBackgroundColor (GLCD_COLOR_BLUE);
-	GLCD_DrawBargraph(editIncMin->posX,editIncMin->posY,editIncMin->height,editIncMin->width, 0);
-	GLCD_DrawString (editIncMin->posX + 10, editIncMin->posY, "+");
-	
-	GLCD_SetBackgroundColor (GLCD_COLOR_RED);
-	GLCD_DrawBargraph(editDecMin->posX,editDecMin->posY,editDecMin->height,editDecMin->width, 0);
-	GLCD_DrawString (editDecMin->posX + 10, editDecMin->posY, "-");
-	
-}
-
 // Draws the screen label
 void app_drawScreenLabel(ScreenLabel *scrLbl)
 {
@@ -360,11 +318,6 @@ void app_clockTicToc(Clock *clock)
 		}
 }
 
-// Edit Program Time
-void app_editProgramTime()
-{
-	
-}
 
 // Update water level
 void app_updateWaterLevel(Bargraph *bargraph)
@@ -483,12 +436,12 @@ void app_homePageSpecific()
 	
 	if (HAL_GetTick()%5 == 0 )
 	{
-		//app_updateTempreture();
+		app_updateTempreture();
 	}
 }
 
 // Handle sensor type
-void app_handleSensor(Button *button, short pin, Clock *program)
+void app_handleSensor(Button *button, short pin)
 {
 	if (button->funtionality->state == 0)
 	{
@@ -499,22 +452,15 @@ void app_handleSensor(Button *button, short pin, Clock *program)
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
 			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
 			button->funtionality->state = 1;
-		} else if (strcmp(button->funtionality->type, "edit") == 0){		// Edit buttons state is always 0
-			
-			if (strcmp(button->label, "+h") == 0)
-			{
-				program->hour++;
-			} else if (strcmp(button->label, "-h") == 0)
-			{
-				program->hour--;
-			} else if (strcmp(button->label, "+m") == 0)
-			{
-				program->minute++;
-			} else if (strcmp(button->label, "-m") == 0)
-			{
-				program->minute--;
-			} else {}
-				
+		} else if (strcmp(button->funtionality->type, "day") == 0){
+			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
+			button->funtionality->state = 1;
+		} else if (strcmp(button->funtionality->type, "night") == 0){
+			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
+			button->funtionality->state = 1;
+		} else if (strcmp(button->funtionality->type, "play") == 0){
+			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
+			button->funtionality->state = 1;
 		} else {}
 	} else {
 		if (strcmp(button->funtionality->type, "pwm") == 0)
@@ -524,43 +470,36 @@ void app_handleSensor(Button *button, short pin, Clock *program)
 		} else if (strcmp(button->funtionality->type, "digital") == 0){
 			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_RESET);
 			button->funtionality->state = 0;
+		} else if (strcmp(button->funtionality->type, "day") == 0){
+			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
+			button->funtionality->state = 1;
+		} else if (strcmp(button->funtionality->type, "night") == 0){
+			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
+			button->funtionality->state = 1;
+		} else if (strcmp(button->funtionality->type, "play") == 0){
+			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
+			button->funtionality->state = 1;
 		} else {}
 	}
 }
 
 // User input handler
-void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock, Clock **programs)
+void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO_InitTypeDef **pins, Clock *clock)
 {
 	unsigned short i = 0;
-	Clock *program;
 	char *currentPage = *page;
 	TOUCH_STATE tscState;
 	clock->elapsed_t = clock->second*100+clock->minute*60*100+clock->hour*60*60*100;
-	
-	if (strcmp(*page, "Day") == 0){
-		program = programs[0];
-	} else if (strcmp(*page, "Night") == 0){
-		program = programs[1];
-	} else if (strcmp(*page, "Play") == 0){
-		program = programs[2];
-	} else {}
-	
 	
 	while(1)
 	{
 		if (strcmp(*page, currentPage) == 0)
 		{
 			app_clockTicToc(clock);
-			//app_checkProgram(programs[0], programs[1], programs[2], clock);
 			
 			if (strcmp(*page, "Home") == 0)
 			{
 				app_homePageSpecific();
-			} else if (strcmp(*page, "Day") == 0){
-			} else if (strcmp(*page, "Night") == 0){
-			} else if (strcmp(*page, "Play") == 0){
-			} else if (strcmp(*page, "Manual") == 0){
-			} else {
 			}
 			
 			Touch_GetState(&tscState);
@@ -576,7 +515,7 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 							*page = buttons[i]->label;
 						} 
 						else {
-							app_handleSensor(buttons[i], pins[buttons[i]->funtionality->pin]->Pin, program);
+							app_handleSensor(buttons[i], pins[buttons[i]->funtionality->pin]->Pin);
 							wait(10000000);
 						}
 					}
@@ -588,3 +527,5 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons, GPIO
 	}
 	
 }
+
+

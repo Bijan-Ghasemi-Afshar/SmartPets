@@ -14,30 +14,24 @@ GPIO_InitTypeDef pinD4 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPE
 GPIO_InitTypeDef pinD5 = {GPIO_PIN_0, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 GPIO_InitTypeDef pinD6 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 GPIO_InitTypeDef pinD7 = {GPIO_PIN_3, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
-//GPIO_InitTypeDef raspberryPin = {GPIO_PIN_2, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
-GPIO_InitTypeDef *CN4Pins[8] = {&pinD0, &pinD1, &pinD2, &pinD3, &pinD4, &pinD5, &pinD6, &pinD7};
+GPIO_InitTypeDef raspberryPin = {GPIO_PIN_2, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
+GPIO_InitTypeDef *CN4Pins[9] = {&pinD0, &pinD1, &pinD2, &pinD3, &pinD4, &pinD5, &pinD6, &pinD7, &raspberryPin};
 
 
 // ====================== Screen Label ======================
 ScreenLabel homeLabel = {20, 20, "Home"};
 ScreenLabel manualLabel = {20, 20, "Manual"};
-ScreenLabel dayLabel = {20, 20, "Day"};
-ScreenLabel nightLabel = {20, 20, "Night"};
-ScreenLabel playLabel = {20, 20, "Play"};
-ScreenLabel startLabel = {20, 70, "Start"};
-ScreenLabel editLabel = {20, 140, "Edit"};
 
 // ====================== Clock ======================
 Clock clock = {CLOCK_POS_X, CLOCK_POS_Y, CLOCK_HOUR, CLOCK_MIN, CLOCK_SEC};
-Clock dayProgramClock = {DAY_PROGRAM_CLOCK_POS_X, DAY_PROGRAM_CLOCK_POS_Y, DAY_PROGRAM_CLOCK_HOUR, DAY_PROGRAM_CLOCK_MIN, 0, 0};
-Clock nightProgramClock = {NIGHT_PROGRAM_CLOCK_POS_X, NIGHT_PROGRAM_CLOCK_POS_Y, NIGHT_PROGRAM_CLOCK_HOUR, NIGHT_PROGRAM_CLOCK_MIN, 0, 0};
-Clock playProgramClock = {NIGHT_PROGRAM_CLOCK_POS_X, NIGHT_PROGRAM_CLOCK_POS_Y, 11, 23, 0, 0};
-Clock *programs[3] = {&dayProgramClock, &nightProgramClock, &playProgramClock};
 
 // ====================== Home Buttons ======================
-Button dayButton = {GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Day", 1};
-Button nightButton = {((GLCD_SIZE_X/4) * 2) + 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Night", 1};
-Button playButton = {BUTTON_PLAY_POS_X, BUTTON_PLAY_POS_Y, BUTTON_PLAY_WIDTH, BUTTON_PLAY_HEIGHT, BUTTON_PLAY_LABEL, BUTTON_PLAY_NAVIGATION};
+Functionality dayButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 1, "day"};
+Functionality nightButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 1, "night"};
+Functionality playButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 1, "play"};
+Button dayButton = {GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Day", 0, &dayButtonFunc};
+Button nightButton = {((GLCD_SIZE_X/4) * 2) + 20, GLCD_SIZE_Y/4, GLCD_SIZE_X/4, GLCD_SIZE_Y/5, "Night", 0, &nightButtonFunc};
+Button playButton = {BUTTON_PLAY_POS_X, BUTTON_PLAY_POS_Y, BUTTON_PLAY_WIDTH, BUTTON_PLAY_HEIGHT, BUTTON_PLAY_LABEL, 0, &playButtonFunc};
 Button manButton = {BUTTON_MANUAL_POS_X, BUTTON_MANUAL_POS_Y, BUTTON_MANUAL_WIDTH, BUTTON_MANUAL_HEIGHT, BUTTON_MANUAL_LABEL, BUTTON_MANUAL_NAVIGATION};
 Button *homeButtons[4] = {&dayButton, &nightButton, &playButton, &manButton};
 
@@ -57,14 +51,6 @@ Button fanButton = {BUTTON_FAN_POS_X, BUTTON_FAN_POS_Y, BUTTON_FAN_WIDTH, BUTTON
 Button alarmButton = {BUTTON_ALARM_POS_X, BUTTON_ALARM_POS_Y, BUTTON_ALARM_WIDTH, BUTTON_ALARM_HEIGHT, BUTTON_ALARM_LABEL, BUTTON_ALARM_NAVIGATION, &alarmButtonFunc};
 Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
 Button *manualButtons[7] = {&doorButton, &lightsButton, &homeButton, &HeatingButton, &fanButton, &treatButton, &alarmButton};
-
-// ====================== Edit Program Buttons ======================
-Functionality editFunctionality = {0, 0, 0, "edit"};
-Button editIncHour = {(GLCD_SIZE_X/4 + 60), 140, 40, 40, "+h", 0, &editFunctionality};
-Button editDecHour = {(GLCD_SIZE_X/4 + 120), 140, 40, 40, "-h", 0, &editFunctionality};
-Button editIncMin = {(GLCD_SIZE_X/4 + 250), 140, 40, 40, "+m", 0, &editFunctionality};
-Button editDecMin = {(GLCD_SIZE_X/4 + 300), 140, 40, 40, "-m", 0, &editFunctionality};
-Button *editButtons[5] = {&homeButton, &editIncHour, &editDecHour, &editIncMin, &editDecMin};
 
 // ====================== Bargraph ======================
 Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, WATER_BARGRAPH_LABEL };
@@ -119,8 +105,8 @@ void initializePins()
 	HAL_GPIO_WritePin(GPIOI, pinD7.Pin, GPIO_PIN_RESET);
 	
 	// Initialize Pin D8
-//	HAL_GPIO_Init(GPIOI, &raspberryPin);
-//	HAL_GPIO_WritePin(GPIOI, raspberryPin.Pin, GPIO_PIN_RESET);
+	HAL_GPIO_Init(GPIOI, &raspberryPin);
+	HAL_GPIO_WritePin(GPIOI, raspberryPin.Pin, GPIO_PIN_RESET);
 	
 	gpioInit.Pin = GPIO_PIN_0;
 	gpioInit.Mode = GPIO_MODE_ANALOG;
@@ -164,7 +150,7 @@ void drawHomePage(char **page)
 	// Draw Food Level
 	app_drawBargraph(&foodBargraph);
 	
-	app_userInputHandle(page, 4, homeButtons, CN4Pins, &clock, programs);
+	app_userInputHandle(page, 4, homeButtons, CN4Pins, &clock);
 }
 
 // Draws the manual page
@@ -196,79 +182,8 @@ void drawManualPage(char **page)
 	app_drawButton(&homeButton);
 	
 	// Handle user input
-	app_userInputHandle(page, 7, manualButtons, CN4Pins, &clock, programs);
+	app_userInputHandle(page, 7, manualButtons, CN4Pins, &clock);
 	
 }
 
-// Draws the day program page
-void drawDayProgramPage(char **page)
-{
-	// Draw Screen Label
-	app_drawScreenLabel(&dayLabel);
-	
-	// Draw Program time Label
-	app_drawScreenLabel(&startLabel);
-	
-	// Draw Edit Label
-	app_drawScreenLabel(&editLabel);
-	
-	// Draw Home Button
-	app_drawButton(&homeButton);
-	
-	// Draw Program Clock
-	app_drawProgramClock(&dayProgramClock);
-	
-	// Draw Edit Buttons
-	app_drawProgramTimeEdit(&editIncHour, &editDecHour, &editIncMin, &editDecMin ,&dayProgramClock);
-	
-	app_userInputHandle(page, 5, editButtons, CN4Pins, &clock, programs);
-}
-
-// Draws the night program page
-void drawNightProgramPage(char **page)
-{
-	// Draw Screen Label
-	app_drawScreenLabel(&nightLabel);
-	
-	// Draw Program time Label
-	app_drawScreenLabel(&startLabel);
-	
-	// Draw Edit Label
-	app_drawScreenLabel(&editLabel);
-	
-	// Draw Home Button
-	app_drawButton(&homeButton);
-	
-	// Draw Program Clock
-	app_drawProgramClock(&nightProgramClock);
-	
-	// Draw Edit Buttons
-	app_drawProgramTimeEdit(&editIncHour, &editDecHour, &editIncMin, &editDecMin ,&nightProgramClock);
-	
-	app_userInputHandle(page, 5, editButtons, CN4Pins, &clock, programs);
-}
-
-// Draws the night program page
-void drawPlayProgramPage(char **page)
-{
-	// Draw Screen Label
-	app_drawScreenLabel(&playLabel);
-	
-	// Draw Program time Label
-	app_drawScreenLabel(&startLabel);
-	
-	// Draw Edit Label
-	app_drawScreenLabel(&editLabel);
-	
-	// Draw Home Button
-	app_drawButton(&homeButton);
-	
-	// Draw Program Clock
-	app_drawProgramClock(&playProgramClock);
-	
-	// Draw Edit Buttons
-	app_drawProgramTimeEdit(&editIncHour, &editDecHour, &editIncMin, &editDecMin ,&playProgramClock);
-	
-	app_userInputHandle(page, 5, editButtons, CN4Pins, &clock, programs);
-}
 

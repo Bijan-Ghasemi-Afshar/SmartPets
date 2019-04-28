@@ -80,21 +80,6 @@ int main(void)
 			GLCD_ClearScreen ();
 			GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
 			drawManualPage(&page);
-		} else if (strcmp(page,"Day") == 0){
-			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-			GLCD_ClearScreen ();
-			GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
-			drawDayProgramPage(&page);
-		} else if (strcmp(page,"Night") == 0){
-			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-			GLCD_ClearScreen ();
-			drawNightProgramPage(&page);
-			GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
-		} else if (strcmp(page,"Play") == 0){
-			GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
-			GLCD_ClearScreen ();
-			GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
-			drawPlayProgramPage(&page);
 		} else {
 		}
 	}

@@ -89,19 +89,6 @@
 #define CLOCK_MIN 20
 #define CLOCK_HOUR 11
 
-// DAY PROGRAM CLOCK Properties
-#define DAY_PROGRAM_CLOCK_POS_X GLCD_SIZE_X/4 + 20
-#define DAY_PROGRAM_CLOCK_POS_Y 70
-#define DAY_PROGRAM_CLOCK_MIN 21
-#define DAY_PROGRAM_CLOCK_HOUR 11
-
-// NIGHT PROGRAM CLOCK Properties
-#define NIGHT_PROGRAM_CLOCK_POS_X GLCD_SIZE_X/4 + 20
-#define NIGHT_PROGRAM_CLOCK_POS_Y 70
-#define NIGHT_PROGRAM_CLOCK_MIN 22
-#define NIGHT_PROGRAM_CLOCK_HOUR 11
-
-
 // WATER Bargraph
 #define WATER_BARGRAPH_POS_X GLCD_SIZE_X/4 - 20
 #define WATER_BARGRAPH_POS_Y GLCD_SIZE_Y/5 * 4 - 10
@@ -119,10 +106,3 @@
 void drawHomePage(char **page);
 
 void drawManualPage(char **page);
-
-void drawDayProgramPage(char **page);
-
-void drawNightProgramPage(char **page);
-
-void drawPlayProgramPage(char **page);
-
