@@ -271,6 +271,10 @@ void app_homePageSpecific(void);
 // Handle sensor type
 void app_handleSensor(Button *button,  short pin);
 
+void turnOnFan(void);
+
+void turnOffFan(void);
+
 // Wait
 void wait(int delay);
 

@@ -338,48 +338,18 @@ void turnOffWheel(void)
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);
 }
 
-// Check program time
-void app_checkProgram(Clock *dayProgram, Clock *nightProgram, Clock *playProgram, Clock *clk)
+// Turn Fan ON
+void turnOnFan(void)
 {
-	
-	
-	// If it's day program
-	if (dayProgram->hour <= clk->hour && dayProgram->minute <= clk->minute && nightProgram->hour >= clk->hour && nightProgram->minute > clk->minute)
-	{
-		if (dayProgram->programRunning == 0){
-			dayProgram->programRunning = 1;
-			nightProgram->programRunning = 0;
-			//Turn off Lights
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
-			GLCD_DrawString (50, 120, "Day Program");
-			buzz();
-		} else {}
-	} else if (nightProgram->hour <= clk->hour && nightProgram->minute <= clk->minute){
-		if (nightProgram->programRunning == 0){
-			dayProgram->programRunning = 0;
-			nightProgram->programRunning = 1;
-			//Turn off Lights
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
-			GLCD_DrawString (50, 120, "Night Program");
-			buzz();
-		} else {}
-	}
-	else if (playProgram->hour <= clk->hour && playProgram->minute <= clk->minute){
-		if (nightProgram->programRunning == 0){
-			dayProgram->programRunning = 0;
-			nightProgram->programRunning = 1;
-			// Open Door
-			HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);
-			// Start Wheel
-			HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);
-			GLCD_DrawString (50, 120, "Play Program");
-			buzz();
-		} else {}
-	}
-	else {
-		//GLCD_DrawString (50, 120, "FUUCK");
-	}
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
 }
+
+// Turn Fan OFF
+void turnOffFan(void)
+{
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
+}
+
 
 // Open Door
 void app_openDoor(Button *button, short pin)
@@ -609,6 +579,18 @@ void app_updateTempreture()
 	sprintf(buffer, "%d", tempByte1);
 	GLCD_DrawString (50, 90, "  ");
 	GLCD_DrawString (50, 90, buffer);
+	
+	if (tempByte1 < 23)
+	{
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
+		turnOffFan();
+	} else if (tempByte1 > 25){
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+		turnOnFan();
+	} else {
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+		turnOffFan();
+	}
 }
 
 
@@ -640,12 +622,15 @@ void app_handleSensor(Button *button, short pin)
 			HAL_GPIO_WritePin(button->funtionality->base, pin, GPIO_PIN_SET);
 			button->funtionality->state = 1;
 		} else if (strcmp(button->funtionality->type, "day") == 0){
+			buzz();
 			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
 			app_closeDoor();
 		} else if (strcmp(button->funtionality->type, "night") == 0){
+			buzz();
 			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
 			app_closeDoor();
 		} else if (strcmp(button->funtionality->type, "play") == 0){
+			buzz();
 			app_openDoor(&doorButton, GPIO_PIN_6);
 			turnOnWheel();
 		} else {}
