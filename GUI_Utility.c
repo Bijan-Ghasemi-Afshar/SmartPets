@@ -611,13 +611,13 @@ void app_updateTempreture()
 	
 	if (tempByte1 > 23 && tempByte1 < 25 && tempByte1 != 0)
 	{
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
 		turnOffFan();
 	} else if (tempByte1 > 25 && tempByte1 != 0){
 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
 		turnOnFan();
 	} else if (tempByte1 < 23 && tempByte1 != 0){
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
 		turnOffFan();
 	} else{}
 }
