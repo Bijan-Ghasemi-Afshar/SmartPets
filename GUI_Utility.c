@@ -244,6 +244,7 @@ void DHT11Start(GPIO_InitTypeDef* pin)
 void checkResponse(GPIO_InitTypeDef* pin)
 {
 	int pinStatus = 0;
+	int counter = 0;
 	
 	// 40us (microsecond) delay
 	DWT_Delay_us(40);
@@ -257,16 +258,33 @@ void checkResponse(GPIO_InitTypeDef* pin)
 			check = 1;
 		}
 	}
-	while((HAL_GPIO_ReadPin (GPIOB, pin->Pin)));
+	while((HAL_GPIO_ReadPin (GPIOB, pin->Pin)))
+	{
+		counter++;
+		if (counter > 300000)
+		{
+			break;
+		}
+	}
 }
 
 // Read the data of the tempreture sensor
 int readData(GPIO_InitTypeDef* pin)
 {
 	int i,j;
+	int counter = 0;
+	
 	for (j=0;j<8;j++)
 	{
-		while (!(HAL_GPIO_ReadPin (GPIOB, pin->Pin)));   // wait for the pin to go high
+		// wait for the pin to go high
+		while (!(HAL_GPIO_ReadPin (GPIOB, pin->Pin))) 
+		{
+			counter++;
+			if (counter > 300000)
+			{
+				break;
+			}
+		}
 		DWT_Delay_us (40);   // wait for 40 us
 		if ((HAL_GPIO_ReadPin (GPIOB, pin->Pin)) == 0)   // if the pin is low 
 		{
@@ -275,7 +293,16 @@ int readData(GPIO_InitTypeDef* pin)
 		else {
 			i|= (1<<(7-j));  // if the pin is high, write 1
 		}
-		while ((HAL_GPIO_ReadPin (GPIOB, pin->Pin)));  // wait for the pin to go low
+		// wait for the pin to go low
+		counter = 0;
+		while ((HAL_GPIO_ReadPin (GPIOB, pin->Pin)))
+		{
+			counter++;
+			if (counter > 300000)
+			{
+				break;
+			}
+		}
 	}
 	return i;
 }
@@ -569,27 +596,30 @@ void app_updateTempreture()
 		sum = readData(&pinD3);
 	}
 	
-	GLCD_DrawString (20, 50, "H: ");
-	sprintf(buffer, "%d", rhByte1);
-	GLCD_DrawString (50, 50, "  ");
-	GLCD_DrawString (50, 50, buffer);
+	if (rhByte1 != 0 && tempByte1 != 0)
+	{
+		GLCD_DrawString (20, 50, "H: ");
+		sprintf(buffer, "%d", rhByte1);
+		GLCD_DrawString (50, 50, "  ");
+		GLCD_DrawString (50, 50, buffer);
+		
+		GLCD_DrawString (20, 90, "T: ");
+		sprintf(buffer, "%d", tempByte1);
+		GLCD_DrawString (50, 90, "  ");
+		GLCD_DrawString (50, 90, buffer);
+	}
 	
-	GLCD_DrawString (20, 90, "T: ");
-	sprintf(buffer, "%d", tempByte1);
-	GLCD_DrawString (50, 90, "  ");
-	GLCD_DrawString (50, 90, buffer);
-	
-//	if (tempByte1 < 23)
-//	{
-//		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
-//		turnOffFan();
-//	} else if (tempByte1 > 25){
-//		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
-//		turnOnFan();
-//	} else {
-//		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
-//		turnOffFan();
-//	}
+	if (tempByte1 > 23 && tempByte1 < 25 && tempByte1 != 0)
+	{
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
+		turnOffFan();
+	} else if (tempByte1 > 25 && tempByte1 != 0){
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+		turnOnFan();
+	} else if (tempByte1 < 23 && tempByte1 != 0){
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+		turnOffFan();
+	} else{}
 }
 
 
@@ -599,13 +629,13 @@ void app_homePageSpecific()
 	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
 	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
 	
-//	app_updateFoodLevel(&waterBargraph);
-//	app_updateWaterLevel(&foodBargraph);
+	app_updateFoodLevel(&waterBargraph);
+	app_updateWaterLevel(&foodBargraph);
 	
-//	if (HAL_GetTick()%5 == 0 )
-//	{
+	if (HAL_GetTick()%200 == 0 )
+	{
 		app_updateTempreture();
-//	}
+	}
 }
 
 // Handle sensor type
