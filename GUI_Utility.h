@@ -1,4 +1,5 @@
 #include "stm32f7xx_hal.h"
+
 #define DAY 8640000; /* 10 ms ticks in a day */
 
 // PLAY Button Properties
@@ -116,13 +117,18 @@
 #define FOOD_BARGRAPH_HEIGHT 10
 #define FOOD_BARGRAPH_LABEL "Food"
 
+/**
+* Function to draw the home page
+*/
 void drawHomePage(char **page);
 
+/**
+* Function to draw the manual page
+*/
 void drawManualPage(char **page);
 
-
 /**
-* This struct contains properties related to a functionality ( concept level functionality )
+* This struct contains properties related to a FUNCTIONALITY of a BUTTON
 */
 typedef struct
 {
@@ -136,7 +142,7 @@ typedef struct
 	
 }Functionality;
 /**
-* This struct contains properties related to a button ( concept level button )
+* This struct contains properties related to a BUTTON
 */
 typedef struct
 {
@@ -157,7 +163,7 @@ typedef struct
 }Button;
 
 /**
-* This struct contains properties related to a Clock ( concept level clock )
+* This struct contains properties related to a CLOCK
 */
 typedef struct
 {
@@ -182,7 +188,7 @@ typedef struct
 }Clock;
 
 /**
-* This struct contains properties related to a screen label ( concept level screen label )
+* This struct contains properties related to a SCREEN LABLE
 */
 typedef struct
 {
@@ -195,7 +201,7 @@ typedef struct
 }ScreenLabel;
 
 /**
-* This struct contains properties related to a bargraph ( concept level screen bargraph )
+* This struct contains properties related to a BARGRAPH
 */
 typedef struct
 {
@@ -215,7 +221,7 @@ typedef struct
 
 
 /**
-* Program struct
+* This struct contains properties related to a PROGRAM (Day, Night, Play)
 */
 typedef struct
 {
@@ -228,6 +234,7 @@ typedef struct
 	GPIO_InitTypeDef **pin;
 	
 }Program;
+
 
 // Draws a button with a label on top of it
 void app_drawButton(Button *btn);
@@ -250,9 +257,6 @@ void ConfigureADC(void);
 // Draws a clock
 void app_drawClock();
 
-// Draw program time edit
-void app_drawProgramTimeEdit(Button *hourInc, Button *hourDec, Button *minInc, Button *minDec, Clock *clock);
-
 // Draws the screen label
 void app_drawScreenLabel(ScreenLabel *scrLbl);
 
@@ -265,26 +269,28 @@ void app_clockTicToc();
 // User input Handler
 void app_userInputHandle(char **page, short numOfButtons, Button **buttons);
 
-// Page specific logic
+// Home page specific logic
 void app_homePageSpecific(void);
 
 // Handle sensor type
 void app_handleSensor(Button *button,  short pin);
 
+// Turn ON the FAN
 void turnOnFan(void);
 
+// Turn OFF the FAN
 void turnOffFan(void);
 
 // Wait
 void wait(int delay);
 
-// stop treat
+// Stop treat
 void app_stopTreat(void);
 
-// Open Door
+// Open Door (Used for both the door and starting the treat)
 void app_openDoor(Button *button, short pin);
 
-// Close Door
+// Close Door (Uses Mutex to hold the resource to make sure the door is clear)
 void app_closeDoor();
 
 // Update water level
