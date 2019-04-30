@@ -281,9 +281,6 @@ void turnOnFan(void);
 // Turn OFF the FAN
 void turnOffFan(void);
 
-// Wait
-void wait(int delay);
-
 // Stop treat
 void app_stopTreat(void);
 

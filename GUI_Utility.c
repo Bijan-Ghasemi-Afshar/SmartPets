@@ -4,6 +4,7 @@
 #include "GLCD_Config.h"
 #include "Board_Touch.h"
 #include "dwt_stm32_delay.h"
+#include "cmsis_os.h"
 
 #ifdef __RTX
 	extern uint32_t os_time;
@@ -259,6 +260,7 @@ void checkResponse(GPIO_InitTypeDef* pin)
 	}
 	while((HAL_GPIO_ReadPin (GPIOB, pin->Pin)))
 	{
+		// Break out of loop if sensor is not responding
 		counter++;
 		if (counter > 300000)
 		{
@@ -278,6 +280,7 @@ int readData(GPIO_InitTypeDef* pin)
 		// wait for the pin to go high
 		while (!(HAL_GPIO_ReadPin (GPIOB, pin->Pin))) 
 		{
+			// Break out of loop if sensor is not responding
 			counter++;
 			if (counter > 300000)
 			{
@@ -296,6 +299,7 @@ int readData(GPIO_InitTypeDef* pin)
 		counter = 0;
 		while ((HAL_GPIO_ReadPin (GPIOB, pin->Pin)))
 		{
+			// Break out of loop if sensor is not responding
 			counter++;
 			if (counter > 300000)
 			{
@@ -332,22 +336,13 @@ void ConfigureADC()
 	HAL_ADC_Init(&g_AdcHandle);
 	
 }
-
-// Delay Function
-void wait(int delay)
-{
-	int i = 0;
-	for(i = 0; i < delay; i++)
-	{
-	}
-}
 	
 // Buzz
 void buzz(void)
 {
 	GPIO_InitTypeDef pinD5 = {GPIO_PIN_0, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 	HAL_GPIO_WritePin(GPIOI, pinD5.Pin, GPIO_PIN_SET);
-	wait(40000000);
+	osDelay(1000);
 	HAL_GPIO_WritePin(GPIOI, pinD5.Pin, GPIO_PIN_RESET);
 }
 
@@ -405,17 +400,10 @@ void app_closeDoor()
 	HAL_ADC_ConfigChannel(&g_AdcHandle, &adcChannel);
 	HAL_ADC_Start(&g_AdcHandle);
 	g_ADCValueDoor = HAL_ADC_GetValue(&g_AdcHandle);
-	
-//	sprintf(buffer, "%d", g_ADCValueDoor );
-//	GLCD_DrawString (50, 50, "  ");
-//	GLCD_DrawString (50, 50, buffer);
-	
+		
 	while (g_ADCValueDoor < 3300 || g_ADCValueDoor > 4095)
 	{
 		g_ADCValueDoor = HAL_ADC_GetValue(&g_AdcHandle);
-//		sprintf(buffer, "%d", g_ADCValueDoor );
-//		GLCD_DrawString (50, 50, "  ");
-//		GLCD_DrawString (50, 50, buffer);
 	}
 	
 	while(counter < 10)
@@ -718,7 +706,7 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons)
 						} 
 						else {
 							app_handleSensor(buttons[i], CN4Pins[buttons[i]->funtionality->pin]->Pin);
-							wait(10000000);
+							osDelay(1000);
 						}
 					}
 				}
