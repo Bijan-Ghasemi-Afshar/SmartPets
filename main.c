@@ -1,8 +1,8 @@
 #include "GLCD_Config.h"
 #include "Board_GLCD.h"
 #include "stm32f7xx_hal.h"
-#include "App_GUI_Content.h"
 #include "stm32f7xx_hal_adc.h"
+#include "cmsis_os.h"
 #include <string.h>
 
 #define wait_delay HAL_Delay

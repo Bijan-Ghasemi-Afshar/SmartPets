@@ -1,7 +1,6 @@
 --cpu Cortex-M7.fp.sp
 ".\objects\main.o"
 ".\objects\gui_utility.o"
-".\objects\app_gui_content.o"
 ".\objects\dwt_stm32_delay.o"
 ".\objects\ft5336.o"
 ".\objects\stm32746g_discovery.o"

@@ -4,7 +4,6 @@
 #include "GLCD_Config.h"
 #include "Board_Touch.h"
 #include "dwt_stm32_delay.h"
-#include "cmsis_os.h"
 
 #ifdef __RTX
 	extern uint32_t os_time;
@@ -72,7 +71,12 @@ Bargraph foodBargraph = { FOOD_BARGRAPH_POS_X, FOOD_BARGRAPH_POS_Y, FOOD_BARGRAP
 ADC_HandleTypeDef g_AdcHandle;
 // The check flag for the tempreture sensor to indicate whether the sensor's response is correct
 int check = 0;
-	
+
+/* Task ids */
+osThreadId tid_waterFood;   
+osThreadId tid_clock;
+
+
 // Initialize Pins
 void initializePins()
 {
@@ -165,6 +169,13 @@ void drawHomePage(char **page)
 	// Draw Food Level
 	app_drawBargraph(&foodBargraph);
 	
+	// Create thread for getting the water food and tempreture levels
+	tid_waterFood = osThreadCreate(osThread(app_homePageSpecific), NULL);
+	
+	// Create thread for the clock functionality
+	tid_clock = osThreadCreate(osThread(app_clockTicToc), NULL);
+	
+	// Handle user input 
 	app_userInputHandle(page, 4, homeButtons);
 }
 
@@ -243,7 +254,6 @@ void DHT11Start(GPIO_InitTypeDef* pin)
 // Check the response of the tempreture sensor
 void checkResponse(GPIO_InitTypeDef* pin)
 {
-	int pinStatus = 0;
 	int counter = 0;
 	
 	// 40us (microsecond) delay
@@ -390,7 +400,6 @@ void app_closeDoor()
 {
 	int counter = 0;
 	int g_ADCValueDoor = 0;
-	char buffer[128];
 	ADC_ChannelConfTypeDef adcChannel;
 	
 	adcChannel.Channel = ADC_CHANNEL_7;
@@ -473,9 +482,8 @@ void app_drawBargraph(Bargraph *bargraph)
 }
 
 // Clock functionality
-void app_clockTicToc()
+void app_clockTicToc(void const *argument)
 {
-	char buffer[128];
 	clock.tic = HAL_GetTick()/10;
 		if (clock.tic != clock.toc) { /* 10 ms update */
 			clock.toc = clock.tic;
@@ -494,7 +502,6 @@ void app_updateWaterLevel(Bargraph *bargraph)
 {
 	ADC_ChannelConfTypeDef adcChannel;
 	int g_ADCValueWater = 0;
-	char buffer[128];
 	
 	adcChannel.Channel = ADC_CHANNEL_0;
 	adcChannel.Rank = 1;
@@ -527,7 +534,6 @@ void app_updateFoodLevel(Bargraph *bargraph)
 {
 	ADC_ChannelConfTypeDef adcChannel;
 	int g_ADCValueFood = 0;
-	char buffer[128];
 	
 	adcChannel.Channel = ADC_CHANNEL_8;
 	adcChannel.Rank = 1;
@@ -559,9 +565,9 @@ void app_updateFoodLevel(Bargraph *bargraph)
 // Update Tempreture
 void app_updateTempreture()
 {
-	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
-	GPIO_InitTypeDef pinD3 = {GPIO_PIN_4, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_LOW};
+	uint8_t rhByte1 = 0, tempByte1 = 0;
 	char buffer[128];
+	GPIO_InitTypeDef pinD3 = {GPIO_PIN_4, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_LOW};
 	check = 0;
 	
 	DWT_Delay_Init();
@@ -575,12 +581,11 @@ void app_updateTempreture()
 	checkResponse(&pinD3);
 	if (check)
 	{
-		//GLCD_DrawString (20, 20, "Tempreture sensor is OK");
 		rhByte1 = readData(&pinD3);
-		rhByte2 = readData(&pinD3);
+		readData(&pinD3);
 		tempByte1 = readData(&pinD3);
-		tempByte2 = readData(&pinD3);
-		sum = readData(&pinD3);
+		readData(&pinD3);
+		readData(&pinD3);
 	}
 	
 	if (rhByte1 != 0 && tempByte1 != 0)
@@ -611,10 +616,12 @@ void app_updateTempreture()
 
 
 // Page specific logic
-void app_homePageSpecific()
+void app_homePageSpecific(void const *argument)
 {
-	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
-	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
+//	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
+//	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
+	
+	//osSignalWait(0x0001, osWaitForever);
 	
 	app_updateFoodLevel(&waterBargraph);
 	app_updateWaterLevel(&foodBargraph);
@@ -685,11 +692,11 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons)
 	{
 		if (strcmp(*page, currentPage) == 0)
 		{
-			app_clockTicToc();
+			osSignalSet(tid_waterFood, 0x0001);
 			
 			if (strcmp(*page, "Home") == 0)
 			{
-				app_homePageSpecific();
+				osSignalSet(tid_waterFood, 0x0001); 
 			}
 			
 			Touch_GetState(&tscState);

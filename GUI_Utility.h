@@ -1,4 +1,5 @@
 #include "stm32f7xx_hal.h"
+#include "cmsis_os.h"
 
 #define DAY 8640000; /* 10 ms ticks in a day */
 
@@ -255,7 +256,7 @@ void buzz(void);
 void ConfigureADC(void);
 
 // Draws a clock
-void app_drawClock();
+void app_drawClock(void);
 
 // Draws the screen label
 void app_drawScreenLabel(ScreenLabel *scrLbl);
@@ -264,13 +265,13 @@ void app_drawScreenLabel(ScreenLabel *scrLbl);
 void app_drawBargraph(Bargraph *bargraph);
 
 // Clock functionality
-void app_clockTicToc();
+void app_clockTicToc(void const *argument);
 
 // User input Handler
 void app_userInputHandle(char **page, short numOfButtons, Button **buttons);
 
 // Home page specific logic
-void app_homePageSpecific(void);
+void app_homePageSpecific(void const *argument);
 
 // Handle sensor type
 void app_handleSensor(Button *button,  short pin);
@@ -288,7 +289,7 @@ void app_stopTreat(void);
 void app_openDoor(Button *button, short pin);
 
 // Close Door (Uses Mutex to hold the resource to make sure the door is clear)
-void app_closeDoor();
+void app_closeDoor(void);
 
 // Update water level
 void app_updateWaterLevel(Bargraph *bargraph);
@@ -306,4 +307,9 @@ void checkResponse(GPIO_InitTypeDef* pin);
 int readData(GPIO_InitTypeDef* pin);
 
 // Update Tempreture
-void app_updateTempreture();
+void app_updateTempreture(void);
+
+/* Define Threads */
+osThreadDef(app_homePageSpecific, osPriorityNormal, 1, 0);
+osThreadDef(app_clockTicToc, osPriorityAboveNormal, 1, 0);
+

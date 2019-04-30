@@ -27,43 +27,33 @@ Project File Date:  04/25/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
+compiling main.c...
+main.c(61): warning:  #223-D: function "initializePins" declared implicitly
+  	initializePins();
+main.c(63): warning:  #223-D: function "Touch_Initialize" declared implicitly
+  	Touch_Initialize();
+main.c(64): warning:  #223-D: function "ConfigureADC" declared implicitly
+  	ConfigureADC();
+main.c(77): warning:  #223-D: function "drawHomePage" declared implicitly
+  			drawHomePage(&page);
+main.c(82): warning:  #223-D: function "drawManualPage" declared implicitly
+  			drawManualPage(&page);
+main.c(86): warning:  #1-D: last line of file ends without a newline
+  }
+main.c(12): warning:  #177-D: function "initDisplay" was declared but never referenced
+  static void initDisplay(void);
+main.c: 7 warnings, 0 errors
 compiling GUI_Utility.c...
-GUI_Utility.h(258): warning:  #1295-D: Deprecated declaration app_drawClock - give arg types
-  void app_drawClock();
-GUI_Utility.h(267): warning:  #1295-D: Deprecated declaration app_clockTicToc - give arg types
-  void app_clockTicToc();
-GUI_Utility.h(291): warning:  #1295-D: Deprecated declaration app_closeDoor - give arg types
-  void app_closeDoor();
-GUI_Utility.h(309): warning:  #1-D: last line of file ends without a newline
-  void app_updateTempreture();
-GUI_Utility.h(309): warning:  #1295-D: Deprecated declaration app_updateTempreture - give arg types
-  void app_updateTempreture();
-GUI_Utility.c(246): warning:  #177-D: variable "pinStatus" was declared but never referenced
-  	int pinStatus = 0;
-GUI_Utility.c(393): warning:  #177-D: variable "buffer" was declared but never referenced
-  	char buffer[128];
-GUI_Utility.c(478): warning:  #177-D: variable "buffer" was declared but never referenced
-  	char buffer[128];
-GUI_Utility.c(497): warning:  #177-D: variable "buffer" was declared but never referenced
-  	char buffer[128];
-GUI_Utility.c(530): warning:  #177-D: variable "buffer" was declared but never referenced
-  	char buffer[128];
-GUI_Utility.c(562): warning:  #550-D: variable "rhByte2" was set but never used
-  	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
-GUI_Utility.c(562): warning:  #550-D: variable "tempByte2" was set but never used
-  	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
-GUI_Utility.c(562): warning:  #550-D: variable "sum" was set but never used
-  	uint8_t rhByte1 = 0, rhByte2 = 0, tempByte1 = 0, tempByte2 = 0, sum = 0;
-GUI_Utility.c(633): warning:  #223-D: function "strcmp" declared implicitly
+GUI_Utility.c(640): warning:  #223-D: function "strcmp" declared implicitly
   		if (strcmp(button->funtionality->type, "pwm") == 0)
-GUI_Utility.c(656): warning:  #223-D: function "strcmp" declared implicitly
+GUI_Utility.c(663): warning:  #223-D: function "strcmp" declared implicitly
   		if (strcmp(button->funtionality->type, "pwm") == 0)
-GUI_Utility.c(686): warning:  #223-D: function "strcmp" declared implicitly
+GUI_Utility.c(693): warning:  #223-D: function "strcmp" declared implicitly
   		if (strcmp(*page, currentPage) == 0)
-GUI_Utility.c: 16 warnings, 0 errors
+GUI_Utility.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=24416 RO-data=7136 RW-data=856 ZI-data=270792  
-".\Objects\SmartPets.axf" - 0 Error(s), 16 Warning(s).
+Program Size: Code=24648 RO-data=7128 RW-data=864 ZI-data=270792  
+".\Objects\SmartPets.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -225,7 +215,7 @@ Package Vendor: Keil
       Source file:   Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\arm\startup_stm32f746xx.s
 
    * Component: ::Device:STM32Cube Framework:1.0.0 (API)
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>
