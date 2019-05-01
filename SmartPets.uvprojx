@@ -386,11 +386,6 @@
               <FilePath>.\GUI_Utility.c</FilePath>
             </File>
             <File>
-              <FileName>App_GUI_Content.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App_GUI_Content.c</FilePath>
-            </File>
-            <File>
               <FileName>dwt_stm32_delay.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\dwt_stm32_delay.c</FilePath>

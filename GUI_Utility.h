@@ -118,6 +118,16 @@
 #define FOOD_BARGRAPH_HEIGHT 10
 #define FOOD_BARGRAPH_LABEL "Food"
 
+
+// Mutex definition
+osMutexId stdio_mutex;
+osMutexDef(stdio_mutex);
+
+/* Task ids */
+osThreadId tid_clockLoop;   
+osThreadId tid_clock;
+
+
 /**
 * Function to draw the home page
 */
@@ -271,7 +281,7 @@ void app_clockTicToc(void const *argument);
 void app_userInputHandle(char **page, short numOfButtons, Button **buttons);
 
 // Home page specific logic
-void app_homePageSpecific(void const *argument);
+void app_homePageSpecific();
 
 // Handle sensor type
 void app_handleSensor(Button *button,  short pin);
@@ -310,6 +320,6 @@ int readData(GPIO_InitTypeDef* pin);
 void app_updateTempreture(void);
 
 /* Define Threads */
-osThreadDef(app_homePageSpecific, osPriorityNormal, 1, 0);
+//osThreadDef(app_clockThreadLoop, osPriorityNormal, 1, 0);
 osThreadDef(app_clockTicToc, osPriorityAboveNormal, 1, 0);
 

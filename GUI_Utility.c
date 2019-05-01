@@ -72,10 +72,6 @@ ADC_HandleTypeDef g_AdcHandle;
 // The check flag for the tempreture sensor to indicate whether the sensor's response is correct
 int check = 0;
 
-/* Task ids */
-osThreadId tid_waterFood;   
-osThreadId tid_clock;
-
 
 // Initialize Pins
 void initializePins()
@@ -168,12 +164,6 @@ void drawHomePage(char **page)
 	
 	// Draw Food Level
 	app_drawBargraph(&foodBargraph);
-	
-	// Create thread for getting the water food and tempreture levels
-	tid_waterFood = osThreadCreate(osThread(app_homePageSpecific), NULL);
-	
-	// Create thread for the clock functionality
-	tid_clock = osThreadCreate(osThread(app_clockTicToc), NULL);
 	
 	// Handle user input 
 	app_userInputHandle(page, 4, homeButtons);
@@ -401,6 +391,7 @@ void app_closeDoor()
 	int counter = 0;
 	int g_ADCValueDoor = 0;
 	ADC_ChannelConfTypeDef adcChannel;
+	osMutexWait(stdio_mutex, osWaitForever);
 	
 	adcChannel.Channel = ADC_CHANNEL_7;
 	adcChannel.Rank = 1;
@@ -423,6 +414,7 @@ void app_closeDoor()
 		milDelay(22);
 		counter++;
 	}
+	osMutexRelease(stdio_mutex);
 }
 	
 // stop treat
@@ -484,18 +476,15 @@ void app_drawBargraph(Bargraph *bargraph)
 // Clock functionality
 void app_clockTicToc(void const *argument)
 {
-	clock.tic = HAL_GetTick()/10;
+		clock.tic = HAL_GetTick()/10;
 		if (clock.tic != clock.toc) { /* 10 ms update */
 			clock.toc = clock.tic;
 			clock.second = (clock.elapsed_t/100)%60; /* update time */
 			clock.minute = (clock.elapsed_t/6000)%60;
 			clock.hour = (clock.elapsed_t/360000)%24;
-			/* Update Display */
-			app_drawClock();
 			clock.elapsed_t = (clock.elapsed_t+1) % DAY;
 		}
 }
-
 
 // Update water level
 void app_updateWaterLevel(Bargraph *bargraph)
@@ -616,13 +605,8 @@ void app_updateTempreture()
 
 
 // Page specific logic
-void app_homePageSpecific(void const *argument)
+void app_homePageSpecific()
 {
-//	Bargraph foodBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 - 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Food " };
-//	Bargraph waterBargraph = { GLCD_SIZE_X/4 - 20, GLCD_SIZE_Y/5 * 4 + 10, GLCD_SIZE_X/2 + 40, 10, GLCD_COLOR_GREEN, "Water" };
-	
-	//osSignalWait(0x0001, osWaitForever);
-	
 	app_updateFoodLevel(&waterBargraph);
 	app_updateWaterLevel(&foodBargraph);
 	
@@ -688,15 +672,20 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons)
 	TOUCH_STATE tscState;
 	clock.elapsed_t = clock.second*100+clock.minute*60*100+clock.hour*60*60*100;
 	
+
 	while(1)
 	{
 		if (strcmp(*page, currentPage) == 0)
 		{
-			osSignalSet(tid_waterFood, 0x0001);
+			
+			// Create thread for the clock functionality
+			tid_clock = osThreadCreate(osThread(app_clockTicToc), NULL);
+			osSignalSet(tid_clock, 0x0001);
+			app_drawClock();
 			
 			if (strcmp(*page, "Home") == 0)
 			{
-				osSignalSet(tid_waterFood, 0x0001); 
+				app_homePageSpecific();
 			}
 			
 			Touch_GetState(&tscState);
@@ -713,7 +702,7 @@ void app_userInputHandle(char **page, short numOfButtons, Button **buttons)
 						} 
 						else {
 							app_handleSensor(buttons[i], CN4Pins[buttons[i]->funtionality->pin]->Pin);
-							osDelay(1000);
+							osDelay(600);
 						}
 					}
 				}
