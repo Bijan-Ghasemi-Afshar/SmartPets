@@ -390,6 +390,11 @@
               <FileType>1</FileType>
               <FilePath>.\dwt_stm32_delay.c</FilePath>
             </File>
+            <File>
+              <FileName>SmartPets.doxy</FileName>
+              <FileType>9</FileType>
+              <FilePath>.\SmartPets.doxy</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

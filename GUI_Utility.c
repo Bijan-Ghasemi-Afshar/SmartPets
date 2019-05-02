@@ -1,3 +1,12 @@
+/*-----------------------------------------------------------------------------
+ * Name:    GUI_Utility.c
+ * Purpose: The core logic of the SmartPets app.
+ * Rev.:    1.0.0
+ * Authors:    Bijan Ghasemi Afshar - Richard Sabiers
+ * Date: April 2019
+ *-----------------------------------------------------------------------------*/
+ 
+
 #include "stm32f7xx_hal.h"
 #include "GUI_Utility.h"
 #include "Board_GLCD.h"
@@ -5,6 +14,7 @@
 #include "Board_Touch.h"
 #include "dwt_stm32_delay.h"
 
+/*---------------------- Defining the os time fot RTX ---------------*/
 #ifdef __RTX
 	extern uint32_t os_time;
 	uint32_t HAL_GetTick(void) {
@@ -12,11 +22,12 @@
 	}
 #endif
 
+/*---------------------- Defining the used fonts ---------------*/
 extern GLCD_FONT GLCD_Font_6x8;
 extern GLCD_FONT GLCD_Font_16x24;
 
 	
-// ====================== GPIO PINS ======================
+/*---------------------- GPIO Pins used ---------------*/
 GPIO_InitTypeDef pinD0 = {GPIO_PIN_7, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 GPIO_InitTypeDef pinD1 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 GPIO_InitTypeDef pinD2 = {GPIO_PIN_6, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
@@ -28,14 +39,14 @@ GPIO_InitTypeDef pinD7 = {GPIO_PIN_3, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPE
 GPIO_InitTypeDef raspberryPin = {GPIO_PIN_2, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
 GPIO_InitTypeDef *CN4Pins[9] = {&pinD0, &pinD1, &pinD2, &pinD3, &pinD4, &pinD5, &pinD6, &pinD7, &raspberryPin};
 
-// ====================== Screen Label ======================
+/*---------------------- Screen labels used ---------------*/
 ScreenLabel homeLabel = {20, 20, "Home"};
 ScreenLabel manualLabel = {20, 20, "Manual"};
 
-// ====================== Clock ======================
+/*---------------------- The clock ---------------*/
 Clock clock = {CLOCK_POS_X, CLOCK_POS_Y, CLOCK_HOUR, CLOCK_MIN, CLOCK_SEC};
 
-// ====================== Home Buttons ======================
+/*---------------------- Home page buttons ---------------*/
 Functionality dayButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 0, "day"};
 Functionality nightButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 0, "night"};
 Functionality playButtonFunc = {BUTTON_DOOR_PIN, GPIOH, 0, "play"};
@@ -45,7 +56,7 @@ Button playButton = {BUTTON_PLAY_POS_X, BUTTON_PLAY_POS_Y, BUTTON_PLAY_WIDTH, BU
 Button manButton = {BUTTON_MANUAL_POS_X, BUTTON_MANUAL_POS_Y, BUTTON_MANUAL_WIDTH, BUTTON_MANUAL_HEIGHT, BUTTON_MANUAL_LABEL, BUTTON_MANUAL_NAVIGATION};
 Button *homeButtons[4] = {&dayButton, &nightButton, &playButton, &manButton};
 
-// ====================== Manual Buttons ======================
+/*---------------------- Manual page buttons ---------------*/
 Functionality doorButtonFunc = {BUTTON_DOOR_PIN, GPIOH, BUTTON_DOOR_STATE, "pwm"};
 Functionality treatButtonFunc = {BUTTON_TREAT_PIN, GPIOI, BUTTON_TREAT_STATE, "pwm"};
 Functionality lightsButtonFunc = {BUTTON_LIGHTS_PIN, GPIOC, BUTTON_LIGHTS_STATE, "digital"};
@@ -63,17 +74,21 @@ Button rasbButton = {BUTTON_CAMERA_POS_X, BUTTON_CAMERA_POS_Y, BUTTON_CAMERA_WID
 Button homeButton = {BUTTON_HOME_POS_X, BUTTON_HOME_POS_Y, BUTTON_HOME_WIDTH, BUTTON_HOME_HEIGHT, BUTTON_HOME_LABEL, BUTTON_HOME_NAVIGATION};
 Button *manualButtons[7] = {&doorButton, &lightsButton, &homeButton, &HeatingButton, &fanButton, &treatButton, &rasbButton};
 
-// ====================== Bargraph ======================
+/*---------------------- Bargraphs (Food & Water) ---------------*/
 Bargraph waterBargraph = { WATER_BARGRAPH_POS_X, WATER_BARGRAPH_POS_Y, WATER_BARGRAPH_WIDTH, WATER_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, WATER_BARGRAPH_LABEL };
 Bargraph foodBargraph = { FOOD_BARGRAPH_POS_X, FOOD_BARGRAPH_POS_Y, FOOD_BARGRAPH_WIDTH, FOOD_BARGRAPH_HEIGHT, GLCD_COLOR_GREEN, FOOD_BARGRAPH_LABEL };
 
-// The ADC Handler
+/* The ADC handler */
 ADC_HandleTypeDef g_AdcHandle;
-// The check flag for the tempreture sensor to indicate whether the sensor's response is correct
+
+/* The check flag for the tempreture sensor to indicate whether the sensor's response is correct */
 int check = 0;
 
 
-// Initialize Pins
+/**
+  \fn          void initializePins(void)
+  \brief       Initializes all used pins.
+*/
 void initializePins()
 {
 	GPIO_InitTypeDef gpioInit;
@@ -141,7 +156,11 @@ void initializePins()
 }
 
 
-// Draws the home page
+/**
+  \fn          void drawHomePage(char **page)
+  \brief       Draws the home page GUI.
+  \param[in]   page		The name of the page.
+*/
 void drawHomePage(char **page)
 {
 	// Draw Screen Label
@@ -169,7 +188,11 @@ void drawHomePage(char **page)
 	app_userInputHandle(page, 4, homeButtons);
 }
 
-// Draws the manual page
+/**
+  \fn          void drawManualPage(char **page)
+  \brief       Draws the manual page GUI.
+  \param[in]   page		The name of the page.
+*/
 void drawManualPage(char **page)
 {
 	
@@ -202,7 +225,11 @@ void drawManualPage(char **page)
 	
 }
 
-// A milisecond delay function
+/**
+  \fn          void milDelay(int dl)
+  \brief       Function for having milisecond delays.
+  \param[in]   dl   Number of miliseconds for delay
+*/
 void milDelay(int dl)
 {
 	int osTime = 0;
@@ -223,7 +250,11 @@ void milDelay(int dl)
 	}
 }
 	
-// Send a request signal to the tempreture sensor
+/**
+  \fn          void DHT11Start(GPIO_InitTypeDef* pin)
+  \brief       Function for sending a request to tempreture sensor to get data.
+  \param[in]   pin   The pin for the tempreture sensor
+*/
 void DHT11Start(GPIO_InitTypeDef* pin)
 {
 	// Set pin as output
@@ -241,7 +272,11 @@ void DHT11Start(GPIO_InitTypeDef* pin)
 	HAL_GPIO_Init(GPIOB, pin);
 }
 
-// Check the response of the tempreture sensor
+/**
+  \fn          void checkResponse(GPIO_InitTypeDef* pin)
+  \brief       Function for checking the response of the tempreture sensor
+  \param[in]   pin   The pin for the tempreture sensor
+*/
 void checkResponse(GPIO_InitTypeDef* pin)
 {
 	int counter = 0;
@@ -269,7 +304,11 @@ void checkResponse(GPIO_InitTypeDef* pin)
 	}
 }
 
-// Read the data of the tempreture sensor
+/**
+  \fn          void readData(GPIO_InitTypeDef* pin)
+  \brief       Function for reading the data of the tempreture sensor
+  \param[in]   pin   The pin for the tempreture sensor
+*/
 int readData(GPIO_InitTypeDef* pin)
 {
 	int i,j;
@@ -311,7 +350,10 @@ int readData(GPIO_InitTypeDef* pin)
 }
 
 
-// Configure the Analog to Digital Converter
+/**
+  \fn          void ConfigureADC(void)
+  \brief       Function for configuring the Analog to Digital Converter.
+*/
 void ConfigureADC()
 {
 	__ADC3_CLK_ENABLE();
@@ -337,7 +379,10 @@ void ConfigureADC()
 	
 }
 	
-// Buzz
+/**
+  \fn          void buzz(void)
+  \brief       Function for setting a quick buzz sound indicating a program change.
+*/
 void buzz(void)
 {
 	GPIO_InitTypeDef pinD5 = {GPIO_PIN_0, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_HIGH};
@@ -346,32 +391,49 @@ void buzz(void)
 	HAL_GPIO_WritePin(GPIOI, pinD5.Pin, GPIO_PIN_RESET);
 }
 
-// Turn Wheel ON
+/**
+  \fn          void turnOnWheel(void)
+  \brief       Function for turning on the wheel for the hamster.
+*/
 void turnOnWheel(void)
 {
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);
 }
 
-// Turn Wheel OFF
+/**
+  \fn          void turnOffWheel(void)
+  \brief       Function for turning off the wheel for the hamster.
+*/
 void turnOffWheel(void)
 {
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);
 }
 
-// Turn Fan ON
+/**
+  \fn          void turnOnFan(void)
+  \brief       Function for turning on the fan for the hamster
+*/
 void turnOnFan(void)
 {
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
 }
 
-// Turn Fan OFF
+/**
+  \fn          void turnOffFan(void)
+  \brief       Function for turning off the fan for the hamster
+*/
 void turnOffFan(void)
 {
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
 }
 
 
-// Open Door (Used for both openning the door and starting the treat)
+/**
+  \fn          void app_openDoor(Button *button, short pin)
+  \brief       Function for opening the door of the cage and treating the hamster
+  \param[in]   button   The button that has been touched.
+	\param[in]   pin   The pin associated with that button
+*/
 void app_openDoor(Button *button, short pin)
 {
 	int counter = 0;
@@ -385,7 +447,10 @@ void app_openDoor(Button *button, short pin)
 	}
 }
 	
-// Close Door (Uses Mutex to hold the resource to make sure the front of the door is clear before closing the door)
+/**
+  \fn          void app_closeDoor(void)
+  \brief       Function for closing the door of the cage (Uses mutex to lock the source if hamster is in the way of the door)
+*/
 void app_closeDoor()
 {
 	int counter = 0;
@@ -417,7 +482,10 @@ void app_closeDoor()
 	osMutexRelease(stdio_mutex);
 }
 	
-// stop treat
+/**
+  \fn          void app_stopTreat(void)
+  \brief       Function for setting back the treat platform to its original position
+*/
 void app_stopTreat(void)
 {
 	int counter = 0;
@@ -431,14 +499,21 @@ void app_stopTreat(void)
 	}
 }
 
-// Draws a button with a label on top of it
+/**
+  \fn          void app_drawButton(Button *btn)
+  \brief       Draws a button on the GLCD screen.
+  \param[in]   btn   A button struct to be drawn.
+*/
 void app_drawButton(Button *btn)
 {
 		GLCD_DrawBargraph(btn->posX,btn->posY,btn->width,btn->height,0);
 		GLCD_DrawString ((btn->posX + 10), (btn->posY + (btn->height/4)), btn->label);
 }
 
-// Draws a clock
+/**
+  \fn          void app_drawClock(void)
+  \brief       Function for drawing the clock on the GLCD screen.
+*/
 void app_drawClock()
 {
 		char buffer[128];
@@ -451,7 +526,11 @@ void app_drawClock()
 }
 
 
-// Draws the screen label
+/**
+  \fn          void app_drawScreenLabel(ScreenLabel *scrLbl)
+  \brief       Function for drawing a screen label on the GLCD screen.
+  \param[in]   scrLbl   A screen label sctruct to be drawn on the screen.
+*/
 void app_drawScreenLabel(ScreenLabel *scrLbl)
 {
 	GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
@@ -459,7 +538,11 @@ void app_drawScreenLabel(ScreenLabel *scrLbl)
 	GLCD_SetBackgroundColor (GLCD_COLOR_PURPLE);
 }
 
-// Draws the bargraph
+/**
+  \fn          void app_drawBargraph(Bargraph *bargraph)
+  \brief       Function for drawing a bargraph on the GLCD screen.
+  \param[in]   bargraph   A bargraph sctruct to be drawn on the screen.
+*/
 void app_drawBargraph(Bargraph *bargraph)
 {
 		GLCD_SetBackgroundColor (GLCD_COLOR_LIGHT_GREY);
@@ -473,7 +556,11 @@ void app_drawBargraph(Bargraph *bargraph)
 		GLCD_SetFont (&GLCD_Font_16x24);
 }
 
-// Clock functionality
+/**
+  \fn          void app_clockTicToc(void const *argument)
+  \brief       Functionality of the clock (Threaded)
+  \param[in]   argument   Event for this threaded task.
+*/
 void app_clockTicToc(void const *argument)
 {
 		clock.tic = HAL_GetTick()/10;
@@ -486,7 +573,11 @@ void app_clockTicToc(void const *argument)
 		}
 }
 
-// Update water level
+/**
+  \fn          void app_updateWaterLevel(Bargraph *bargraph)
+  \brief       Function for the water bargraph
+  \param[in]   bargraph   The water bargraph struct
+*/
 void app_updateWaterLevel(Bargraph *bargraph)
 {
 	ADC_ChannelConfTypeDef adcChannel;
@@ -518,7 +609,11 @@ void app_updateWaterLevel(Bargraph *bargraph)
 	} else {}
 }
 
-// Update food level
+/**
+  \fn          void app_updateFoodLevel(Bargraph *bargraph)
+  \brief       Function for the food bargraph
+  \param[in]   bargraph   The food bargraph struct
+*/
 void app_updateFoodLevel(Bargraph *bargraph)
 {
 	ADC_ChannelConfTypeDef adcChannel;
@@ -551,7 +646,10 @@ void app_updateFoodLevel(Bargraph *bargraph)
 	
 }
 
-// Update Tempreture
+/**
+  \fn          void app_updateTempreture(void)
+  \brief       Function for updating the tempreture sensor and acting as a thermostat for fan and heating
+*/
 void app_updateTempreture()
 {
 	uint8_t rhByte1 = 0, tempByte1 = 0;
@@ -604,7 +702,10 @@ void app_updateTempreture()
 }
 
 
-// Page specific logic
+/**
+  \fn          void app_homePageSpecific()
+  \brief       Function for handling home page specific functionality (tempreture, food, water level)
+*/
 void app_homePageSpecific()
 {
 	app_updateFoodLevel(&waterBargraph);
@@ -616,7 +717,12 @@ void app_homePageSpecific()
 	}
 }
 
-// Handle sensor type
+/**
+  \fn          void app_handleSensor(Button *button,  short pin)
+  \brief       Function for handling the logic of each type of sensor (digital, pwm, etc.)
+  \param[in]   button   The button that has been touched.
+	\param[in]   pin   The pin associated with that button
+*/
 void app_handleSensor(Button *button, short pin)
 {
 	if (button->funtionality->state == 0)
@@ -664,7 +770,13 @@ void app_handleSensor(Button *button, short pin)
 	}
 }
 
-// User input handler
+/**
+  \fn          void app_userInputHandle(char **page, short numOfButtons, Button **buttons)
+  \brief       Function for handling user input as touch on a touch screen.
+  \param[in]   page   The current page that is rendered.
+	\param[in]   numOfButtons   The number of buttons rendered on the page.
+	\param[in]   buttons   An array of buttons on the current page.
+*/
 void app_userInputHandle(char **page, short numOfButtons, Button **buttons)
 {
 	unsigned short i = 0;

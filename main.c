@@ -1,3 +1,12 @@
+/*-----------------------------------------------------------------------------
+ * Name:    main.c
+ * Purpose: The main function of the SmartPets program.
+ * Rev.:    1.0.0
+ * Authors:    Bijan Ghasemi Afshar - Richard Sabiers
+ * Date: April 2019
+ *-----------------------------------------------------------------------------*/
+ 
+ 
 #include "GLCD_Config.h"
 #include "Board_GLCD.h"
 #include "stm32f7xx_hal.h"
@@ -5,14 +14,19 @@
 #include "cmsis_os.h"
 #include <string.h>
 
+/*---------------------- HAL Delay definition ---------------*/
 #define wait_delay HAL_Delay
+
+/*---------------------- Defining the used fonts ---------------*/
 extern GLCD_FONT GLCD_Font_16x24;
 
+/*---------------------- Function Definitions ---------------*/
 static void SystemClock_Config(void);
 static void initDisplay(void);
 
 /**
-* System Clock Configuration
+  \fn          void SystemClock_Config(void)
+  \brief       Function for configuring the system clock.
 */
 void SystemClock_Config(void) {
 	RCC_OscInitTypeDef RCC_OscInitStruct;
@@ -49,7 +63,11 @@ void SystemClock_Config(void) {
 }
 
 /**
-* Main Function
+  \fn          int main(void)
+  \brief       The main starting point of the application
+	\returns
+   - \b  0: function succeeded
+   - \b  1: function failed
 */
 int main(void)
 {
